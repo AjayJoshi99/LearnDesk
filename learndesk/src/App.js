@@ -4,9 +4,16 @@ import StudentLayout from "./layout/StudentLayout";
 import TeacherLayout from "./layout/TeacherLayout";
 import Login from './componets/login';
 import ForgotPassword from './componets/ForgotPassword';
+import { useEffect, useState } from "react";
 
 function App() {
-      const role = localStorage.getItem("role");
+    const [role, setRole] = useState(localStorage.getItem("role"));
+
+    useEffect(() => {
+      const handleStorageChange = () => setRole(localStorage.getItem("role"));
+      window.addEventListener("storage", handleStorageChange);
+      return () => window.removeEventListener("storage", handleStorageChange);
+    }, []);
 
   return (
     <div className="">
