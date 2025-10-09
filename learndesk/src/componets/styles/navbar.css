@@ -2,11 +2,14 @@
   height: 70px;
   background: white;
   border-bottom: 1px solid #e5e7eb;
+  border-radius: 20px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: #6366f1;
 }
 
 .navbar-left {

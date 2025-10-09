@@ -1,24 +1,31 @@
 import "./App.css";
-import { useState } from "react";
-import Sidebar from './componets/sidebar';
-import Navbar from './componets/navbar';
+import { Routes, Route } from "react-router-dom";
+import StudentLayout from "./layout/StudentLayout";
+import TeacherLayout from "./layout/TeacherLayout";
+import Login from './componets/login';
+import ForgotPassword from './componets/ForgotPassword';
 
 function App() {
-      const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-      const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-      };
+      const role = localStorage.getItem("role");
 
   return (
-    <div className="App">
-      <Sidebar isOpen={isSidebarOpen}/>
-    <div className="vertical-line"></div>
-      <div className="right-section">
-          <Navbar toggleSidebar={toggleSidebar}/>
-          main content
-        </div>
-      
+    <div className="">
+      <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+        
+        {role === "user" && (
+          <Route path ="/user" element={<StudentLayout />}>
+            {/* <Route path="/dashboard" element={<StudentDashboard />} /> */}
+          </Route>
+        )}
+
+        {role === "teacher" && (
+          <Route path="/teacher" element={<TeacherLayout />}>
+            
+          </Route>
+        )}
+      </Routes>
     </div>
   );
 }

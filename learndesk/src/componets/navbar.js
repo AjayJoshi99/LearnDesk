@@ -1,7 +1,13 @@
-import { Search, Bell, Mail, Menu } from "lucide-react";
+import { Search, Bell, Mail, Menu, LogOut  } from "lucide-react";
 import "./styles/navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ toggleSidebar }) => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/"); 
+  };
 
   return (
     <div className="navbar">
@@ -19,6 +25,10 @@ const Navbar = ({ toggleSidebar }) => {
         </div>
       </div>
       <div className="navbar-right">
+        <button className="icon-button" onClick={handleLoginClick}>
+          <LogOut size={20} />
+          LogOut
+        </button>
         <button className="icon-button">
           <Mail size={20} />
           <span className="notification-badge">3</span>
