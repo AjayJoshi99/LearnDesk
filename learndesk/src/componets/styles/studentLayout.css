@@ -7,7 +7,7 @@
 
 /* Sidebar (left side) */
 .student-layout .sidebar {
-  width: 250px;
+  width: 350px;
   background-color: #0d1b2a;
   color: white;
   transition: width 0.3s ease;
@@ -17,7 +17,7 @@
   width: 70px;
 }
 
-/* Right Section (Navbar + Content) */
+/* Right Section (Navbar + Content)
 .right-section {
   flex: 1;
   display: flex;
@@ -25,7 +25,7 @@
 }
 
 /* Navbar (top) */
-.right-section .navbar {
+/* .right-section .navbar {
   height: 60px;
   background-color: #0d1b2a;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-}
+} */ */
 
 /* Main Content (below navbar) */
 .main-content {

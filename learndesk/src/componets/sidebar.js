@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen }) => {
   const menuItems = [
-    { icon: Home, label: "Dummy", active: true },
-    { icon: BarChart3, label: "Dummy" },
+    { icon: Home, label: "Dashboard", active: true, path :"/user/dashboard" },
+    { icon: BarChart3, label: "History", path :"/user/history" },
     { icon: Users, label: "Dummy" },
     { icon: FileText, label: "Dummy" },
     { icon: Calendar, label: "Dummy" },
@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen }) => {
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <div className="sidebar-header">
-        <h2 className="sidebar-logo">MyApp</h2>
+        <h2 className="sidebar-logo">LearnDesk</h2>
       </div>
       <nav className="sidebar-nav">
         {menuItems.map((item, index) => (

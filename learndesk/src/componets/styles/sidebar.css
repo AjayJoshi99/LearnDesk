@@ -19,6 +19,7 @@
 }
 
 .sidebar.closed{
+    left : -70px;
     width: 0px;
 }
 .sidebar.open(

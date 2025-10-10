@@ -4,6 +4,14 @@ import StudentLayout from "./layout/StudentLayout";
 import TeacherLayout from "./layout/TeacherLayout";
 import Login from './componets/login';
 import ForgotPassword from './componets/ForgotPassword';
+import Dashboard from './componets/dashboard';
+import Exam from './componets/Exam';
+import Logical_reasoning from './componets/Logical_reasoning';
+import VerbalAbility from './componets/VerbalAbility';
+import NonVerbalReasoning from './componets/NonVerbalReasoning';
+import ArithmeticAptitude from './componets/ArithmeticAptitude';
+import ReviewQuiz from './componets/ReviewQuiz';
+import History from "./componets/History";     
 import { useEffect, useState } from "react";
 
 function App() {
@@ -23,7 +31,14 @@ function App() {
         
         {role === "user" && (
           <Route path ="/user" element={<StudentLayout />}>
-            {/* <Route path="/dashboard" element={<StudentDashboard />} /> */}
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="Logical_reasoning" element={<Logical_reasoning/>} />
+            <Route path="VerbalAbility" element={<VerbalAbility/>}/>
+            <Route path="NonVerbalReasoning" element={<NonVerbalReasoning />} />
+            <Route path="ArithmeticAptitude" element={<ArithmeticAptitude />} />
+            <Route path="Exam/:num" element={<Exam />} />
+            <Route path="history" element={<History />} />
+            <Route path="history/quiz/:quizNumber" element={<ReviewQuiz />} />
           </Route>
         )}
 

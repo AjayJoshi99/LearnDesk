@@ -99,7 +99,7 @@ const Login = () => {
         if (data.user.userType === 'teacher') {
           navigate('/teacher');
         } else {
-          navigate('/user');
+          navigate('/user/dashboard');
         }
       } else {
         alert(data.message || 'Login failed');

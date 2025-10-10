@@ -1,0 +1,513 @@
+[
+    { "e": "0", "Question" : [
+    ["Look at this series: 2, 1, (1/2), (1/4), ... What number should come next?","1/3","1/8","2/8","1/16","1/3"],
+    [" Find the number which will come in the place of the question mark in the given series 14, 25, 47, 91, 179, ?","255","321","355","211","355"],
+    ["Look at this series: 7, 10, 8, 11, 9, 12, ... What number should come next?", "7","10","12","13","10"],
+    ["Look at this series: 36, 34, 30, 28, 24, ... What number should come next?","22","20","23","26","22"],
+    ["Look at this series: 22, 21, 23, 22, 24, 23, ... What number should come next?", "22","24","25","26","25"],
+    ["Look at this series: 53, 53, 40, 40, 27, 27, ... What number should come next?","12", "14", "27","53","14"],
+    ["Look at this series: 21, 9, 21, 11, 21, 13, 21, ... What number should come next?","14", "21","15","23","15"],
+    ["Look at this series: 58, 52, 46, 40, 34, ... What number should come next?","26", "32","30","28","28"],
+    ["Look at this series: 3, 4, 7, 8, 11, 12, ... What number should come next?","7", "10","14","15"],
+    ["Look at this series: 8, 22, 8, 28, 8, ... What number should come next?","9","29","32","34","34"]
+    ]}
+,
+    { "e": "1", "Question" :[
+    ["Look at this series: 31, 29, 24, 22, 17, ... What number should come next?","15","14","13","12","15"],
+    ["Look at this series: 544, 509, 474, 439, ... What number should come next?","404","414","420","445","404"],
+    ["Look at this series: 201, 202, 204, 207, ... What number should come next?","205","208","210","211","211"],
+    ["Look at this series: 2, 4, 6, 8, 10, ... What number should come next?","11","12","13","14","12"],
+    ["Look at this series: 14, 28, 20, 40, 32, 64, ... What number should come next?","52","56","96","128","56"],
+    ["Look at this series: 1.5, 2.3, 3.1, 3.9, ... What number should come next?","4.2","4.4","4.7","5.1","4.7"],
+    ["Look at this series: 8, 6, 9, 23, 87, ... What number should come next?","128","226","324","429","429"],
+    ["Look at this series: 5.2, 4.8, 4.4, 4, ... What number should come next?","3","3.3","3.5","3.6","3.6"],
+    ["Look at this series: 2, 6, 18, 54, ... What number should come next?","108","148","162","216","162"],
+    ["Look at this series: 80, 10, 70, 15, 60, ... What number should come next?","20","25","30","50","50"]
+    ]}
+,
+    { "e": "2", "Question" :[
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 28 25 5 21 18 5 14","11 5","10 7","11 8","5 10","11 5"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 75 65 85 55 45 85 35","25 15","25 85","35 25","85 35","25 85"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 21 25 18 29 33 18","43 18","41 44","37 18","37 41","37 41"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 6 20 8 14 10 8 12","14 10","2 18","4 12","2 14","2 14"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 2 3 4 5 6 4 8","9 10","4 8","10 4","9 4","9 4"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 9 11 33 13 15 33 17","19 33","33 35","33 19","15 33","19 33"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 2 8 14 20 26 32 38","2 46","44 50","42 48","40 42","44 50"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 9 16 23 30 37 44 51","59 66","56 62","58 66","58 65","58 65"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 17 17 34 20 20 31 23","26 23","34 20","23 33","23 28","23 28"],
+        ["Look carefully for the pattern, and then choose which pair of numbers comes next. 8 11 21 15 18 21 22","25 18","25 21","25 29","24 21","25 21"]
+
+
+    ]}
+    ,
+    { "e": "3", "Question" :[
+        ["Piyush behaves strangely at times and, therefore, nobody gets ...... with him.","about","through","along","up","along"],
+        ["Man does not live by ...... alone.","food","bread","meals","diet","bread"],
+        ["If you smuggle goods into the country, they may be ...... by the customs authority.","possessed","punished","confiscated","fined","confiscated"],
+        ["My uncle decided to take ...... and my sister to the market.","I","mine","me","myself","me"],
+        ["Success in this examination depends ...... hard work alone.","at","over","for","on","on"],
+        ["The grapes are now ...... enough to be picked.","ready","mature","ripe","advanced","ripe"],
+        ["I saw a ...... of cows in the field.","group","herd","swarm","flock","herd"],
+        ["Catching the earlier train will give us the ...... to do some shopping.","chance","luck","possibility","occasion","chance"],
+        ["Fate smiles ...... those who untiringly grapple with stark realities of life.","with","over","on","round","on"],
+        ["The miser gazed ...... at the pile of gold coins in front of him.","avidly","admiringly","thoughtfully","earnestly","avidly"]
+    ]}
+    ,
+    { "e": "4", "Question" :[
+        
+        ["Extreme old age when a man behaves like a fool","Imbecility","Senility","Dotage","Superannuation","Dotage"],
+        ["That which cannot be corrected","Unintelligible","Indelible","Illegible","Incorrigible","Incorrigible"],
+        ["The study of ancient societies","Anthropology","Archaeology","History","Ethnology","Archaeology"],
+        ["A person of good understanding knowledge and reasoning power","Expert","Intellectual","Snob","Literate","Intellectual"],
+        ["A person who insists on something","Disciplinarian","Stickler","Instantaneous","Boaster","Stickler"],
+        ["State in which the few govern the many","Monarchy","Oligarchy","Plutocracy","Autocracy","Oligarchy"],
+        ["A style in which a writer makes a display of his knowledge","Pedantic","Verbose","Pompous","Ornate","Pedantic"],
+        ["List of the business or subjects to be considered at a meeting","Schedule","Timetable","Agenda","Plan","Agenda"],
+        ["Leave or remove from a place considered dangerous","Evade","Evacuate","Avoid","Exterminate","Evacuate"],
+        ["A prima facie case is such","As it seems at first sight","As it is made to seem at first sight","As it turns out to be at the end","As it seems to the court after a number of hearings","As it seems at first sight"]
+    ]}
+    ,
+    { "e": "5", "Question" :[
+    
+        ["Find the correctly spelt words.", "Efficient", "Treatmeant", "Beterment", "Employd", "Efficient"],
+        ["Find the correctly spelt words.", "Foreign", "Foreine", "Fariegn", "Forein", "Foreign"],
+        ["Find the correctly spelt words.", "Ommineous", "Omineous", "Ominous", "Omenous", "Ominous"],
+        ["Find the correctly spelt words.", "Pessenger", "Passenger", "Pasanger", "Pesanger", "Passenger"],
+        ["Find the correctly spelt words.", "Benefitted", "Benifited", "Benefited", "Benefeted", "Benefited"],
+        ["Find the correctly spelt words.", "Treachrous", "Trecherous", "Trechearous", "Treacherous", "Treacherous"],
+        ["Find the correctly spelt words.", "Forcast", "Forecaste", "Forcaust", "Forecast", "Forecast"],
+        ["Find the correctly spelt words.", "Rigerous", "Rigourous", "Regerous", "Rigorous", "Rigorous"],
+        ["Find the correctly spelt words.", "Palete", "Palet", "Palate", "Pelate", "Palate"],
+        ["Find the correctly spelt words.", "Bouquete", "Bouquette", "Bouquet", "Boqquet", "Bouquet"]
+    ]}
+,
+{ "e": "6", "Question" :[
+        ["Arrange the words given below in a meaningful sequence. 1. Key 2. Door 3. Lock 4. Room 5. Switch on", "5, 1, 2, 4, 3", "4, 2, 1, 5, 3", "1, 3, 2, 4, 5", "1, 2, 3, 5, 4", "1, 3, 2, 4, 5"],
+        ["Arrange the words given below in a meaningful sequence. 1. Word 2. Paragraph 3. Sentence 4. Letters 5. Phrase", "4, 1, 5, 2, 3", "4, 1, 3, 5, 2", "4, 2, 5, 1, 3", "4, 1, 5, 3, 2", "4, 1, 5, 3, 2"],
+        ["Arrange the words given below in a meaningful sequence. 1. Police 2. Punishment 3. Crime 4. Judge 5. Judgement", "3, 1, 2, 4, 5", "1, 2, 4, 3, 5", "5, 4, 3, 2, 1", "3, 1, 4, 5, 2", "3, 1, 4, 5, 2"],
+        ["Arrange the words given below in a meaningful sequence. 1. Family 2. Community 3. Member 4. Locality 5. Country", "3, 1, 2, 4, 5", "3, 1, 2, 5, 4", "3, 1, 4, 2, 5", "3, 1, 4, 5, 2", "3, 1, 2, 3, 5"],
+        ["Arrange the words given below in a meaningful sequence. 1. Poverty 2. Population 3. Death 4. Unemployment 5. Disease", "2, 3, 4, 5, 1", "3, 4, 2, 5, 1", "2, 4, 1, 5, 3", "1, 2, 3, 4, 5", "2, 4, 1, 5, 3"],
+        ["Arrange the words given below in a meaningful sequence. 1. Leaf 2. Fruit 3. Stem 4. Root 5. Flower", "3, 4, 5, 1, 2", "4, 3, 1, 5, 2", "4, 1, 3, 5, 2", "4, 3, 1, 2, 5", "4, 3, 1, 5, 2"],
+        ["Arrange the words given below in a meaningful sequence. 1. Nation 2. Village 3. City 4. District 5. State", "2, 3, 4, 5, 1", "2, 3, 4, 1, 5", "1, 3, 5, 4, 2", "1, 2, 3, 4, 5", "2, 3, 4, 5, 1"],
+        ["Arrange the words given below in a meaningful sequence. 1. Caste 2. Family 3. Newly married Couple 4. Clan 5. Species", "2, 3, 1, 4, 5", "3, 4, 5, 1, 2", "3, 2, 1, 4, 5", "4, 5, 3, 2, 1", "3, 2, 1, 4, 5"],
+        ["Arrange the words given below in a meaningful sequence. 1. Cut 2. Put on 3. Mark 4. Measure 5. Tailor", "3, 1, 5, 4, 2", "2, 4, 3, 1, 5", "1, 3, 2, 4, 5", "4, 3, 1, 5, 2", "4, 3, 1, 5, 2"],
+        ["Arrange the words given below in a meaningful sequence. 1. House 2. Street 3. Room 4. Town 5. District", "3, 2, 1, 4, 5", "3, 1, 4, 2, 5", "3, 1, 2, 4, 5", "3, 1, 2, 5, 4", "3, 1, 2, 4, 5"]
+]}
+,
+{ "e": "7", "Question" :[
+        ["Pointing to a photograph of a boy Suresh said, \"He is the son of the only son of my mother.\" How is Suresh related to that boy?", "Uncle", "Brother", "Cousin", "Father", "Father"],
+        ["If A + B means A is the mother of B; A - B means A is the brother B; A % B means A is the father of B and A x B means A is the sister of B, which of the following shows that P is the maternal uncle of Q?", "Q - S % P", "P + S x N - Q", "M + O x N", "M % O x N + P", "P - M + N x Q"],
+        ["If A is the brother of B; B is the sister of C; and C is the father of D, how D is related to A?", "Nephew", "Sister", "Brother", "Cannot be determined", "Cannot be determined"],
+        ["If A + B means A is the brother of B; A - B means A is the sister of B and A x B means A is the father of B. Which of the following means that C is the son of M?", "M - N x C + F", "F - C + N x M", "N + M - F x C", "M x N - C + F", "M x N - C + F"],
+        ["Introducing a boy, a girl said, \"He is the son of the daughter of the father of my uncle.\" How is the boy related to the girl?", "Nephew", "Brother", "Cousin", "Son-in-law", "Brother"],
+        ["Pointing to a photograph Lata says, \"He is the son of the only son of my grandfather.\" How is the man in the photograph related to Lata?", "Brother", "Uncle", "Cousin", "Data is inadequate", "Brother"],
+        ["If A + B means A is the brother of B; A x B means A is the son of B; and A % B means B is the daughter of A then which of the following means M is the maternal uncle of N?", "None of these", "M + O x N", "M % O x N + P", "M + O % N", "None of these"],
+        ["If D is the brother of B, how B is related to C? To answer this question which of the statements is/are necessary?", "Only 1", "Only 2", "Either 1 or 2", "Both 1 and 2", "1 and 2 both are required"],
+        ["If A + B means A is the father of B; A - B means A is the brother B; A % B means A is the wife of B and A x B means A is the mother of B, which of the following shows that M is the maternal grandmother of T?", "M x S - N % T", "M x N - C + F", "M x N x S % T", "M x N % S + T", "M x N % S + T"],
+        ["Pointing to a photograph. Bajpai said, \"He is the son of the only daughter of the father of my brother.\" How Bajpai is related to the man in the photograph?", "Nephew", "Brother", "Father", "Maternal Uncle", "Maternal Uncle"]
+]}
+,
+{ "e": "8", "Question" :[
+        ["One morning Udai and Vishal were talking to each other face to face at a crossing. If Vishal's shadow was exactly to the left of Udai, which direction was Udai facing?", "West", "East", "North", "South", "North"],
+        ["Y is in the East of X which is in the North of Z. If P is in the South of Z, then in which direction of Y, is P?", "North", "South", "South-East", "None of these", "None of these"],
+        ["If South-East becomes North, North-East becomes West and so on. What will West become?", "North-East", "North-West", "South-East", "South-West", "South-East"],
+        ["A man walks 5 km toward south and then turns to the right. After walking 3 km he turns to the left and walks 5 km. Now in which direction is he from the starting place?", "West", "South", "North-East", "South-West", "South-West"],
+        ["Rahul put his timepiece on the table in such a way that at 6 P.M. hour hand points to North. In which direction the minute hand will point at 9.15 P.M. ?", "South-East", "South", "North", "West", "West"],
+        ["Rasik walked 20 m towards north. Then he turned right and walks 30 m. Then he turns right and walks 35 m. Then he turns left and walks 15 m. Finally he turns left and walks 15 m. In which direction and how many metres is he from the starting position?", "30 m West", "15 m West", "30 m East", "45 m East", "45 m East"],
+        ["Two cars start from the opposite places of a main road, 150 km apart. First car runs for 25 km and takes a right turn and then runs 15 km. It then turns left and then runs for another 25 km and then takes the direction back to reach the main road. In the mean time, due to minor break down the other car has run only 35 km along the main road. What would be the distance between two cars at this point?", "65 km", "75 km", "80 km", "85 km", "65 km"],
+        ["Starting from the point X, Jayant walked 15 m towards west. He turned left and walked 20 m. He then turned left and walked 15 m. After this he turned to his right and walked 12 m. How far and in which directions is now Jayant from X?", "32 m, South", "47 m, East", "42 m, North", "27 m, South", "32 m, South"],
+        ["One evening before sunset Rekha and Hema were talking to each other face to face. If Hema's shadow was exactly to the right of Hema, which direction was Rekha facing?", "North", "South", "East", "Data is inadequate", "South"],
+        ["A boy rode his bicycle Northward, then turned left and rode 1 km and again turned left and rode 2 km. He found himself 1 km west of his starting point. How far did he ride northward initially?", "1 km", "2 km", "3 km", "5 km", "2 km"]   
+]}
+,
+{ "e": "9", "Question" :[
+    
+        ["Choose the word which is different from the rest.", "Potassium", "Silicon", "Zirconium", "Gallium", "Potassium"],
+        ["Choose the word which is different from the rest.", "Tea", "Cinchona", "Chalk", "Cardamom", "Chalk"],
+        ["Choose the word which is different from the rest.", "Hangar", "Platform", "Dock", "Park", "Park"],
+        ["Choose the word which is different from the rest.", "Sparrow", "Swan", "Parrot", "Koel", "Swan"],
+        ["Choose the word which is different from the rest.", "Tall", "Huge", "Thin", "Sharp", "Sharp"],
+        ["Choose the word which is different from the rest.", "Chicken", "Snake", "Swan", "Crocodile", "Chicken"],
+        ["Choose the word which is different from the rest.", "Cap", "Turban", "Helmet", "Veil", "Veil"],
+        ["Choose the word which is different from the rest.", "Kiwi", "Eagle", "Emu", "Ostrich", "Eagle"],
+        ["Choose the word which is different from the rest.", "Rigveda", "Yajurveda", "Atharvaveda", "Ayurveda", "Ayurveda"],
+        ["Choose the word which is different from the rest.", "Curd", "Butter", "Oil", "Cheese", "Oil"] 
+]}
+,
+{ "e": "10", "Question" :[
+        ["A train always has", "Rails", "Driver", "Guard", "Engine", "Engine"],
+        ["Which one of the following is always found in 'Bravery'?", "Experience", "Power", "Courage", "Knowledge", "Courage"],
+        ["A song always has", "Word", "Chorus", "Musician", "Tymbal", "Word"],
+        ["Yesterday I saw an ice cube which had already melted due to heat of a nearby furnace.", "Always", "Never", "Often", "Never", "Sometimes"],
+        ["What is found necessarily in milk?", "Cream", "Curd", "Water", "Whiteness", "Whiteness"],
+        ["Which one of the following is always with 'Bargain'?", "Exchange", "Sumptuousness", "Triviality", "Eloquence", "Exchange"],
+        ["Which one of the following a 'Drama' must have?", "Actors", "Story", "Sets", "Director", "Story"],
+        ["A boy is sitting at the back seat of a car. When the driver suddenly starts moving the car (in forward direction), the boy experiences a backward force?", "Always", "Never", "Often", "Sometimes", "Always"],
+        ["Which one of the following is always found in 'Wonder'?", "Crowd", "Lumber", "Astonishment", "Rustic", "Astonishment"],
+        ["Disclosure always involves", "Agents", "Display", "Exposition", "Secrets", "Secrets"]
+]}
+,
+{ "e": "11", "Question" :[
+        ["SCD, TEF, UGH, ____, WKL", "CMN", "UJI", "VIJ", "IJT", "VIJ"],
+        ["B2CD, _____, BCD4, B5CD, BC6D", "B2C2D", "BC3D", "B2C3D", "BCD7", "BC3D"],
+        ["FAG, GAF, HAI, IAH, ____", "JAK", "HAL", "HAK", "JAI", "JAK"],
+        ["ELFA, GLHA, ILJA, _____, MLNA", "OLPA", "KLMA", "LLMA", "KLLA", "KLLA"],
+        ["CMM, EOO, GQQ, _____, KUU", "GRR", "GSS", "ISS", "ITT", "ISS"],
+        ["ZA5, Y4B, XC6, W3D, _____", "E7V", "V2E", "VE5", "VE7", "VE7"],
+        ["QPO, NML, KJI, _____, EDC", "HGF", "CAB", "JKL", "GHI", "HGF"],
+        ["JAK, KBL, LCM, MDN, _____", "OEP", "NEO", "MEN", "PFQ", "NEO"],
+        ["BCB, DED, FGF, HIH, ___", "JKJ", "HJH", "IJI", "JHJ", "JKJ"],
+        ["P5QR, P4QS, P3QT, _____, P1QV", "PQW", "PQV2", "P2QU", "PQ3U", "P2QU"]
+    
+]}
+    ,
+{ "e": "12", "Question" :[
+        
+        ["It was Sunday on Jan 1, 2006. What was the day of the week Jan 1, 2010?", "Sunday", "Saturday", "Friday", "Wednesday", "Friday"],
+        ["What was the day of the week on 28th May, 2006?", "Thursday", "Friday", "Saturday", "Sunday", "Sunday"],
+        ["What was the day of the week on 17th June, 1998?", "Monday", "Tuesday", "Wednesday", "Thursday", "Wednesday"],
+        ["What will be the day of the week 15th August, 2010?", "Sunday", "Monday", "Tuesday", "Friday", "Sunday"],
+        ["Today is Monday. After 61 days, it will be:", "Wednesday", "Saturday", "Tuesday", "Thursday", "Saturday"],
+        ["If 6th March, 2005 is Monday, what was the day of the week on 6th March, 2004?", "Sunday", "Saturday", "Tuesday", "Wednesday", "Sunday"],
+        ["On what dates of April, 2001 did Wednesday fall?", "1st, 8th, 15th, 22nd, 29th", "2nd, 9th, 16th, 23rd, 30th", "3rd, 10th, 17th, 24th", "4th, 11th, 18th, 25th", "4th, 11th, 18th, 25th"],
+        ["How many days are there in x weeks x days?", "7x2", "8x", "14x", "7", "8x"],
+        ["The last day of a century cannot be", "Monday", "Wednesday", "Tuesday", "Friday", "Tuesday"],
+        ["On 8th Feb, 2005 it was Tuesday. What was the day of the week on 8th Feb, 2004?", "Tuesday", "Monday", "Sunday", "Wednesday", "Sunday"]
+]}
+,
+{ "e": "13", "Question" :[        
+        ["At what time between 7 and 8 o'clock will the hands of a clock be in the same straight line but, not together?", "5 min. past 7", "5 2/11 min. past 7", "5 3/11 min. past 7", "5 5/11 min. past 7", "5 5/11 min. past 7"],
+        ["At what time between 5.30 and 6 will the hands of a clock be at right angles?", "43 5/11 min. past 5", "43 7/11 min. past 5", "40 min. past 5", "45 min. past 5", "43 7/11 min. past 5"],
+        ["The angle between the minute hand and the hour hand of a clock when the time is 4.20, is:", "0°", "10°", "5°", "20°", "10°"],
+        ["At what angle the hands of a clock are inclined at 15 minutes past 5?", "58 1/2 °", "64°", "67 1/2 °", "72 1/2 °", "67 1/2 °"],
+        ["At 3:40, the hour hand and the minute hand of a clock form an angle of:", "120°", "125°", "130°", "135°", "130°"],
+        ["An accurate clock shows 8 o'clock in the morning. Through how may degrees will the hour hand rotate when the clock shows 2 o'clock in the afternoon?", "144°", "150°", "168°", "180°", "180°"],
+        ["The reflex angle between the hands of a clock at 10.25 is:", "180°", "192 1/2 °", "195°", "197 1/2 °", "197 1/2 °"],
+        ["A clock is started at noon. By 10 minutes past 5, the hour hand has turned through:", "145°", "150°", "155°", "160°", "155°"],
+        ["A watch which gains 5 seconds in 3 minutes was set right at 7 a.m. In the afternoon of the same day, when the watch indicated quarter past 4 o'clock, the true time is:", "59 7/12 min. past 3", "4 p.m.", "58 7/11 min. past 3", "2 3/11 min. past 4", "4 p.m."],
+        ["How much does a watch lose per day, if its hands coincide every 64 minutes?", "32 8/11 min.", "36 5/11 min.", "90 min.", "96 min.", "32 8/11 min."]
+ ]}
+ ,
+ { "e": "14", "Question" :[        
+        ["A person crosses a 600 m long street in 5 minutes. What is his speed in km per hour?", "3.6", "7.2", "8.4", "10", "7.2"],
+        ["An aeroplane covers a certain distance at a speed of 240 kmph in 5 hours. To cover the same distance in 1 hours, it must travel at a speed of:", "300 kmph", "360 kmph", "600 kmph", "720 kmph", "720 kmph"],
+        ["If a person walks at 14 km/hr instead of 10 km/hr, he would have walked 20 km more. The actual distance travelled by him is:", "50 km", "56 km", "70 km", "80 km", "50 km"],
+        ["A train can travel 50% faster than a car. Both start from point A at the same time and reach point B 75 kms away from A at the same time. On the way, however, the train lost about 12.5 minutes while stopping at the stations. The speed of the car is:", "100 kmph", "110 kmph", "120 kmph", "130 kmph", "120 kmph"],
+        ["Excluding stoppages, the speed of a bus is 54 kmph and including stoppages, it is 45 kmph. For how many minutes does the bus stop per hour?", "9", "10", "12", "20", "10"],
+        ["In a flight of 600 km, an aircraft was slowed down due to bad weather. Its average speed for the trip was reduced by 200 km/hr and the time of flight increased by 30 minutes. The duration of the flight is:", "1 hour", "2 hours", "3 hours", "4 hours", "1 hours"],
+        ["A man complete a journey in 10 hours. He travels first half of the journey at the rate of 21 km/hr and second half at the rate of 24 km/hr. Find the total journey in km.", "220 km", "224 km", "230 km", "234 km", "224 km"],
+        ["The ratio between the speeds of two trains is 7 : 8. If the second train runs 400 km in 4 hours, then the speed of the first train is:", "70 km/hr", "75 km/hr", "84 km/hr", "87.5 km/hr", "87.5 km/hr"],
+        ["A man on tour travels first 160 km at 64 km/hr and the next 160 km at 80 km/hr. The average speed for the first 320 km of the tour is:", "35.55 km/hr", "36 km/hr", "71.11 km/hr", "71 km/hr", "71.11 km/hr"],
+        ["A car travelling with 5/7 of its actual speed covers 42 km in 1 hr 40 min 48 sec. Find the actual speed of the car.", "17 6 km/hr", "17 6/7", "25 km/hr", "30 km/hr", "35 km/hr"] 
+]}
+,
+{ "e": "15", "Question" :[        
+        ["The ratio between the length and the breadth of a rectangular park is 3 : 2. If a man cycling along the boundary of the park at the speed of 12 km/hr completes one round in 8 minutes, then the area of the park (in sq. m) is:", "15360", "153600", "30720", "307200", "153600"],
+        ["An error 2% in excess is made while measuring the side of a square. The percentage of error in the calculated area of the square is:", "2%", "2.02%", "4%", "4.04%", "4.04%"],
+        ["The ratio between the perimeter and the breadth of a rectangle is 5 : 1. If the area of the rectangle is 216 sq. cm, what is the length of the rectangle?", "16 cm", "18 cm", "24 cm", "Data inadequate", "18"],
+        ["The percentage increase in the area of a rectangle, if each of its sides is increased by 20% is:", "40%", "42%", "44%", "46%", "44%"],
+        ["A rectangular park 60 m long and 40 m wide has two concrete crossroads running in the middle of the park and rest of the park has been used as a lawn. If the area of the lawn is 2109 sq. m, then what is the width of the road?", "2.91 m", "3 m", "5.82 m", "None of these", "3 m"],
+        ["The diagonal of the floor of a rectangular closet is 7 feet. The shorter side of the closet is 4 feet. What is the area of the closet in square feet?", "5 1/4", "13 1/2", "27", "37", "27"],
+        ["A towel, when bleached, was found to have lost 20% of its length and 10% of its breadth. The percentage of decrease in area is:", "10%", "10.08%", "20%", "28%", "28%"],
+        ["A man walked diagonally across a square lot. Approximately, what was the percent saved by not walking along the edges?", "20", "24", "30", "33", "30"],
+        ["The diagonal of a rectangle is 41 cm and its area is 20 sq. cm. The perimeter of the rectangle must be:", "9 cm", "18 cm", "20 cm", "41 cm", "18 cm"],
+        ["What is the least number of squares tiles required to pave the floor of a room 15 m 17 cm long and 9 m 2 cm broad?", "814", "820", "840", "844", "814"]
+]}
+,
+{ "e": "16", "Question" :[        
+        ["A sum of money at simple interest amounts to Rs. 815 in 3 years and to Rs. 854 in 4 years. The sum is:", "Rs. 650", "Rs. 690", "Rs. 698", "Rs. 700", "Rs. 698"],
+        ["Mr. Thomas invested an amount of Rs. 13,900 divided in two different schemes A and B at the simple interest rate of 14% p.a. and 11% p.a. respectively. If the total amount of simple interest earned in 2 years be Rs. 3508, what was the amount invested in Scheme B?", "Rs. 6400", "Rs. 6500", "Rs. 7200", "Rs. 7500", "6400"],
+        ["A sum fetched a total simple interest of Rs. 4016.25 at the rate of 9 p.c.p.a. in 5 years. What is the sum?", "Rs. 4462.50", "Rs. 8032.50", "Rs. 8900", "Rs. 8925", "Rs. 8925"],
+        ["How much time will it take for an amount of Rs. 450 to yield Rs. 81 as interest at 4.5% per annum of simple interest?", "3.5 years", "4 years", "4.5 years", "5 years", "4 years"],
+        ["Reena took a loan of Rs. 1200 with simple interest for as many years as the rate of interest. If she paid Rs. 432 as interest at the end of the loan period, what was the rate of interest?", "3.6", "6", "18", "Cannot be determined", "6"],
+        ["A sum of Rs. 12,500 amounts to Rs. 15,500 in 4 years at the rate of simple interest. What is the rate of interest?", "3%", "4%", "5%", "6%", "6"],
+        ["An automobile financier claims to be lending money at simple interest, but he includes the interest every six months for calculating the principal. If he is charging an interest of 10%, the effective rate of interest becomes:", "10%", "10.25%", "10.5%", "None of these", "10.25%"],
+        ["A lent Rs. 5000 to B for 2 years and Rs. 3000 to C for 4 years on simple interest at the same rate of interest and received Rs. 2200 in all from both of them as interest. The rate of interest per annum is:", "5%", "7%", "7 1/8", "8", "10%"],
+        ["A sum of Rs. 725 is lent in the beginning of a year at a certain rate of interest. After 8 months, a sum of Rs. 362.50 more is lent but at the rate twice the former. At the end of the year, Rs. 33.50 is earned as interest from both the loans. What was the original rate of interest?", "3.6%", "4.5%", "5%", "None of these", "None of these"],
+        ["A man took loan from a bank at the rate of 12% p.a. simple interest. After 3 years he had to pay Rs. 5400 interest only for the period. The principal amount borrowed by him was:", "Rs. 2000", "Rs. 10,000", "Rs. 15,000", "Rs. 20,000", "Rs. 15,000"]          
+]}
+,
+{ "e": "17", "Question" :[        
+        ["If one-third of one-fourth of a number is 15, then three-tenth of that number is:", "35", "36", "45", "54", "45"],
+        ["Three times the first of three consecutive odd integers is 3 more than twice the third. The third integer is:", "9", "11", "13", "15", "54"],
+        ["The difference between a two-digit number and the number obtained by interchanging the positions of its digits is 36. What is the difference between the two digits of that number?", "3", "4", "9", "Cannot be determined", "4"],
+        ["The difference between a two-digit number and the number obtained by interchanging the digits is 36. What is the difference between the sum and the difference of the digits of the number if the ratio between the digits of the number is 1 : 2 ?", "4", "8", "16", "None of these", "8"],
+        ["A two-digit number is such that the product of the digits is 8. When 18 is added to the number, then the digits are reversed. The number is:", "18", "24", "42", "81", "24"],
+        ["The sum of the digits of a two-digit number is 15 and the difference between the digits is 3. What is the two-digit number?", "69", "78", "96", "Cannot be determined", "Cannot be determined"],
+        ["The sum of the squares of three numbers is 138, while the sum of their products taken two at a time is 131. Their sum is:", "20", "30", "40", "None of these", "20"],
+        ["A number consists of two digits. If the digits interchange places and the new number is added to the original number, then the resulting number will be divisible by:", "3", "5", "9", "11", "11"],
+        ["In a two-digit, if it is known that its unit's digit exceeds its ten's digit by 2 and that the product of the given number and the sum of its digits is equal to 144, then the number is:", "24", "26", "42", "46", "24"],
+        ["Find a positive number which when increased by 17 is equal to 60 times the reciprocal of the number.", "3", "10", "17", "20", "3"]
+]}
+,
+{ "e": "18", "Question" :[        
+        ["3, 5, 11, 14, 17, 21", "21", "17", "14", "3", "14"],
+        ["8, 27, 64, 100, 125, 216, 343", "27", "100", "125", "343", "100"],
+        ["10, 25, 45, 54, 60, 75, 80", "10", "45", "54", "75", "54"],
+        ["396, 462, 572, 427, 671, 264", "396", "427", "671", "264", "427"],
+        ["6, 9, 15, 21, 24, 28, 30", "28", "21", "24", "30", "28"],
+        ["1, 4, 9, 16, 23, 25, 36", "9", "23", "25", "36", "23"],
+        ["1, 4, 9, 16, 20, 36, 49", "1", "9", "20", "49", "20"],
+        ["2, 5, 10, 17, 26, 37, 50, 64", "50", "26", "37", "64", "64"],
+        ["10, 14, 16, 18, 21, 24, 26", "26", "24", "21", "18", "21"],
+        ["16, 25, 36, 72, 144, 196, 225", "36", "72", "196", "225", "72"]
+]}
+,
+{ "e": "19", "Question" :[        
+        ["A train 240 m long passes a pole in 24 seconds. How long will it take to pass a platform 650 m long?", "65 sec", "89 sec", "100 sec", "150 sec", "89 sec"],
+        ["Two trains of equal length are running on parallel lines in the same direction at 46 km/hr and 36 km/hr. The faster train passes the slower train in 36 seconds. The length of each train is:", "50 m", "72 m", "80 m", "82 m", "50 m"],
+        ["A train 360 m long is running at a speed of 45 km/hr. In what time will it pass a bridge 140 m long?", "40 sec", "42 sec", "45 sec", "48 sec", "40 sec"],
+        ["Two trains are moving in opposite directions @ 60 km/hr and 90 km/hr. Their lengths are 1.10 km and 0.9 km respectively. The time taken by the slower train to cross the faster train in seconds is:", "36", "45", "48", "49", "48"],
+        ["A jogger running at 9 kmph alongside a railway track in 240 metres ahead of the engine of a 120 metres long train running at 45 kmph in the same direction. In how much time will the train pass the jogger?", "3.6 sec", "18 sec", "36 sec", "72 sec", "36 sec"],
+        ["A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?", "120 metres", "180 metres", "324 metres", "150 metres", "150 metres"],
+        ["A train 125 m long passes a man, running at 5 km/hr in the same direction in which the train is going, in 10 seconds. The speed of the train is:", "45 km/hr", "50 km/hr", "54 km/hr", "55 km/hr", "50 km/hr"],
+        ["The length of the bridge, which a train 130 metres long and travelling at 45 km/hr can cross in 30 seconds, is:", "200 m", "225 m", "245 m", "250 m", "245 m"],
+        ["Two trains running in opposite directions cross a man standing on the platform in 27 seconds and 17 seconds respectively and they cross each other in 23 seconds. The ratio of their speeds is:", "1 : 3", "3 : 2", "3 : 4", "None of these", "3 : 2"],
+        ["A train passes a station platform in 36 seconds and a man standing on the platform in 20 seconds. If the speed of the train is 54 km/hr, what is the length of the platform?", "120 m", "240 m", "300 m", "None of these", "240 m"]
+]}
+,
+{ "e": "20", "Question" :[        
+        ["Find the greatest number that will divide 43, 91 and 183 so as to leave the same remainder in each case.", "4", "7", "9", "13", "4"],
+        ["The H.C.F. of two numbers is 23 and the other two factors of their L.C.M. are 13 and 14. The larger of the two numbers is:", "276", "299", "322", "345", "322"],
+        ["Six bells commence tolling together and toll at intervals of 2, 4, 6, 8 10 and 12 seconds respectively. In 30 minutes, how many times do they toll together ?", "4", "10", "15", "16", "16"],
+        ["Let N be the greatest number that will divide 1305, 4665 and 6905, leaving the same remainder in each case. Then sum of the digits in N is:", "4", "5", "6", "8", "4"],
+        ["The greatest number of four digits which is divisible by 15, 25, 40 and 75 is:", "9000", "9400", "9600", "9800", "9600"],
+        ["The product of two numbers is 4107. If the H.C.F. of these numbers is 37, then the greater number is:", "101", "107", "111", "185", "111"],
+        ["Three number are in the ratio of 3 : 4 : 5 and their L.C.M. is 2400. Their H.C.F. is:", "40", "80", "120", "200", "40"],
+        ["The G.C.D. of 1.08, 0.36 and 0.9 is:", "0.03", "0.9", "0.18", "0.108", "0.18"],
+        ["The product of two numbers is 2028 and their H.C.F. is 13. The number of such pairs is:", "1", "2", "3", "4", "2"],
+        ["The least multiple of 7, which leaves a remainder of 4, when divided by 6, 9, 15 and 18 is:", "74", "94", "184", "364", "364"]
+]}
+,
+{ "e": "21", "Question" :[
+        ["A man has Rs.480 in the denominations of one-rupee notes, five-rupee notes and ten-rupee notes. The number of notes of each denomination is equal. What is the total number of notes that he has ?", "45", "60", "75", "90", "90"],
+        ["There are two examinations rooms A and B. If 10 students are sent from A to B, then the number of students in each room is the same. If 20 candidates are sent from B to A, then the number of students in A is double the number of students in B. The number of students in room A is:", "20", "80", "100", "200", "100"],
+        ["The price of 10 chairs is equal to that of 4 tables. The price of 15 chairs and 2 tables together is Rs. 4000. The total price of 12 chairs and 3 tables is:", "Rs. 3500", "Rs. 3750", "Rs. 3840", "Rs. 3900", "Rs. 3900"],
+        ["If a - b = 3 and a2 + b2 = 29, find the value of ab.", "10", "12", "15", "18", "10"],
+        ["The price of 2 sarees and 4 shirts is Rs. 1600. With the same money one can buy 1 saree and 6 shirts. If one wants to buy 12 shirts, how much shall he have to pay ?", "Rs. 1200", "Rs. 2400", "Rs. 4800", "Cannot be determined", "Rs. 2400"],
+        ["A sum of Rs. 1360 has been divided among A, B and C such that A gets  of what B gets and B gets  of what C gets. B's share is:", "Rs. 120", "Rs. 160", "Rs. 240", "Rs. 300", "Rs. 240"],
+        ["One-third of Rahul's savings in National Savings Certificate is equal to one-half of his savings in Public Provident Fund. If he has Rs. 1,50,000 as total savings, how much has he saved in Public Provident Fund ?", "Rs. 30,000", "Rs. 50,000", "Rs. 60,000", "Rs. 90,000", "Rs. 60,000"],
+        ["A fires 5 shots to B's 3 but A kills only once in 3 shots while B kills once in 2 shots. When B has missed 27 times, A has killed:", "30 birds", "60 birds", "72 birds", "90 birds", "30 birds"],
+        ["Eight people are planning to share equally the cost of a rental car. If one person withdraws from the arrangement and the others share equally the entire cost of the car, then the share of each of the remaining persons increased by:", "1/7", "1/8", "1/9", "7/8", "1/7"],
+        ["To fill a tank, 25 buckets of water is required. How many buckets of water will be required to fill the same tank if the capacity of the bucket is reduced to two-fifth of its present ?", "10", "35", "62.5", "Cannot be determined", "62.5"]            
+       
+]}
+,
+{ "e": "22", "Question" :[
+        ["CORPULENT", "Lean", "Gaunt", "Emaciated", "Obese", "Obese"],
+        ["BRIEF", "Limited", "Small", "Little", "Short", "Short"],
+        ["EMBEZZLE", "Misappropriate", "Balance", "Remunerate", "Clear", "Misappropriate"],
+        ["VENT", "Opening", "Stodge", "End", "Past tense of go", "Opening"],
+        ["AUGUST", "Common", "Ridiculous", "Dignified", "Petty", "Dignified"],
+        ["CANNY", "Obstinate", "Handsome", "Clever", "Stout", "Clever"],
+        ["ALERT", "Energetic", "Observant", "Intelligent", "Watchful", "Watchful"],
+        ["WARRIOR", "Soldier", "Sailor", "Pirate", "Spy", "Soldier"],
+        ["DISTANT", "Far", "Removed", "Reserved", "Separate", "Far"],
+        ["ADVERSITY", "Failure", "Helplessness", "Misfortune", "Crisis", "Misfortune"]            
+]}
+,
+{ "e": "23", "Question" :[
+        ["The workers are hell bent at getting what is due to them.", "hell bent on getting", "hell bent for getting", "hell bent upon getting", "No improvement", "hell bent upon getting"],
+        ["When it was feared that the serfs might go too far and gain their freedom from serfdom, the protestant leaders joined the princes at crushing them.", "into crushing", "in crushing", "without crushing", "No improvement", "in crushing"],
+        ["If the room had been brighter, I would have been able to read for a while before bed time.", "If the room was brighter", "If the room are brighter", "Had the room been brighter", "No improvement", "Had the room been brighter"],
+        ["The record for the biggest tiger hunt has not been met since 1911 when Lord Hardinge. then Viceroy of India, shot a tiger than measured 11 feet and 6 inches.", "improved", "broken", "bettered", "No improvement", "broken"],
+        ["his powerful desire brought about his downfall.", "His intense desire", "His desire for power", "His fatal desire", "No improvement", "His desire for power"],
+        ["Will you kindly open the knot?", "untie", "break", "loose", "No improvement", "untie"],
+        ["He sent a word to me that he would be coming late.", "sent word", "had sent a word", "sent words", "No improvement", "sent word"],
+        ["John had told me that he hasn't done it yet.", "told", "tells", "was telling", "No improvement", "tells"],
+        ["If he had time he will call you.", "would have", "would have had", "has", "No improvement", "has"],
+        ["Will you lend me few rupees in this hour of need?", "lend me any rupees", "borrow me a few rupees", "lend me a few rupees", "No improvement", "lend me a few rupees"]             
+]}
+,
+{ "e": "24", "Question" :[
+        
+        ["The attainment of individual and organisational goals is mutually interdependent and linked by a common denominator - employee work motivation. Organisational members are motivated to satisfy their personal goals, and they contribute their efforts to the attainment of organisational objectives as means of achieving these personal goals.", "encourages an individual to give priority to personal goals over organisational goals.", "is crucial for the survival of an individual and organisation.", "is the product of an individual's physical and mental energy.", "is the external force which induces an individual to contribute his efforts.", "makes organisation and society inseparable."],
+        ["Due to enormous profits involved in smuggling, hundreds of persons have been attracted towards this anti-national activity. Some of them became millionaires overnight. India has a vast coastline both on the Eastern and Western Coast. It has been a heaven for smugglers who have been carrying on their activities with great impunity. There is no doubt, that from time to time certain seizures were made by the enforcement authorities, during raids and ambush but even allowing these losses the smugglers made huge profits.", "smuggling hampers the economic development of a nation.", "smuggling ought to be curbed.", "authorities are taking strict measures to curb smuggling.", "smuggling is fast increasing in our country owing to the quick profit it entails."],
+        ["Though the waste of time or the expenditure on fashions is very large, yet fashions have come to stay. They will not go, come what may. However, what is now required is that strong efforts should be made to displace the excessive craze for fashion from the minds of these youngsters.", "fashion is the need of the day.", "the excessive craze for fashion is detrimental to one's personality.", "the hoard for fashion should be done away with so as not to let down the constructive development.", "work and other activities should be valued more than the outward appearance."],
+        ["One of the important humanitarian by-products of technology is the greater dignity and value that it imparts to human labour. In a highly industrialized society, there is no essential difference between Brahmin and Dalit, Muslim and Hindu; they are equally useful and hence equally valuable for in the industrial society individual productivity fixes the size of the pay cheque and this fixes social status.", "technology decides individual's social status.", "castes and religions are man-made.", "human labour has dignity and value.", "all individuals, irrespective of caste and creed, are born equal.", "industrial society is a great leveller of men."],
+        ["The future of women in India is quite bright and let us hope that they will justify their abilities by rising to the occasion. Napoleon was right when he declared that by educating the women we can educate the whole nation. Because a country can never rise without the contribution of 50% of their population.", "India is striving hard for the emancipation of women.", "all women should be well educated.", "a nation can progress only when women are given equal rights and opportunities as men.", "women ought to be imparted full freedom to prove their worth and contribute to the progress of the nation."],
+        ["The prevention of accidents makes it necessary not only that safety devices be used to guard exposed machinery but also that mechanics be instructed in safety rules which they must follow for their own protection, and that lighting in the plant be adequate.", "are always avoidable;", "may be due to ignorance.", "cannot be entirely overcome.", "can be eliminated with the help of safety rules.", "usually result from inadequate machinery."],
+        ["To forgive an injury is often considered to be a sign of weakness; it is really a sign of strength. It is easy to allow oneself to be carried away by resentment and hate into an act of vengeance; but it takes a strong character to restrain those natural passions. The man who forgives an injury proves himself to be the superior of the man who wronged himself and puts the wrong-doer to shame.", "the sufferer alone knows the intensity of his sufferings.", "people tend to forgive the things happened in the past.", "natural passions are difficult to suppress.", "mercy is the noblest form of revenge.", "a person with calm and composed nature has depth of thought and vision."],
+        ["Industrial exhibitions play a major role in a country's economy. Such exhibitions, now regularly held in Delhi, enable us to measure the extent of our own less advanced industrial progress and the mighty industrial power and progress of countries like the U.K., U.S.A. and Russia whose pavilions are the centres of the greatest attention and attractions.", "greatly tax the poor economies.", "are more useful for the developed countries like U.S.A. whose products stand out superior to those of the developing countries.", "are not of much use to the countries who are industrially backward.", "boost up production qualitatively and quantitatively by analytical comparison of a country's products with those of the developed countries."],
+        ["The school has always been the most important means of transferring the wealth of tradition form one generation to the next. This applies today in an even higher degree than in former times for, through the modern development of economy, the family as bearer of tradition and education has become weakened.", "there are means other than the school.", "several different sources must be tried.", "economic development plays a crucial role", "modern technology must be put to use.", "family, as ever, is the most potent means."],
+        ["Emerson said that the poet was landlord, Sealord, airlord. The flight of imagination made the poet master of land, sea and air. But a poet's dream of yesterday becomes today an actual achievement and a reality for all men. Even those who invented, improved and perfected the aeroplane could hardly have dreamt of the possibility of flight into outer space.", "seemingly impossible imaginations make one a good poet,", "all imaginations become a reality some day.", "what man imagined has never been impossible; he has always turned it a reality through his conception of ideas and sheer hard labour.", "man has reached the climax of technological development with his exploration into outer space."]
+                      
+]}
+,
+{ "e": "25", "Question" :[
+        ["gorblflur means fan belt", "gorbltusl", "flurgorbl", "arthflur", "pixnarth", "pixnarth"],
+        ["hapllesh means cloudburst", "leshsrench", "ochhapl", "haploch", "haplresbo", "haplresbo"],
+        ["agnoscrenia means poisonous spider", "deeryclostagnos", "agnosdelano", "agnosvitriblunin", "trymuttiagnos", "agnosvitriblunin"],
+        ["moolokarn means blue sky", "wilkozwet", "spadiwilko", "moolobreil", "spadivolo", "spadivolo"],
+        ["migenlasan means cupboard", "poenmigen", "cuopeisel", "lasandansa", "poenforc", "poenforc"],
+        ["godabim means kidney stones", "godaromz", "lazbim", "wasibako", "romzpeo", "wasibako"],
+        ["granamelke means big tree", "granahoon", "pinishur", "pinihoon", "melkegrana", "granahoon"],
+        ["daftafoni means advisement", "kratafoni", "kratadafta", "loktifoni", "daftaimo", "kratafoni"],
+        ["lelibroon means yellow hat", "lelifroti", "lelipleka", "plekabroon", "frotibroon", "lelipleka"],
+        ["myncabel means saddle horse", "cabelwir", "conocabel", "almamyn", "conoalma", "cabelwir"]                     
+]}
+,
+{ "e": "26", "Question" :[
+        ["harvest", "autumn", "stockpile", "tractor", "crop", "crop"],
+        ["desert", "cactus", "arid", "oasis", "flat", "arid"],
+        ["book", "fiction", "pages", "pictures", "learning", "pages"],
+        ["language", "tongue", "slang", "writing", "words", "words"],
+        ["school", "student", "report card", "test", "learning", "student"],
+        ["pain", "cut", "burn", "nuisance", "hurt", "hurt"],
+        ["gala", "celebration", "tuxedo", "appetizer", "orator", "celebration"],
+        ["monopoly", "corrupt", "exclusive", "rich", "gigantic", "exclusive"],
+        ["guitar", "band", "teacher", "songs", "strings", "strings"],
+        ["election", "president", "voter", "November", "nation", "voter"]                       
+]}
+,
+{ "e": "27", "Question" :[
+        ["Which word does NOT belong with the others?", "parsley", "basil", "dill", "mayonnaise", "mayonnaise"],
+        ["Which word does NOT belong with the others?", "inch", "ounce", "centimeter", "yard", "ounce"],
+        ["Which word does NOT belong with the others?", "tyre", "steering wheel", "engine", "car", "car"],
+        ["Which word does NOT belong with the others?", "tulip", "rose", "bud", "daisy", "bud"],
+        ["Which word does NOT belong with the others?", "rye", "sourdough", "pumpernickel", "loaf", "rye"],
+        ["Which word does NOT belong with the others?", "guitar", "flute", "violin", "cello", "flute"],
+        ["Which word does NOT belong with the others?", "dodge", "flee", "duck", "avoid", "flee"],
+        ["Which word does NOT belong with the others?", "branch", "dirt", "leaf", "root", "dirt"],
+        ["Which word does NOT belong with the others?", "street", "freeway", "interstate", "expressway", "street"],
+        ["Which word does NOT belong with the others?", "heading", "body", "letter", "closing", "letter"]
+]}
+,
+{ "e": "28", "Question" :[
+        ["Odometer is to mileage as compass is to", "speed", "hiking", "needle", "direction", "direction"],
+        ["Marathon is to race as hibernation is to", "winter", "bear", "dream", "sleep", "sleep"],
+        ["Window is to pane as book is to", "novel", "glass", "cover", "page", "page"],
+        ["Cup is to coffee as bowl is to", "dish", "soup", "spoon", "food", "soup"],
+        ["Yard is to inch as quart is to", "gallon", "ounce", "milk", "liquid", "ounce"],
+        ["Elated is to despondent as enlightened is to", "aware", "ignorant", "miserable", "tolerant", "ignorant"],
+        ["Optimist is to cheerful as pessimist is to", "gloomy", "mean", "petty", "helpful", "gloomy"],
+        ["Reptile is to lizard as flower is to", "petal", "stem", "daisy", "alligator", "daisy"],
+        ["Play is to actor as concert is to", "symphony", "musician", "piano", "percussion", "musician"],
+        ["Sponge is to porous as rubber is to", "massive", "solid", "elastic", "inflexible", "elastic"]            
+]}
+,
+{ "e": "29", "Question" :[
+                [
+                    "Read each sentence to find out whether there is any grammatical error in it. The error, if any will be in one part of the sentence. The letter of that part is the answer. If there is no error, the answer is 'D'.",
+                    "We discussed about the problem so thoroughly",
+                    "on the eve of the examination",
+                    "that I found it very easy to work it out",
+                    "No error.",
+                    "We discussed about the problem so thoroughly"
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "An Indian ship ",
+                    "laden with merchandise",
+                    "got drowned in the Pacific Ocean.",
+                    "No error.",
+                    "got drowned in the Pacific Ocean."
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "I could not put up in a hotel",
+                    "because the boarding and lodging charges",
+                    "were exorbitant.",
+                    "No error.",
+                    "I could not put up in a hotel"
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "The Indian radio",
+                    "which was previously controlled by the British rulers",
+                    "is free now from the narrow vested interests.",
+                    "No error.",
+                    "is free now from the narrow vested interests."
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "If I had known",
+                    "this yesterday",
+                    "I will have helped him.",
+                    "No error.",
+                    "I will have helped him."
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "A lot of travel delay is caused",
+                    "due to the inefficiency and lack of good management",
+                    "on behalf of the railways.",
+                    "No error.",
+                    "on behalf of the railways."
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "One of the members",
+                    "expressed doubt if",
+                    "the Minister was an atheist.",
+                    "No error.",
+                    "expressed doubt if"
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "I have got",
+                    "my M.Sc. degree",
+                    "in 1988.",
+                    "No error.",
+                    "I have got"
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "Having received your letter",
+                    "this morning, we are writing",
+                    "to thank you for the same.",
+                    "No error.",
+                    "No error."
+                ],
+                [
+                    "(solve as per the direction given above)",
+                    "If you lend him a book",
+                    "he will lend it to some one else",
+                    "and never you will get it back.",
+                    "No error.",
+                    "and never you will get it back."
+                ]
+            
+                     
+]},
+{ "e": "30", "Question" :[
+        ["DIVA:OPERA", "producer:theatre", "director:drama", "conductor:bus", "thespian:play", "thespian:play"],
+        ["GRAIN:SALT", "shard:pottery", "shred:wood", "blades:grass", "chip:glass", "chip:glass"],
+        ["THRUST:SPEAR", "mangle:iron", "scabbard:sword", "bow:arrow", "fence:epee", "fence:epee"],
+        ["PAIN:SEDATIVE", "comfort:stimulant", "grief:consolation", "trance:narcotic", "ache:extraction", "grief:consolation"],
+        ["LIGHT:BLIND", "speech:dumb", "language:deaf", "tongue:sound", "voice:vibration", "speech:dumb"],
+        ["WAN:COLOUR", "corpulent:weight", "insipid:flavour", "pallid:complexion", "enigmatic:puzzle", " insipid:flavour"],
+        ["PORK:PIG", "rooster:chicken", "mutton:sheep", "steer:beef", "lobster:crustacean", "mutton:sheep"],
+        ["AFTER:BEFORE", "first:second", "present:past", "contemporary:historic", "successor:predecessor", "contemporary:historic"],
+        ["INDIGENT:WEALTHY", "angry:rich", "native:affluent", "gauche:graceful", "scholarly:erudite", "gauche:graceful"],
+        ["DISTANCE:MILE", "liquid:litre", "bushel:corn", "weight:scale", "fame:television", "liquid:litre"]
+                  
+]}
+,
+{ "e": "31", "Question" :[
+        ["Look at this series: F2, __, D8, C16, B32, ... What number should fill the blank?", "A16", "G4", "E4", "E3", "E4"],
+        ["Look at this series: 664, 332, 340, 170, ____, 89, ... What number should fill the blank?", "85", "97", "109", "178", "178"],
+        ["Look at this series: V, VIII, XI, XIV, __, XX, ... What number should fill the blank?", "IX", "XXIII", "XV", "XVII", "XVII"],
+        ["Look at this series: 70, 71, 76, __, 81, 86, 70, 91, ... What number should fill the blank?", "70", "71", "80", "96", "70"],
+        ["Look at this series: 8, 43, 11, 41, __, 39, 17, ... What number should fill in the blank?", "8", "14", "43", "44", "14"],
+        ["Look at this series: VI, 10, V, 11, __, 12, III, ... What number should fill the blank?", "II", "IV", "IX", "14", "IV"],
+        ["Look at this series: (1/9), (1/3), 1, ____ , 9, ... What number should fill the blank?", "(2/3)", "3", "6", "27", "3"],
+        ["Look at this series: 83, 73, 93, 63, __, 93, 43, ... What number should fill the blank?", "33", "53", "73", "93", "53"],
+        ["Look at this series: 15, __, 27, 27, 39, 39, ... What number should fill the blank?", "51", "39", "23", "15", "15"],
+        ["Look at this series: 72, 76, 73, 77, 74, __, 75, ... What number should fill the blank?", "70", "71", "75", "78", "78"]                   
+]}
+,
+{ "e": "32", "Question" :[
+        ["ENORMOUS", "Soft", "Average", "Tiny", "Weak", "Tiny"],
+        ["COMMISSIONED", "Started", "Closed", "Finished", "Terminated", "Terminated"],
+        ["ARTIFICIAL", "Red", "Natural", "Truthful", "Solid", "Natural"],
+        ["EXODUS", "Influx", "Home-coming", "Return", "Restoration", "Influx"],
+        ["RELINQUISH", "Abdicate", "Renounce", "Possess", "Deny", "Possess"],
+        ["EXPAND", "Convert", "Condense", "Congest", "Conclude", "Condense"],
+        ["MORTAL", "Divine", "Immortal", "Spiritual", "Eternal", "Immortal"],
+        ["QUIESCENT", "ACTIVE", "Dormant", "Weak", "Unconcerned", "ACTIVE"],
+        ["OBEYING", "Ordering", "Following", "Refusing", "Contradicting", "Ordering"],
+        ["FRAUDULENT", "Candid", "Direct", "Forthright", "Genuine", "Genuine"]                  
+]}
+]
+ 
