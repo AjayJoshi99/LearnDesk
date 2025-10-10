@@ -22,9 +22,9 @@
     left : -70px;
     width: 0px;
 }
-.sidebar.open(
+.sidebar.open{
     width: 260px;
-)
+}
 .sidebar-logo {
   color: white;
   font-size: 28px;
