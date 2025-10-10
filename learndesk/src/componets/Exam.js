@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import { useLocation } from "react-router-dom";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import data from './ExamData.json';
 import './styles/Exam.css';
 import Timer from './Timer';
@@ -17,6 +17,7 @@ function Exam() {
   const obj = data.find(exam => exam.e === num);
   const [quizName, setQuizName] = useState(`Quiz-${num}`);
   // const location = useLocation();
+  const navigate = useNavigate();
   
 
   const checkAnswer = (ipt, ans, ind) => {
