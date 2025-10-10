@@ -20,7 +20,7 @@
   box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* ====== Section Headings ====== */
+
 .h {
   display: block;
   text-align: center;
@@ -38,7 +38,7 @@
   font-size: 1.8rem;
 }
 
-/* ====== Note Section ====== */
+
 .childDiv p {
   font-size: 1.1rem;
   color: #333;
@@ -46,7 +46,7 @@
   line-height: 1.5;
 }
 
-/* ====== List Styling ====== */
+
 ul {
   list-style: none;
   padding-left: 0;
@@ -61,14 +61,14 @@ ul {
 }
 
 .childDiv li::before {
-  content: "\00BB"; /* » */
+  content: "\00BB"; 
   color: #29b31b;
   font-weight: bold;
   margin-right: 10px;
   font-size: 20px;
 }
 
-/* ====== Buttons ====== */
+
 .btn {
   background: transparent;
   border: none;
@@ -92,7 +92,7 @@ ul {
   text-decoration: underline;
 }
 
-/* "See more..." button */
+
 .btn span.h4 {
   color: #0b8808;
   transition: color 0.3s ease;
@@ -102,7 +102,6 @@ ul {
   color: #085a06;
 }
 
-/* ====== Responsive Design ====== */
 @media (max-width: 768px) {
   .homeDiv {
     width: 90%;

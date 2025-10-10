@@ -1,12 +1,7 @@
-/* ===========================
-   Exam Page Styling
-   =========================== */
-
 .exam-container {
   padding: 20px;
 }
 
-/* ====== Question Card ====== */
 .card {
   background-color: #fff;
   border-radius: 12px;
@@ -33,7 +28,7 @@
   color: #333;
 }
 
-/* ====== Options ====== */
+
 .form-check {
   margin: 8px 0;
 }
@@ -48,7 +43,6 @@
   color: #222;
 }
 
-/* ====== Submit Button ====== */
 .btn-success {
   display: block;
   width: 200px;
@@ -63,7 +57,6 @@
   background-color: #0ab20a;
 }
 
-/* ====== Results Section ====== */
 .result-container {
   text-align: center;
   padding: 20px;
@@ -80,7 +73,6 @@
   margin-bottom: 20px;
 }
 
-/* ====== Result Cards ====== */
 .result-card {
   background-color: #fafafa;
   border: 1px solid #ccc;
@@ -107,7 +99,6 @@
   color: #222;
 }
 
-/* ====== Responsive Design ====== */
 @media (max-width: 600px) {
   .card-body {
     padding: 10px;

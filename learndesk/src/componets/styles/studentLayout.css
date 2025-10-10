@@ -1,11 +1,10 @@
-/* Main Layout Container */
+
 .student-layout {
   display: flex;
   height: 100vh;
   background-color: #f5f6fa;
 }
 
-/* Sidebar (left side) */
 .student-layout .sidebar {
   width: 350px;
   background-color: #0d1b2a;
@@ -17,32 +16,13 @@
   width: 70px;
 }
 
-/* Right Section (Navbar + Content)
-.right-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
-/* Navbar (top) */
-/* .right-section .navbar {
-  height: 60px;
-  background-color: #0d1b2a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-} */ */
-
-/* Main Content (below navbar) */
 .main-content {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
 }
 
-/* Optional vertical line (if needed) */
 .vertical-line {
   width: 1px;
   background-color: #e0e0e0;

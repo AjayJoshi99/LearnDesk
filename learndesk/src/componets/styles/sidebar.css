@@ -134,7 +134,6 @@
   margin: 0;
 }
 
-/* Scrollbar styling */
 .sidebar-nav::-webkit-scrollbar {
   width: 6px;
 }

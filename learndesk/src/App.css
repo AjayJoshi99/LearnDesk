@@ -5,12 +5,6 @@
   position: relative;
 }
 
-/* Sidebar */
-.sidebar-section {
-
-}
-
-/* Right section (Navbar + Content) */
 .right-section {
   flex: 1;
   padding: 20px;
