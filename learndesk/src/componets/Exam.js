@@ -15,7 +15,7 @@ function Exam() {
   var answerObj = { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: "" };
   const [ userAnswer, setUserAnswer] = useState(answerObj);
   const obj = data.find(exam => exam.e === num);
-  quizName =`Quiz-${num}`;
+  const quizName =`Quiz-${num}`;
   // const location = useLocation();
   const navigate = useNavigate();
   
