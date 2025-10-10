@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 
-function Logical_reasoning() {
+function LogicalReasoning() {
   const navigate = useNavigate(); 
 
   return (
@@ -34,4 +34,4 @@ function Logical_reasoning() {
   )
 }
 
-export default Logical_reasoning
+export default LogicalReasoning

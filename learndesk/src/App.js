@@ -6,7 +6,7 @@ import Login from './componets/login';
 import ForgotPassword from './componets/ForgotPassword';
 import Dashboard from './componets/dashboard';
 import Exam from './componets/Exam';
-import Logical_reasoning from './componets/Logical_reasoning';
+import LogicalReasoning from './componets/LogicalReasoning';
 import VerbalAbility from './componets/VerbalAbility';
 import NonVerbalReasoning from './componets/NonVerbalReasoning';
 import ArithmeticAptitude from './componets/ArithmeticAptitude';
@@ -32,7 +32,7 @@ function App() {
         {role === "user" && (
           <Route path ="/user" element={<StudentLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="Logical_reasoning" element={<Logical_reasoning/>} />
+            <Route path="LogicalReasoning" element={<LogicalReasoning/>} />
             <Route path="VerbalAbility" element={<VerbalAbility/>}/>
             <Route path="NonVerbalReasoning" element={<NonVerbalReasoning />} />
             <Route path="ArithmeticAptitude" element={<ArithmeticAptitude />} />
