@@ -10,7 +10,7 @@ function Dashboard() {
         <p>2. Every quiz will have 15 minutes to be solved. After 15 minutes quiz will be automatically submitted.</p>
         <p>3. You can submit quiz whenever you want , after submissionfo quiz you will get result along with it's actual answers</p>
       </div>
-      <div className='childDiv' style={{ backgroundImage: "url('/bg1.png')", backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
+      <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg1.png')`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Arithmetic Aptitude</span><br/>
         <ul>
           <li><NavLink to='/user/Exam/12'><button className='btn text-primary'>Calander</button></NavLink></li>
@@ -22,7 +22,7 @@ function Dashboard() {
           <br/><br/>
       </div>
 
-      <div className='childDiv' style={{ backgroundImage: "url('/bg3.png')", backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
+      <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg3.png')`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Logical Reasoning</span><br/>
         <ul>
           <li><NavLink to='/user/Exam/0'><button className='btn text-primary'>Number Series - I </button></NavLink></li>
@@ -35,7 +35,7 @@ function Dashboard() {
       </div>
 
 
-      <div className='childDiv' style={{ backgroundImage: "url('/bg2.png')", backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
+      <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg2.png')`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Verbal Ability</span><br/>
         <ul>
           <li><NavLink to='/user/Exam/3'><button className='btn text-primary'>Selecting Words</button></NavLink></li>
@@ -48,7 +48,7 @@ function Dashboard() {
       </div>
 
 
-      <div className='childDiv' style={{ backgroundImage: "url('/bg4.png')", backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
+      <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg4.png')`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Non Verbal Reasoning</span><br/>
         <ul>
           <li><NavLink to='/user/Exam/7'><button className='btn text-primary'>Blood Relation - I</button></NavLink></li>
