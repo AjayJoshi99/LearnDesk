@@ -1,4 +1,4 @@
-import { useState, navigate } from 'react';
+import { useState } from 'react';
 // import { useLocation } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import data from './ExamData.json';
