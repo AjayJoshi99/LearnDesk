@@ -8,7 +8,7 @@ const NumbersArticle = () => {
       
       <button
         className="btn btn-outline-primary mb-4"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/user/articles")}
       >
         ← Back to Articles
       </button>

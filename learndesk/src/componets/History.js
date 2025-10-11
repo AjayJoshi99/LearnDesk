@@ -46,7 +46,7 @@ function History() {
               className="btn btn-sm btn-primary"
               onClick={() =>
                 navigate(`/user/history/quiz/${quiz.quizNumber}`, {
-                  state: { quiz }, // send quiz result data
+                  state: { quiz }, 
                 })
               }
             >

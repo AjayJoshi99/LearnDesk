@@ -19,7 +19,7 @@ function ReviewQuiz() {
   return (
     <div className="container mt-4">
       <div className="mb-3">
-        <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+        <button className="btn btn-primary" onClick={() => navigate(-1)}>
           <ArrowLeft size={18} className="me-2" /> Back
         </button>
       </div>

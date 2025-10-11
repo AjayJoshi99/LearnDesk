@@ -7,7 +7,7 @@ const WorkTimeArticle = () => {
     <div className="container my-4">
       <button
         className="btn btn-outline-primary mb-3"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/user/articles")}
       >
         ← Back to Articles
       </button>

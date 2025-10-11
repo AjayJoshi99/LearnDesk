@@ -7,9 +7,17 @@ const Articles = () => {
   const articlesData = [
     { id: 1, name: "Number System for Aptitude", path: "/user/articles/numbers" },
     { id: 2, name: "Work, Wages and Time", path: "/user/articles/work-time" },
-    { id: 3, name: "Cyclicity of Numbers", path: "/articles/aptitude/cyclicity" },
-    { id: 4, name: "Percentage & Ratio Concepts", path: "/articles/aptitude/percentage" },
-    { id: 5, name: "Profit, Loss & Discount", path: "/articles/aptitude/profit-loss" },
+    { id: 3, name: "Pipes and Cisterns", path: "/user/articles/pipe-cistern" },
+    { id: 4, name: "Time Speed Distance", path: "/user/articles/speed-distance-time" },
+    { id: 5, name: "HCF / GCD and LCM", path: "/user/articles/hcf-lcm" },
+    { id: 6, name: "Percentage", path: "/user/articles/percentage" },
+    { id: 7, name: "Ratio and Proportion", path: "/user/articles/ratio-proportion" },
+    { id: 8, name: "Age", path: "/user/articles/age-aptitude" },
+    { id: 9, name: "Profit and Loss", path: "/user/articles/profit-loss" },
+    { id: 10, name: "Clock", path: "/user/articles/clock-concept" },
+    { id: 11, name: "Coding - Decoding", path: "/user/articles/coding-decoding" },
+    { id: 12, name: "Simple and Compound Interest", path: "/user/articles/simple-compound-interest" },
+    { id: 13, name: "Permutations and Combinations", path: "/user/articles/permutations-combinations" },
   ];
 
   return (
