@@ -1,0 +1,105 @@
+/* === Articles Page Styling === */
+
+.articles-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+border-radius: 15px
+}
+
+.back-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  color: #fff;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.back-btn:hover {
+  background: #fff;
+  color: #764ba2;
+  transform: translateY(-2px);
+}
+
+.articles-title {
+  font-size: 2.4rem;
+  margin-bottom: 50px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.article-card {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 22px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.article-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+}
+
+.article-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.article-id {
+  background: #fff;
+  color: #764ba2;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.arrow {
+  font-size: 1.4rem;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover .arrow {
+  transform: translateX(6px);
+}
+
+.no-articles {
+  text-align: center;
+  opacity: 0.7;
+  margin-top: 60px;
+}

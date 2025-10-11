@@ -6,7 +6,7 @@ const Sidebar = ({ isOpen }) => {
   const menuItems = [
     { icon: Home, label: "Dashboard", active: true, path :"/user/dashboard" },
     { icon: BarChart3, label: "History", path :"/user/history" },
-    { icon: Users, label: "Dummy" },
+    { icon: Users, label: "Articles" , path:"/user/articles"},
     { icon: FileText, label: "Dummy" },
     { icon: Calendar, label: "Dummy" },
     { icon: Settings, label: "Dummy" },

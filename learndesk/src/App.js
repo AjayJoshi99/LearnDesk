@@ -11,7 +11,8 @@ import VerbalAbility from './componets/VerbalAbility';
 import NonVerbalReasoning from './componets/NonVerbalReasoning';
 import ArithmeticAptitude from './componets/ArithmeticAptitude';
 import ReviewQuiz from './componets/ReviewQuiz';
-import History from "./componets/History";     
+import History from "./componets/History";  
+import { ArticleRoutes } from "./routes/ArticleRoutes"; 
 import { useEffect, useState } from "react";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route path="Exam/:num" element={<Exam />} />
             <Route path="history" element={<History />} />
             <Route path="history/quiz/:quizNumber" element={<ReviewQuiz />} />
+            {ArticleRoutes()}
           </Route>
         )}
 
