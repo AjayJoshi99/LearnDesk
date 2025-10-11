@@ -32,13 +32,13 @@ function History() {
 
   return (
     <div className="container mt-3">
-      <h2>Your Quiz History</h2>
+      <h2 >Your Quiz History</h2>
       {history.length === 0 ? (
         <p>No quizzes attempted yet.</p>
       ) : (
         history.map((quiz, idx) => (
           <div key={idx} className="card m-3 p-3 shadow-sm">
-            <h4>{quiz.quizName}</h4>
+            <h4 >{quiz.quizName}</h4>
             <p>Marks: {quiz.totalMarks}</p>
             <p>Date: {quiz.date ? new Date(quiz.date).toLocaleString() : "N/A"}</p>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading"; 
 import './styles/LoginRegister.css';
 
 const PENDING_KEY = 'pendingRegistration';
@@ -16,20 +17,18 @@ const Login = () => {
     password: '',
     confirmPassword: ''
   });
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
     const navigate = useNavigate();
   
-  // Check localStorage on mount: if there's a pending registration (and not expired),
-  // show OTP verification only.
   useEffect(() => {
     try {
       const raw = localStorage.getItem(PENDING_KEY);
       if (!raw) return;
       const pending = JSON.parse(raw);
       if (pending.expiresAt && pending.expiresAt > Date.now()) {
-        // prefill non-sensitive fields (do NOT store passwords)
         setRegisterData(prev => ({
           ...prev,
           name: pending.name || prev.name,
@@ -40,7 +39,6 @@ const Login = () => {
         setUserType(pending.userType || 'normal');
         setOtpSent(true);
       } else {
-        // expired or invalid
         localStorage.removeItem(PENDING_KEY);
       }
     } catch (err) {
@@ -76,11 +74,12 @@ const Login = () => {
       newErrors.confirmPassword = 'Passwords do not match';
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // returns true if no errors
+    return Object.keys(newErrors).length === 0; 
   };
 
   const handleLoginSubmit = async(e) => {
     e.preventDefault();
+    setLoading(true);
     console.log('Login:', loginData);
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
@@ -94,7 +93,7 @@ const Login = () => {
       if (res.ok) {
         localStorage.setItem('role', data.user.userType);
         localStorage.setItem('user', JSON.stringify(data.user));
-        alert(`Welcome ${data.user.name}`);
+        // alert(`Welcome ${data.user.name}`);
         setLoginData({ email: '', password: '' });
         if (data.user.userType === 'teacher') {
           navigate('/teacher');
@@ -107,6 +106,8 @@ const Login = () => {
     } catch (err) {
       console.error(err);
       alert('Server error');
+    }finally {
+      setLoading(false); 
     }
   };
 
@@ -115,7 +116,6 @@ const Login = () => {
     if (!validateForm()) return;
     console.log('Register:', { ...registerData, userType });
     try {
-      // Step 1 — Request OTP
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/request-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -134,14 +134,12 @@ const Login = () => {
       if (res.ok) {
         alert('OTP sent to your email. Please verify.');
 
-        // store a pending registration record (no password stored)
         const pending = {
           name: registerData.name,
           email: registerData.email,
           mobile: registerData.mobile,
           gender: registerData.gender,
           userType,
-          // match server OTP expiry (commonly 10 minutes). Adjust if your server uses different expiry.
           expiresAt: Date.now() + 10 * 60 * 1000
         };
         localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
@@ -192,7 +190,7 @@ const Login = () => {
           password: '',
           confirmPassword: '',
         });
-        setIsLogin(true); // switch to login tab
+        setIsLogin(true);
       } else {
         alert(data.message || 'Invalid OTP');
       }
@@ -202,7 +200,6 @@ const Login = () => {
     }
   };
 
-  // optional: allow resending OTP while staying on OTP screen
   const handleResendOtp = async () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/request-otp`, {
@@ -220,7 +217,6 @@ const Login = () => {
       const data = await res.json();
       if (res.ok) {
         alert('OTP resent to your email.');
-        // update expiry in localStorage
         const raw = localStorage.getItem(PENDING_KEY);
         if (raw) {
           const pending = JSON.parse(raw);
@@ -236,16 +232,15 @@ const Login = () => {
     }
   };
 
-  // cancel OTP and go back to registration form for edits
   const handleCancelOtp = () => {
     localStorage.removeItem(PENDING_KEY);
     setOtpSent(false);
     setOtp('');
-    // keep registerData so user can edit easily
   };
 
   return (
     <div className="auth-container">
+      {loading && <Loading message="Please wait..." />}
       <div className="auth-card">
         <div className="auth-header">
           <h1 className="auth-title">
@@ -313,7 +308,7 @@ const Login = () => {
               </button>
             </form>
           ) : (
-            // show registration form only if otpSent is false
+          
             !otpSent && (
               <form className="auth-form fade-in" onSubmit={handleRegisterSubmit}>
                 <div className="form-group">
@@ -473,7 +468,6 @@ const Login = () => {
           )}
         </div>
 
-        {/* OTP UI: shown when otpSent is true (either just after sending, or if pending exists) */}
         {otpSent && (
           <div className="form-group fade-in">
             <h3>OTP Verification</h3>

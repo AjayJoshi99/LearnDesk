@@ -1,9 +1,18 @@
 import { Home, Users, Settings, BarChart3, FileText, Calendar } from "lucide-react";
 import "./styles/sidebar.css";
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Sidebar = ({ isOpen }) => {
   const location = useLocation();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const menuItems = [
     { icon: Home, label: "Dashboard", path: "/user/dashboard" },
@@ -35,13 +44,25 @@ const Sidebar = ({ isOpen }) => {
         })}
       </nav>
       <div className="sidebar-footer">
-        <div className="user-profile">
-          <div className="user-avatar">JD</div>
-          <div className="user-info">
-            <p className="user-name">John Doe</p>
-            <p className="user-email">john@example.com</p>
+        {user ? (
+          <div className="user-profile">
+            <div className="user-avatar">
+              {user.name ? user.name.charAt(0).toUpperCase() : "U"}
+            </div>
+            <div className="user-info">
+              <p className="user-name">{user.name}</p>
+              <p className="user-email">{user.email}</p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="user-profile">
+            <div className="user-avatar">?</div>
+            <div className="user-info">
+              <p className="user-name">Guest</p>
+              <p className="user-email">guest@example.com</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

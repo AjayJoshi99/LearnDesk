@@ -14,41 +14,51 @@ import ReviewQuiz from './componets/ReviewQuiz';
 import History from "./componets/History";  
 import { ArticleRoutes } from "./routes/ArticleRoutes"; 
 import { useEffect, useState } from "react";
+import ProtectedRoute from "./componets/ProtectedRoute";
 
 function App() {
-    const [role, setRole] = useState(localStorage.getItem("role"));
-
-    useEffect(() => {
-      const handleStorageChange = () => setRole(localStorage.getItem("role"));
-      window.addEventListener("storage", handleStorageChange);
-      return () => window.removeEventListener("storage", handleStorageChange);
-    }, []);
+  const [role, setRole] = useState(localStorage.getItem("role"));
+  console.log("Current role:", role);
+  useEffect(() => {
+    const handleStorageChange = () => setRole(localStorage.getItem("role"));
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
 
   return (
     <div className="">
       <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-        
-        {role === "user" && (
-          <Route path ="/user" element={<StudentLayout />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="LogicalReasoning" element={<LogicalReasoning/>} />
-            <Route path="VerbalAbility" element={<VerbalAbility/>}/>
-            <Route path="NonVerbalReasoning" element={<NonVerbalReasoning />} />
-            <Route path="ArithmeticAptitude" element={<ArithmeticAptitude />} />
-            <Route path="Exam/:num" element={<Exam />} />
-            <Route path="history" element={<History />} />
-            <Route path="history/quiz/:quizNumber" element={<ReviewQuiz />} />
-            {ArticleRoutes()}
-          </Route>
-        )}
+        <Route path="/" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {role === "teacher" && (
-          <Route path="/teacher" element={<TeacherLayout />}>
-            
-          </Route>
-        )}
+        <Route
+          path="/user/*"
+          element={
+            <ProtectedRoute>
+              <StudentLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="LogicalReasoning" element={<LogicalReasoning />} />
+          <Route path="VerbalAbility" element={<VerbalAbility />} />
+          <Route path="NonVerbalReasoning" element={<NonVerbalReasoning />} />
+          <Route path="ArithmeticAptitude" element={<ArithmeticAptitude />} />
+          <Route path="Exam/:num" element={<Exam />} />
+          <Route path="history" element={<History />} />
+          <Route path="history/quiz/:quizNumber" element={<ReviewQuiz />} />
+          {ArticleRoutes()}
+        </Route>
+
+        <Route
+          path="/teacher/*"
+          element={
+            <ProtectedRoute>
+              <TeacherLayout />
+            </ProtectedRoute>
+          }
+        >
+        </Route>
       </Routes>
     </div>
   );

@@ -18,14 +18,14 @@ function ReviewQuiz() {
 
   return (
     <div className="container mt-4">
-      <div className="mb-3">
+      <div>
         <button className="btn btn-primary" onClick={() => navigate(-1)}>
           <ArrowLeft size={18} className="me-2" /> Back
         </button>
       </div>
-
-      <h2>{quizResult.quizName}</h2>
-      <h4>Total Marks: {quizResult.totalMarks}</h4>
+    <hr/>
+      <h2 className="text-center">{quizResult.quizName}</h2>
+      <h4 className="text-center">Total Marks: {quizResult.totalMarks}</h4>
 
       {obj.Question.map((que, index) => {
         const userAns = userAnswers[index + 1];

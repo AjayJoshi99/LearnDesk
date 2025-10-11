@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 10px 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   background: #6366f1;
 }
@@ -30,6 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
 }
 
 .menu-toggle:hover {
@@ -53,7 +54,6 @@
 }
 
 .search-input {
-  width: 100%;
   padding: 10px 14px 10px 44px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
@@ -109,7 +109,7 @@
 }
 
 .navbar-avatar {
-  width: 38px;
+  width: 100px;
   height: 38px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -121,6 +121,7 @@
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s;
+  margin-right: 10px;
 }
 
 .navbar-avatar:hover {
