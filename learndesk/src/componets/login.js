@@ -96,7 +96,7 @@ const Login = () => {
         // alert(`Welcome ${data.user.name}`);
         setLoginData({ email: '', password: '' });
         if (data.user.userType === 'teacher') {
-          navigate('/teacher');
+          navigate('/teacher/dashboard');
         } else {
           navigate('/user/dashboard');
         }

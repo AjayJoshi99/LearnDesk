@@ -15,6 +15,8 @@ import History from "./componets/History";
 import { ArticleRoutes } from "./routes/ArticleRoutes"; 
 import { useEffect, useState } from "react";
 import ProtectedRoute from "./componets/ProtectedRoute";
+import TeacherHome from "./componets/TeacherComponet/TeacherHome";
+import ClassDetails from "./componets/TeacherComponet/ClassDetails";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -58,6 +60,8 @@ function App() {
             </ProtectedRoute>
           }
         >
+          <Route path="dashboard" element={<TeacherHome />} />
+          <Route path="class/:id" element={<ClassDetails />} />
         </Route>
       </Routes>
     </div>

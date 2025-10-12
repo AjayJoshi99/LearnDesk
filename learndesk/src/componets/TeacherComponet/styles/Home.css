@@ -1,0 +1,28 @@
+.home-page {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.create-class-card {
+  background: #f9fbff;
+  border-left: 6px solid #0d6efd;
+}
+
+.class-card {
+  transition: all 0.25s ease-in-out;
+}
+
+.class-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
