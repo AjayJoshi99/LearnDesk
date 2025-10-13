@@ -19,4 +19,15 @@ const sendOtpEmail = async (to, otp) => {
   return transporter.sendMail(mailOptions);
 };
 
-module.exports = { sendOtpEmail };
+const sendMail = async ({ to, subject, text, html }) => {
+  const mailOptions = {
+    from: `"LearnDesk" <${process.env.GMAIL_USER}>`,
+    to,
+    subject,
+    text,
+    html,
+  };
+  return transporter.sendMail(mailOptions);
+};
+
+module.exports = { sendOtpEmail, sendMail };

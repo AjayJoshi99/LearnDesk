@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./styles/ClassDetails.css";
@@ -8,17 +9,48 @@ import ResultsTab from "./ResultsTab";
 import AnnouncementsTab from "./AnnouncementsTab";
 import SettingsTab from "./SettingsTab";
 
-const ClassDetails = ({ selectedClass }) => {
+const ClassDetails = () => {
+  const { id } = useParams(); // 👈 Get class ID from route
   const [activeTab, setActiveTab] = useState("students");
-
-  const classData =
-    selectedClass || {
-      id: "CLS101",
-      name: "Computer Networks",
-      code: "CN1234",
-      students: 25,
-      createdAt: "2025-09-30",
+  const [classData, setClassData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  // ✅ Fetch class details from backend
+  useEffect(() => {
+    const fetchClassDetails = async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/class/${id}`);
+        const data = await res.json();
+        if (res.ok) {
+          setClassData(data);
+        } else {
+          console.error("Failed to fetch class details:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching class details:", error);
+      } finally {
+        setLoading(false);
+      }
     };
+    fetchClassDetails();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <div className="spinner-border text-primary" role="status"></div>
+        <p className="mt-3 text-muted">Loading class details...</p>
+      </div>
+    );
+  }
+
+  if (!classData) {
+    return (
+      <div className="text-center mt-5 text-danger">
+        <i className="bi bi-exclamation-triangle-fill fs-1"></i>
+        <p className="mt-3">Class not found.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-4 class-details-page">
@@ -26,7 +58,8 @@ const ClassDetails = ({ selectedClass }) => {
       <div className="class-header shadow-sm p-4 rounded-4 mb-4">
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
           <div>
-            <h3 className="fw-bold mb-1 text-primary">{classData.name}</h3>
+            <h3 className="fw-bold mb-1 text-primary">{classData.className}</h3>
+             <h6 className="fw-bold mb-1 text-primary">Subject : {classData.subject}</h6>
             <p className="text-muted mb-0">
               <i className="bi bi-hash me-2"></i>Class Code:{" "}
               <strong>{classData.code}</strong>
@@ -36,7 +69,14 @@ const ClassDetails = ({ selectedClass }) => {
             </small>
           </div>
           <div className="mt-3 mt-md-0">
-            <button className="btn btn-outline-primary rounded-pill px-4">
+            <button
+              className="btn btn-outline-primary rounded-pill px-4"
+              onClick={() =>
+                navigator.clipboard
+                  .writeText(classData.code)
+                  .then(() => alert("Class code copied to clipboard!"))
+              }
+            >
               Share Code
             </button>
           </div>
@@ -89,11 +129,11 @@ const ClassDetails = ({ selectedClass }) => {
 
       {/* Tab Content */}
       <div className="tab-content p-4 bg-white rounded-4 shadow-sm">
-        {activeTab === "students" && <StudentsTab />}
-        {activeTab === "exams" && <ExamsTab />}
-        {activeTab === "results" && <ResultsTab />}
-        {activeTab === "announcements" && <AnnouncementsTab />}
-        {activeTab === "settings" && <SettingsTab />}
+        {activeTab === "students" && <StudentsTab classId={id} />}
+        {activeTab === "exams" && <ExamsTab classId={id} />}
+        {activeTab === "results" && <ResultsTab classId={id} />}
+        {activeTab === "announcements" && <AnnouncementsTab classId={id} />}
+        {activeTab === "settings" && <SettingsTab classId={id} />}
       </div>
     </div>
   );

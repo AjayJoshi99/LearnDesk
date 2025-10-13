@@ -10,7 +10,98 @@
   z-index: 999;
   transition: width 0.3s ease;
   position: relative;
+  overflow: hidden;.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: rgba(17, 25, 40, 0.85);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.sidebar.closed {
+  width: 0;
   overflow: hidden;
+}
+
+.sidebar.open {
+  width: 260px;
+}
+
+.bg-dark-glass {
+  background: linear-gradient(160deg, #0f172a, #1e293b);
+}
+
+.sidebar-logo {
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+
+.sidebar-nav {
+  padding: 0 10px;
+  overflow-y: auto;
+}
+
+.sidebar-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
+  color: white;
+}
+
+.sidebar-link.active {
+  background: rgba(0, 123, 255, 0.15);
+  border-left: 4px solid #0d6efd;
+  color: white;
+}
+
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.bg-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Scrollbar */
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 }
 
 .sidebar-header {

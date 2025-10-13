@@ -17,6 +17,8 @@ import { useEffect, useState } from "react";
 import ProtectedRoute from "./componets/ProtectedRoute";
 import TeacherHome from "./componets/TeacherComponet/TeacherHome";
 import ClassDetails from "./componets/TeacherComponet/ClassDetails";
+import Classes from "./componets/Classes";
+import StudentClassView from "./componets/StudentClassView";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -49,6 +51,8 @@ function App() {
           <Route path="Exam/:num" element={<Exam />} />
           <Route path="history" element={<History />} />
           <Route path="history/quiz/:quizNumber" element={<ReviewQuiz />} />
+          <Route path="classes" element={<Classes />} />
+          <Route path="class/:code" element={<StudentClassView />} />
           {ArticleRoutes()}
         </Route>
 

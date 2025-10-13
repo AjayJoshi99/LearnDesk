@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const Otp = require('../models/Otp');
+const Class = require("../models/Class");
 const { sendOtpEmail } = require('../utils/mailers');
 
 const generateOtp = () => {
@@ -110,7 +111,18 @@ exports.verifyOtp = async (req, res) => {
 
     await user.save();
     await Otp.deleteOne({ _id: otpDoc._id });
+    const pendingClasses = await ClassModel.find({ pendingStudents: email });
 
+    for (const cls of pendingClasses) {
+      // Remove from pending
+      cls.pendingStudents = cls.pendingStudents.filter((e) => e !== email);
+
+      // Add to registered students if not already
+      if (!cls.students.includes(email)) cls.students.push(email);
+
+      await cls.save();
+    }
+    
     return res.json({
       message: 'User verified and registered successfully',
       user: {

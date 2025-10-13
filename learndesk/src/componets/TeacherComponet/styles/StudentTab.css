@@ -1,0 +1,37 @@
+.student-card {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  border: none;
+  transition: transform 0.2s ease;
+}
+.student-card:hover {
+  transform: translateY(-5px);
+}
+
+.pending-card {
+  background: linear-gradient(135deg, #fff3e0, #ffffff);
+  border: none;
+  transition: transform 0.2s ease;
+}
+.pending-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-tab input.form-control {
+  min-width: 200px;
+}
+
+.student-tab .btn {
+  min-width: 80px;
+}
+
+.student-card button.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+.student-card i:hover {
+  transform: scale(1.2);
+  transition: all 0.2s ease;
+}
