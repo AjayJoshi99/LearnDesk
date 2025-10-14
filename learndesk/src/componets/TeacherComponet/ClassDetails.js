@@ -10,11 +10,10 @@ import AnnouncementsTab from "./AnnouncementsTab";
 import SettingsTab from "./SettingsTab";
 
 const ClassDetails = () => {
-  const { id } = useParams(); // 👈 Get class ID from route
+  const { id } = useParams(); 
   const [activeTab, setActiveTab] = useState("students");
   const [classData, setClassData] = useState(null);
   const [loading, setLoading] = useState(true);
-  // ✅ Fetch class details from backend
   useEffect(() => {
     const fetchClassDetails = async () => {
       try {
@@ -132,7 +131,7 @@ const ClassDetails = () => {
         {activeTab === "students" && <StudentsTab classId={id} />}
         {activeTab === "exams" && <ExamsTab classId={id} />}
         {activeTab === "results" && <ResultsTab classId={id} />}
-        {activeTab === "announcements" && <AnnouncementsTab classId={id} />}
+        {activeTab === "announcements" && <AnnouncementsTab classCode={id} />}
         {activeTab === "settings" && <SettingsTab classId={id} />}
       </div>
     </div>

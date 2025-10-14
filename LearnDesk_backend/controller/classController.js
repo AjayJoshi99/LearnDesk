@@ -35,9 +35,6 @@ exports.getClassesByTeacher = async (req, res) => {
 exports.getClassById = async (req, res) => {
   try {
     const classData = await Class.findOne({code : req.params.id});
-    console.log("Fetching class with ID:", req.params.id);
-
-    console.log(classData);
     if (!classData)
       return res.status(404).json({ message: "Class not found" });
     res.json(classData);
