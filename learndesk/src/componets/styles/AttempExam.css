@@ -1,0 +1,7 @@
+.attempt-container { max-width: 1200px; margin: 0 auto; }
+.instructions-card { box-shadow: 0 8px 30px rgba(2,12,27,0.08); border-radius: 12px; }
+.info-box { min-height: 70px; }
+.timer { font-size: 1rem; padding: 0.5rem 0.8rem; border-radius: 8px; }
+.question-card { min-height: 320px; }
+.options-list .list-group-item { user-select: none; -webkit-user-select: none; }
+.camera-box { border-radius: 8px; overflow: hidden; }

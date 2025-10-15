@@ -1,0 +1,10 @@
+.exam-tab input, .exam-tab textarea, .exam-tab select {
+  transition: all 0.2s ease-in-out;
+}
+.exam-tab input:focus, .exam-tab textarea:focus, .exam-tab select:focus {
+  box-shadow: 0 0 5px rgba(13,110,253,0.5);
+  border-color: #0d6efd;
+}
+.card {
+  border-radius: 12px;
+}

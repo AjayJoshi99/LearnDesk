@@ -1,0 +1,38 @@
+.exam-container {
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.exam-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.exam-card:hover {
+  transform: translateY(-3px);
+}
+
+.nav-button-grid button {
+  transition: all 0.3s ease;
+}
+
+.nav-button-grid button:hover {
+  transform: scale(1.1);
+}
+
+.btn-clear {
+  background-color: #f8d7da;
+  color: #842029;
+  border: none;
+}
+
+.btn-clear:hover {
+  background-color: #f1aeb5;
+}
+
+.btn-prev, .btn-next {
+  min-width: 100px;
+}

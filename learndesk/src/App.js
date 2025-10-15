@@ -19,6 +19,8 @@ import TeacherHome from "./componets/TeacherComponet/TeacherHome";
 import ClassDetails from "./componets/TeacherComponet/ClassDetails";
 import Classes from "./componets/Classes";
 import StudentClassView from "./componets/StudentClassView";
+import Exams from "./componets/TeacherComponet/Exams";
+import AttemptExam from "./componets/attempt-exam";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -53,6 +55,7 @@ function App() {
           <Route path="history/quiz/:quizNumber" element={<ReviewQuiz />} />
           <Route path="classes" element={<Classes />} />
           <Route path="class/:code" element={<StudentClassView />} />
+          <Route path="attempt-exam/:examId" element={<AttemptExam />} />
           {ArticleRoutes()}
         </Route>
 
@@ -65,6 +68,7 @@ function App() {
           }
         >
           <Route path="dashboard" element={<TeacherHome />} />
+          <Route path="exam" element={<Exams />} />
           <Route path="class/:id" element={<ClassDetails />} />
         </Route>
       </Routes>

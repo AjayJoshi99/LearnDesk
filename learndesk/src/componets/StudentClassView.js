@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Bell, FileText, BarChart3, GraduationCap  } from "lucide-react";
 import Announcement from "./Announcement";
+import StudentExamTab from "./StudentExamTab";
 
 const StudentClassView = () => {
   const { code } = useParams();
@@ -65,7 +66,7 @@ const StudentClassView = () => {
           {/* Tab Content */}
           <div className="card shadow-sm p-4 rounded-4">
             {activeTab === "announcements" && <Announcement classCode={classData.code} />}
-            {activeTab === "exams" && <p>No exams yet!</p>}
+            {activeTab === "exams" && <StudentExamTab/>}
             {activeTab === "performance" && <p>No performance data yet!</p>}
           </div>
         </>

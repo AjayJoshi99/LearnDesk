@@ -9,7 +9,7 @@ connectDB();
 
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*' // restrict in production
+  origin: process.env.FRONTEND_URL || '*' 
 }));
 app.use(express.json());
 
@@ -17,6 +17,9 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/class', require('./routes/classRoutes'));
 app.use('/api/announcement', require('./routes/announcementRoutes'));
+app.use('/api/exam', require('./routes/examRoutes'));
+app.use("/api/scheduled-exams", require("./routes/scheduledExamRoutes"));
+
 
 app.get('/', (req, res) => res.send('API is running'));
 
