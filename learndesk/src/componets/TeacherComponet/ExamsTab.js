@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 const ExamTab = ({ teacherEmail }) => {
   const [baseExams, setBaseExams] = useState([]);
@@ -12,8 +12,9 @@ const ExamTab = ({ teacherEmail }) => {
   const classCode = localStorage.getItem("currentClassCode");
   const teacherEmailStored = JSON.parse(localStorage.getItem("user"))?.email;
   teacherEmail = teacherEmail || teacherEmailStored;
-  // ✅ Fetch all base exams created by teacher
-  const fetchBaseExams = async () => {
+
+  // ✅ useCallback ensures functions are memoized — no re-creation on every render
+  const fetchBaseExams = useCallback(async () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/api/scheduled-exams/base/teacher/${teacherEmailStored}`
@@ -27,9 +28,9 @@ const ExamTab = ({ teacherEmail }) => {
     } catch (err) {
       console.error("Error fetching base exams:", err);
     }
-  };
+  }, [teacherEmailStored]);
 
-  const fetchScheduledExams = async () => {
+  const fetchScheduledExams = useCallback(async () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/api/scheduled-exams/teacher/${teacherEmailStored}`
@@ -42,19 +43,20 @@ const ExamTab = ({ teacherEmail }) => {
     } catch (err) {
       console.error("Error fetching scheduled exams:", err);
     }
-  };
+  }, [teacherEmailStored]);
 
+  // ✅ Now ESLint will be happy — both functions included properly
   useEffect(() => {
     fetchBaseExams();
     fetchScheduledExams();
-  }, [teacherEmail]);
+  }, [fetchBaseExams, fetchScheduledExams]);
 
   const handleScheduleExam = async () => {
-    if (!selectedExam || !date || !duration) return alert("Please fill all fields.");
+    if (!selectedExam || !date || !duration)
+      return alert("Please fill all fields.");
 
     try {
       const body = { examId: selectedExam, teacherEmail, date, duration, classCode };
-
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/scheduled-exams/schedule`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,7 +69,7 @@ const ExamTab = ({ teacherEmail }) => {
         setSelectedExam("");
         setDate("");
         setDuration("");
-        fetchScheduledExams();
+        fetchScheduledExams(); // still works fine
       }
     } catch (err) {
       console.error("Error scheduling exam:", err);
@@ -104,10 +106,7 @@ const ExamTab = ({ teacherEmail }) => {
         <p className="text-muted">No upcoming exams</p>
       ) : (
         upcoming.map((exam) => (
-          <div
-            key={exam._id}
-            className="card mb-3 border-0 shadow-sm rounded-4"
-          >
+          <div key={exam._id} className="card mb-3 border-0 shadow-sm rounded-4">
             <div className="card-body d-flex justify-content-between align-items-center">
               <div>
                 <h6 className="fw-semibold text-primary mb-1">{exam.examId?.title}</h6>
@@ -132,16 +131,11 @@ const ExamTab = ({ teacherEmail }) => {
         <p className="text-muted">No completed exams</p>
       ) : (
         completed.map((exam) => (
-          <div
-            key={exam._id}
-            className="card mb-3 border-0 shadow-sm rounded-4"
-          >
+          <div key={exam._id} className="card mb-3 border-0 shadow-sm rounded-4">
             <div className="card-body d-flex justify-content-between align-items-center">
               <div>
                 <h6 className="fw-semibold text-dark mb-1">{exam.examId?.title}</h6>
-                <p className="text-muted small mb-0">
-                  {new Date(exam.date).toLocaleString()}
-                </p>
+                <p className="text-muted small mb-0">{new Date(exam.date).toLocaleString()}</p>
               </div>
               <button className="btn btn-outline-primary btn-sm" disabled>
                 View Result
@@ -158,11 +152,7 @@ const ExamTab = ({ teacherEmail }) => {
             <div className="modal-content rounded-4">
               <div className="modal-header">
                 <h5 className="modal-title">Schedule New Exam</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setShowModal(false)}
-                ></button>
+                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
               </div>
 
               <div className="modal-body">
@@ -209,10 +199,7 @@ const ExamTab = ({ teacherEmail }) => {
               </div>
 
               <div className="modal-footer">
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => setShowModal(false)}
-                >
+                <button className="btn btn-secondary" onClick={() => setShowModal(false)}>
                   Cancel
                 </button>
                 <button

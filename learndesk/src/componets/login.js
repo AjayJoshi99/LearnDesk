@@ -80,7 +80,6 @@ const Login = () => {
   const handleLoginSubmit = async(e) => {
     e.preventDefault();
     setLoading(true);
-    console.log('Login:', loginData);
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: 'POST',
