@@ -19,7 +19,7 @@ app.use('/api/class', require('./routes/classRoutes'));
 app.use('/api/announcement', require('./routes/announcementRoutes'));
 app.use('/api/exam', require('./routes/examRoutes'));
 app.use("/api/scheduled-exams", require("./routes/scheduledExamRoutes"));
-
+app.use("/api/results", require("./routes/resultRoutes"));
 
 app.get('/', (req, res) => res.send('API is running'));
 

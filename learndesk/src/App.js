@@ -21,6 +21,7 @@ import Classes from "./componets/Classes";
 import StudentClassView from "./componets/StudentClassView";
 import Exams from "./componets/TeacherComponet/Exams";
 import AttemptExam from "./componets/attempt-exam";
+import ViewResult from "./componets/ViewResult";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -56,6 +57,8 @@ function App() {
           <Route path="classes" element={<Classes />} />
           <Route path="class/:code" element={<StudentClassView />} />
           <Route path="attempt-exam/:examId" element={<AttemptExam />} />
+          <Route path="result/:examId" element={<ViewResult />} />
+
           {ArticleRoutes()}
         </Route>
 

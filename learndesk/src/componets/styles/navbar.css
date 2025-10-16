@@ -9,7 +9,7 @@
   justify-content: space-between;
   padding: 10px 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  background: #6366f1;
+  background: linear-gradient(90deg, #1f2f98, #0078ff, #00b8d9);
 }
 
 .navbar-left {
