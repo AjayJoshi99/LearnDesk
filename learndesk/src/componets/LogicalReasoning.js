@@ -18,7 +18,7 @@ function LogicalReasoning() {
                 </button>
             </div>
          <div className='h3 border rounded p-3 mb-5 shadow-lg'>Logical Reasoning<br/><br/>
-         <NavLink to={`/user/Exam/0/NumberSeries-I`} > <button className="btn btn-warning m-2 exam_button grad e" type="button"> Number Series - I</button></NavLink><br/>
+         <NavLink to={`/user/Exam/0`} > <button className="btn btn-warning m-2 exam_button grad e" type="button"> Number Series - I</button></NavLink><br/>
          <NavLink to='/user/Exam/1'><button className="btn btn-warning m-2 exam_button grad e" type="button">Number Series - II </button></NavLink><br/>
          <NavLink to='/user/Exam/31'><button className="btn btn-warning m-2 exam_button grad e" type="button">Number Series - III  </button></NavLink><br/>
          <NavLink to='/user/Exam/11'><button className="btn btn-warning m-2 exam_button grad e" type="button">Letter and Symbol Series </button></NavLink><br/>
