@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen }) => {
     { icon: Users, label: "Articles", path: "/user/articles" },
     { icon: FileText, label: "Classes", path: "/user/classes" },
     { icon: Calendar, label: "Dummy", path: "/user/dashboard" },
-    { icon: Settings, label: "Dummy", path: "/user/dashboard" },
+    { icon: Settings, label: "Quote Of The Day", path: "/user/quote" },
   ];
 
   return (

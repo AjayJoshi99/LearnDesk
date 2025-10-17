@@ -11,6 +11,7 @@ app.use(helmet());
 app.use(cors({
   origin: process.env.FRONTEND_URL || '*' 
 }));
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
@@ -20,6 +21,7 @@ app.use('/api/announcement', require('./routes/announcementRoutes'));
 app.use('/api/exam', require('./routes/examRoutes'));
 app.use("/api/scheduled-exams", require("./routes/scheduledExamRoutes"));
 app.use("/api/results", require("./routes/resultRoutes"));
+app.use('/api/quotes', require('./routes/quoteRoutes'));
 
 app.get('/', (req, res) => res.send('API is running'));
 
