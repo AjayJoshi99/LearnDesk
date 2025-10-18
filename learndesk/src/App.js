@@ -23,6 +23,7 @@ import Exams from "./componets/TeacherComponet/Exams";
 import AttemptExam from "./componets/attempt-exam";
 import ViewResult from "./componets/ViewResult";
 import QuoteOfTheDay from "./componets/QuoteOfTheDay";
+import AptitudeAIQuiz from "./componets/AptitudeAIQuiz ";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -60,6 +61,7 @@ function App() {
           <Route path="attempt-exam/:examId" element={<AttemptExam />} />
           <Route path="result/:examId" element={<ViewResult />} />
           <Route path="quote" element={<QuoteOfTheDay />} />
+          <Route path="randomquizzes" element={<AptitudeAIQuiz />} />
           {ArticleRoutes()}
         </Route>
 

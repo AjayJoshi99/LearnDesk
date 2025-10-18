@@ -6,7 +6,6 @@ const router = express.Router();
 router.post("/save-quiz", async (req, res) => {
   try {
     const { email, quizNumber, quizName, totalMarks, answers } = req.body;
-
     let user = await UserQuiz.findOne({ email });
 
     if (!user) {

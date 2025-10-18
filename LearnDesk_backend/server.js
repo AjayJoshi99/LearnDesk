@@ -22,6 +22,7 @@ app.use('/api/exam', require('./routes/examRoutes'));
 app.use("/api/scheduled-exams", require("./routes/scheduledExamRoutes"));
 app.use("/api/results", require("./routes/resultRoutes"));
 app.use('/api/quotes', require('./routes/quoteRoutes'));
+app.use('/api/random-quiz', require('./routes/randomQuizRoutes'));
 
 app.get('/', (req, res) => res.send('API is running'));
 
