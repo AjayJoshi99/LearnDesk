@@ -17,6 +17,7 @@ const categories = [
 export default function RandomQuiz() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [questions, setQuestions] = useState([]);
+  const [modalQuiz, setModalQuiz] = useState(null);
   const [userAnswers, setUserAnswers] = useState({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -414,6 +415,57 @@ export default function RandomQuiz() {
           </div>
         </div>
       )}
+      {modalQuiz && (
+          <div
+            className="modal fade show"
+            style={{ display: "block", backgroundColor: "rgba(0,0,0,0.6)" }}
+          >
+            <div className="modal-dialog modal-lg">
+              <div className="modal-content">
+                <div className="modal-header bg-primary text-white">
+                  <h5 className="modal-title">{modalQuiz.quizName} - Details</h5>
+                  <button
+                    type="button"
+                    className="btn-close btn-close-white"
+                    onClick={() => setModalQuiz(null)}
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <h6>
+                    <strong>Score:</strong> {modalQuiz.totalMarks}/
+                    {modalQuiz.questions.length}
+                  </h6>
+                  <hr />
+                  {modalQuiz.questions.map((q, idx) => (
+                    <div key={idx} className="mb-3">
+                      <h6
+                        dangerouslySetInnerHTML={{
+                          __html: `${idx + 1}. ${q.question}`,
+                        }}
+                      />
+                      <ul className="list-group">
+                        {q.options.map((opt, i) => (
+                          <li
+                            key={i}
+                            className={`list-group-item ${
+                              opt === q.correct_answer
+                                ? "list-group-item-success"
+                                : opt === q.user_answer
+                                ? "list-group-item-danger"
+                                : ""
+                            }`}
+                            dangerouslySetInnerHTML={{ __html: opt }}
+                          />
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
 
       {!selectedCategory && history.length > 0 && (
         <div className="mt-5">
@@ -431,6 +483,7 @@ export default function RandomQuiz() {
                     {new Date(h.date).toLocaleString()}
                   </p>
                 </div>
+                <button className="btn btn-outline-primary btn-sm" onClick={() => setModalQuiz(h)} > View Details </button>
               </div>
             </div>
           ))}

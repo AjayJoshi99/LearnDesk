@@ -16,8 +16,6 @@ router.get("/today", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { date, quote, author } = req.body;
-    console.log("Storing new quote:", req.body);
-
     await Quote.deleteMany({ date: { $ne: date } });
     const newQuote = await Quote.create({ date, quote, author });
     res.json(newQuote);

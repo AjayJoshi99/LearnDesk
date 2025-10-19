@@ -111,7 +111,7 @@ exports.verifyOtp = async (req, res) => {
 
     await user.save();
     await Otp.deleteOne({ _id: otpDoc._id });
-    const pendingClasses = await ClassModel.find({ pendingStudents: email });
+    const pendingClasses = await Class.find({ pendingStudents: email });
 
     for (const cls of pendingClasses) {
       // Remove from pending
@@ -182,10 +182,8 @@ exports.requestPasswordOtp = async (req, res) => {
 
     // Generate OTP & hash
     const otp = generateOtp();
-    console.log("Generated OTP (to send to user):", otp);
     const salt = await bcrypt.genSalt(10);
     const otpHash = await bcrypt.hash(otp, salt);
-    console.log("OTP hash stored in DB:", otpHash);
 
     const expireMinutes = parseInt(process.env.OTP_EXPIRE_MIN || '10', 10);
     const expiresAt = new Date(Date.now() + expireMinutes * 60000);

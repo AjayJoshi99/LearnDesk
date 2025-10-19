@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Sparkles, RefreshCcw } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -7,9 +7,14 @@ const QuoteOfTheDay = () => {
   const [author, setAuthor] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const today = new Date().toISOString().split("T")[0]; 
+  const called = useRef(false); // 🔹 Prevent duplicate execution
 
-    const fetchQuote = useCallback(async () => {
+  const today = new Date().toISOString().split("T")[0];
+
+  const fetchQuote = useCallback(async () => {
+    if (called.current) return; // ✅ Run only once
+    called.current = true;
+
     setLoading(true);
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/quotes/today`);

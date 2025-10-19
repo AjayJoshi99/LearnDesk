@@ -24,6 +24,7 @@ import AttemptExam from "./componets/attempt-exam";
 import ViewResult from "./componets/ViewResult";
 import QuoteOfTheDay from "./componets/QuoteOfTheDay";
 import AptitudeAIQuiz from "./componets/AptitudeAIQuiz ";
+import TeacherDashboard from "./componets/TeacherComponet/TeacherDashboard";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -75,6 +76,7 @@ function App() {
         >
           <Route path="dashboard" element={<TeacherHome />} />
           <Route path="exam" element={<Exams />} />
+          <Route path="performance" element={<TeacherDashboard/>}/>
           <Route path="class/:id" element={<ClassDetails />} />
         </Route>
       </Routes>
