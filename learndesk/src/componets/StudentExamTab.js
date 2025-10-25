@@ -12,8 +12,7 @@ const StudentExamTab = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const userEmail = user?.email || "unknown@student";
   const classCode = localStorage.getItem("currentClassCode");
-
-  // ✅ Save missed exam (0 score)
+  console.log("Current class code:", classCode);
   const saveMissedExamResult = useCallback(
     async (exam) => {
       try {
@@ -39,7 +38,6 @@ const StudentExamTab = () => {
     [classCode, userEmail]
   );
 
-  // ✅ Fetch exams
   useEffect(() => {
     const fetchExams = async () => {
       try {
@@ -57,7 +55,6 @@ const StudentExamTab = () => {
     fetchExams();
   }, [classCode]);
 
-  // ✅ Fetch attempted exams
   useEffect(() => {
     const fetchAttemptedStatus = async () => {
       const results = {};

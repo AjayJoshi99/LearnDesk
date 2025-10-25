@@ -11,10 +11,7 @@ const StudentDashboard = () => {
   const navigate = useNavigate();
 
   const handleViewClass = (cls) => {
-    // Store selected class details
     localStorage.setItem("currentClass", JSON.stringify(cls));
-
-    // Navigate to class view
     navigate(`/user/class/${cls.code}`);
   };
 
@@ -102,7 +99,7 @@ const StudentDashboard = () => {
             </div>
           ))
         ) : (
-          <p className="text-muted">You haven’t joined any classes yet.</p>
+          <p className="text-muted">You haven't joined any classes yet.</p>
         )}
       </div>
     </div>

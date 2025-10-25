@@ -76,7 +76,6 @@ exports.getExamsByClass = async (req, res) => {
     const exams = await ScheduledExam.find({ classCode })
       .populate("examId")
       .sort({ date: 1 });
-
     res.status(200).json({ exams });
   } catch (err) {
     console.error("Error fetching exams by class:", err);

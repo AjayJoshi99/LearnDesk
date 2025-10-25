@@ -9,9 +9,8 @@ const StudentClassView = () => {
   const { code } = useParams();
   const [activeTab, setActiveTab] = useState("announcements");
   const [classData, setClassData] = useState(null);
-
+  localStorage.setItem("currentClassCode", code);
   useEffect(() => {
-    // Load class from localStorage
     const storedClass = localStorage.getItem("currentClass");
     if (storedClass) {
       setClassData(JSON.parse(storedClass));
