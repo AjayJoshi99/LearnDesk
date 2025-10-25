@@ -15,8 +15,10 @@ const ResultsTab = () => {
 
  const fetchExams = React.useCallback(async () => {
   try {
+    const classCode = localStorage.getItem("currentClassCode");
+
     const res = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/exam/teacher/${teacherEmail}`
+      `${process.env.REACT_APP_API_URL}/api/exam/teacher/${teacherEmail}?classCode=${classCode}`
     );
     const data = await res.json();
     setExams(data.exams || []);

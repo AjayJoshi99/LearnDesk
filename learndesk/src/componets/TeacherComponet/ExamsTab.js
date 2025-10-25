@@ -29,7 +29,9 @@ const ExamTab = ({ teacherEmail }) => {
 
   const fetchScheduledExams = useCallback(async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/scheduled-exams/teacher/${teacherEmailStored}`);
+      const res = await fetch(
+            `${process.env.REACT_APP_API_URL}/api/scheduled-exams/teacher/${teacherEmailStored}/class/${classCode}`
+          );
       const data = await res.json();
       if (res.ok) {
         setUpcoming(data.upcoming || []);

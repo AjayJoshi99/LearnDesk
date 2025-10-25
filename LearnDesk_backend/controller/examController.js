@@ -16,14 +16,32 @@ exports.createExam = async (req, res) => {
   }
 };
 
+// exports.getExams = async (req, res) => {
+//   try {
+//     const { teacherEmail } = req.params;
+//     const exams = await Exam.find({ teacherEmail });
+//     res.status(200).json({ exams });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
 exports.getExams = async (req, res) => {
   try {
     const { teacherEmail } = req.params;
-    const exams = await Exam.find({ teacherEmail });
+    const { classCode } = req.query;
+
+    const filter = { teacherEmail };
+    if (classCode) {
+      filter.classCodes = classCode; 
+    }
+
+    const exams = await Exam.find(filter).populate("questions");
+
     res.status(200).json({ exams });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+    console.error("Error fetching exams:", err);
+    res.status(500).json({ message: "Failed to fetch exams", error: err.message });
   }
 };
 

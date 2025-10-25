@@ -11,6 +11,11 @@ exports.scheduleExam = async (req, res) => {
       date,
       duration,
     });
+    await Exam.findByIdAndUpdate(
+      examId,
+      { $addToSet: { classCodes: classCode } },
+      { new: true }
+    );
 
     await scheduledExam.save();
     res.status(201).json({ message: "Exam scheduled successfully", scheduledExam });
@@ -76,5 +81,27 @@ exports.getExamsByClass = async (req, res) => {
   } catch (err) {
     console.error("Error fetching exams by class:", err);
     res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+exports.getExamsByTeacherAndClass = async (req, res) => {
+  try {
+    const { email, classCode } = req.params;
+
+    const exams = await ScheduledExam.find({
+      teacherEmail: email,
+      classCode: classCode,
+    })
+      .populate("examId", "title description duration")
+      .sort({ date: -1 });
+
+    const now = new Date();
+    const upcoming = exams.filter(e => new Date(e.date) > now);
+    const completed = exams.filter(e => new Date(e.date) <= now);
+
+    res.status(200).json({ upcoming, completed });
+  } catch (err) {
+    console.error("Error fetching exams:", err);
+    res.status(500).json({ message: "Failed to fetch exams", error: err });
   }
 };

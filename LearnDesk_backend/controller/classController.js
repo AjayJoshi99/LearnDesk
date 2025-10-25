@@ -77,45 +77,84 @@ exports.getStudentsByClass = async (req, res) => {
   }
 };
 
-// Add student to a class
 exports.addStudentToClass = async (req, res) => {
   try {
     const { email } = req.body;
     const classData = await Class.findOne({ code: req.params.code });
-    if (!classData) return res.status(404).json({ message: "Class not found" });
+    if (!classData)
+      return res.status(404).json({ message: "Class not found" });
 
+    const teacher = await User.findOne({ email: classData.teacherEmail });
     const user = await User.findOne({ email });
 
+    if (!teacher)
+      return res.status(404).json({ message: "Teacher not found for this class" });
+
+    // --- Case 1: Student not registered yet ---
     if (!user) {
-      // Student not registered yet
       if (!classData.pendingStudents.includes(email)) {
         classData.pendingStudents.push(email);
         await classData.save();
+
         await sendMail({
-        to: email,
-        subject: `You are invited to join class ${classData.name}`,
-        text: `Hello! You have been invited to join the class "${classData.name}" on LearnDesk. Please register to join: ${process.env.FRONTEND_URL}/register`,
-        html: `<p>Hello! You have been invited to join the class "<b>${classData.name}</b>" on LearnDesk.</p>
-              <p>Please register to join: <a href="${process.env.FRONTEND_URL}/">${process.env.FRONTEND_URL}/register</a></p>`,
-      });
+          to: email,
+          subject: `Invitation to join "${classData.className}" class on LearnDesk`,
+          text: `Hello!\n\nYou have been invited by ${teacher.name} (${classData.teacherEmail}) to join the class "${classData.name}" on LearnDesk.\n\nTo get started, please register on LearnDesk using the link below:\n${process.env.FRONTEND_URL}/register\n\nWe look forward to having you in the class!\n\n- The LearnDesk Team`,
+          html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+              <h2 style="color:#2b6cb0;">Invitation to Join Class</h2>
+              <p>Hello,</p>
+              <p><b>${teacher.name}</b> has invited you to join the class <b>${classData.name}</b> on <b>LearnDesk</b>.</p>
+              <p>To get started, please create your account by clicking the link below:</p>
+              <p><a href="${process.env.FRONTEND_URL}/" 
+                    style="background-color:#2b6cb0;color:#fff;padding:10px 15px;border-radius:5px;text-decoration:none;">
+                Register on LearnDesk
+              </a></p>
+              <p>We're excited to have you join and learn together!</p>
+              <p>- The LearnDesk Team</p>
+            </div>
+          `,
+        });
       }
+
       return res.json({
-        message: "Student added to pending list (not registered yet)",
+        message: "Student added to pending list (not registered yet). Email invitation sent.",
       });
     }
 
-    // Student registered
+    // --- Case 2: Student already registered ---
     if (!classData.students.includes(email)) {
       classData.students.push(email);
       await classData.save();
+      await sendMail({
+        to: email,
+        subject: `You’ve been added to the "${classData.className}" class by ${teacher.name}`,
+        text: `Hello ${user.name || "Student"},\n\nGood news! You’ve been added to the class "${classData.name}" by ${teacher.name} on LearnDesk.\n\nYou can access your class and view materials by logging into your account:\n${process.env.FRONTEND_URL}/dashboard\n\nHappy Learning!\n\n- The LearnDesk Team`,
+        html: `
+          <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+            <h2 style="color:#2b6cb0;">Welcome to ${classData.className}!</h2>
+            <p>Hello ${user.name || "Student"},</p>
+            <p>We’re happy to inform you that <b>${teacher.name}</b> has added you to their class <b>${classData.className}</b> on <b>LearnDesk</b>.</p>
+            <p>You can now log in and access your class materials, quizzes, and announcements:</p>
+            <p><a href="${process.env.FRONTEND_URL}/dashboard" 
+                  style="background-color:#2b6cb0;color:#fff;padding:10px 15px;border-radius:5px;text-decoration:none;">
+              Go to Dashboard
+            </a></p><br/>Or&nbsp;
+            <a href="https://deft-belekoy-46b208.netlify.app/">Click here to access your class</a>
+            <p>We wish you a great learning experience!</p>
+            <p>– The LearnDesk Team</p>
+          </div>
+        `,
+      });
     }
 
-    res.json({ message: "Student successfully added" });
+    res.json({ message: "Student successfully added and notified via email." });
   } catch (err) {
-    console.error(err);
+    console.error("Error adding student:", err);
     res.status(500).json({ message: "Error adding student", error: err });
   }
 };
+
 
 exports.removeStudentFromClass = async (req, res) => {
   try {

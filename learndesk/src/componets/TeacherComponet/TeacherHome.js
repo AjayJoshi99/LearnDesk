@@ -7,6 +7,7 @@ const TeacherHome = () => {
   const user = JSON.parse(localStorage.getItem("user")) || { name: "Teacher" };
   const [classes, setClasses] = useState([]);
   const [newClassName, setNewClassName] = useState("");
+  const [subject, setSubject] = useState("");
 
   // ✅ Fetch classes from backend
   useEffect(() => {
@@ -26,21 +27,23 @@ const TeacherHome = () => {
 
   // ✅ Create new class
   const handleCreateClass = async () => {
-    if (!newClassName.trim()) return;
+    if (!newClassName.trim() || !subject.trim()) return;
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/class/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: newClassName,
+          className: newClassName, // ✅ renamed
+          subject, // ✅ new field
           teacherEmail: user.email,
         }),
       });
 
       const data = await res.json();
-      if (res.ok) {
-        setClasses((prev) => [data, ...prev]);
+      if (res.ok && data.success) {
+        setClasses((prev) => [data.class, ...prev]); // ✅ updated
         setNewClassName("");
+        setSubject("");
       } else {
         console.error("Failed to create class:", data.message);
       }
@@ -63,6 +66,7 @@ const TeacherHome = () => {
           <i className="bi bi-plus-circle me-2 text-primary"></i>
           Create New Class
         </h5>
+
         <div className="d-flex flex-column flex-md-row gap-3">
           <input
             type="text"
@@ -70,6 +74,13 @@ const TeacherHome = () => {
             className="form-control rounded-pill px-3"
             value={newClassName}
             onChange={(e) => setNewClassName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Enter subject"
+            className="form-control rounded-pill px-3"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
           />
           <button
             className="btn btn-primary rounded-pill px-4"
@@ -89,9 +100,15 @@ const TeacherHome = () => {
               <div className="card-body d-flex flex-column justify-content-between">
                 <div>
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <h5 className="fw-bold text-primary mb-0">{cls.className}</h5>
+                    <h5 className="fw-bold text-primary mb-0">
+                      {cls.className}
+                    </h5>
                     <i className="bi bi-people-fill fs-5 text-secondary"></i>
                   </div>
+                  <p className="mb-1 text-muted">
+                    <i className="bi bi-book me-2"></i>
+                    Subject: {cls.subject || "N/A"}
+                  </p>
                   <p className="mb-1 text-muted">
                     <i className="bi bi-hash me-2"></i>
                     Code: {cls.code || "N/A"}
@@ -110,11 +127,11 @@ const TeacherHome = () => {
                 </div>
                 <button
                   className="btn btn-outline-primary rounded-pill mt-3"
-                   onClick={() => {
-                      localStorage.setItem("currentClassCode", cls.code);
-                      window.location.href = `/teacher/class/${cls.code}`;
-                    }}
-                    >
+                  onClick={() => {
+                    localStorage.setItem("currentClassCode", cls.code);
+                    window.location.href = `/teacher/class/${cls.code}`;
+                  }}
+                >
                   View Class
                 </button>
               </div>
