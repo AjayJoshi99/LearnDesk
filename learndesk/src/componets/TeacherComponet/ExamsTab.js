@@ -40,7 +40,7 @@ const ExamTab = ({ teacherEmail }) => {
     } catch (err) {
       console.error("Error fetching scheduled exams:", err);
     }
-  }, [teacherEmailStored]);
+  }, [teacherEmailStored, classCode]);
 
   useEffect(() => {
     fetchBaseExams();
