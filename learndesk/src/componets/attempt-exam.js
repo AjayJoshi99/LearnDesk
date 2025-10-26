@@ -6,13 +6,13 @@ const AttemptExam = () => {
   const navigate = useNavigate();
   const storedExam = JSON.parse(localStorage.getItem("currentExam"));
   const [exam] = useState(storedExam || null);
-
+  console.log("Loaded exam:", exam);
   const [answers, setAnswers] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [examStarted, setExamStarted] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(exam?.duration ? exam.duration * 60 : 600); // default 10 min
+  const [timeLeft, setTimeLeft] = useState(exam?.duration ? exam.duration * 60 : 600);
 
   const totalQuestions = exam?.questions?.length || 0;
   const attemptedCount = Object.keys(answers).length;

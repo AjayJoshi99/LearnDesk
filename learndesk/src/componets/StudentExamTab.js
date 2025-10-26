@@ -12,7 +12,6 @@ const StudentExamTab = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const userEmail = user?.email || "unknown@student";
   const classCode = localStorage.getItem("currentClassCode");
-  console.log("Current class code:", classCode);
   const saveMissedExamResult = useCallback(
     async (exam) => {
       try {

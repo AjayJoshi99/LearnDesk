@@ -155,7 +155,6 @@ exports.addStudentToClass = async (req, res) => {
   }
 };
 
-
 exports.removeStudentFromClass = async (req, res) => {
   try {
     const { code } = req.params;
@@ -167,6 +166,17 @@ exports.removeStudentFromClass = async (req, res) => {
     cls.students = cls.students.filter((e) => e !== email);
     cls.pendingStudents = cls.pendingStudents.filter((e) => e !== email);
 
+    await sendMail({
+           to: email, 
+            subject: `Removed from class ${cls.name}`,
+            html: `
+              <h3>Hello,</h3>
+              <p>You have been removed from the class <b>${cls.className }</b>.</p>
+              <p>If you think this was a mistake, please contact your teacher.</p>
+              <br/>
+              <p>Best regards,<br/>Class Management System</p>
+            `,
+            });
     await cls.save();
     res.json({ message: "Student removed from class" });
   } catch (err) {

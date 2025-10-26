@@ -130,16 +130,16 @@ const StudentTab = () => {
       {loading && <p className="text-center text-muted">Loading students...</p>}
 
       {students.map((student, idx) => (
-  <div key={idx} className="col-md-6 col-lg-4">
-    <div className="card student-card shadow-sm rounded-4 p-3">
-      <div className="d-flex justify-content-between align-items-center">
-        <div>
-          <h6 className="fw-semibold mb-1">{student.name}</h6>
-          <small className="text-muted">{student.email}</small><br/>
-          <small className="text-muted">Contact: {student.mobile}</small><br/>
-          <small className="text-success">{student.status}</small>
-        </div>
-        <div>
+      <div key={idx} className="col-md-6 col-lg-4">
+        <div className="card student-card shadow-sm rounded-4 p-3 m-4">
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 className="fw-semibold mb-1">{student.name}</h6>
+              <small className="text-muted">{student.email}</small><br/>
+              <small className="text-muted">Contact: {student.mobile}</small><br/>
+              <small className="text-success">{student.status}</small>
+            </div>
+            <div>
           <div className="d-flex flex-column">
                   <i
                     className="bi bi-bar-chart-line-fill text-primary fs-4"

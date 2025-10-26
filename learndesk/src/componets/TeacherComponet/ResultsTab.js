@@ -34,8 +34,9 @@ useEffect(() => {
   const fetchResults = async (examId) => {
     try {
       setLoading(true);
+      const classCode = localStorage.getItem("currentClassCode");
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/exam/exams/${examId}`
+        `${process.env.REACT_APP_API_URL}/api/exam/exams/${examId}?classCode=${classCode}`
       );
       const data = await res.json();
       setResults(data.results || []);

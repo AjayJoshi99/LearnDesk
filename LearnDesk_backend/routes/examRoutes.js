@@ -24,14 +24,24 @@ router.get("/:examId", async (req, res) => {
 router.get("/exams/:examId", async (req, res) => {  
   try {
     const { examId } = req.params;
+    const { classCode } = req.query; // ✅ Get classCode from query params
 
-    if (!examId) return res.status(400).json({ message: "Exam ID is required" });
+    if (!examId) {
+      return res.status(400).json({ message: "Exam ID is required" });
+    }
 
-    // Find all results for this exam
-    const results = await Result.find({ examId }).sort({ submittedAt: -1 });
+    if (!classCode) {
+      return res.status(400).json({ message: "Class code is required" });
+    }
+
+    // ✅ Find results matching both examId and classCode
+    const results = await Result.find({ examId, classCode }).sort({ submittedAt: -1 });
 
     if (!results || results.length === 0) {
-      return res.status(200).json({ results: [], message: "No students have taken this exam yet." });
+      return res.status(200).json({
+        results: [],
+        message: "No students have taken this exam yet for this class.",
+      });
     }
 
     res.status(200).json({ results });
