@@ -18,10 +18,9 @@ function Exam() {
   const [timeLeft, setTimeLeft] = useState(600);
 
   const obj = data.find((exam) => exam.e === num);
-  const quizName = `Quiz-${num}`;
+  const quizName = localStorage.getItem("quizName") || `Quiz-${num}`;
   const totalQuestions = obj?.Question?.length || 0;
   const attemptedCount = Object.keys(userAnswer).length;
-
   // ✅ Option select
   const handleOptionChange = (index, input, correct) => {
     setUserAnswer((prev) => ({ ...prev, [index]: input }));

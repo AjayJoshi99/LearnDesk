@@ -31,9 +31,8 @@ router.post("/save-quiz", async (req, res) => {
 router.get("/history/:email", async (req, res) => {
   try {
     const user = await UserQuiz.findOne({ email: req.params.email });
-    if (!user) return res.status(404).json({ message: "User not found." });
-
-    res.status(200).json(user.quizHistory);
+    if(user)  return res.status(200).json(user.quizHistory);
+    return res.status(200).json([]);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to fetch quiz history" });

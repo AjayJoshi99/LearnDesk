@@ -1,7 +1,12 @@
-import {NavLink } from 'react-router-dom'
 import './styles/Dashboard.css';
+import {useNavigate} from 'react-router-dom';
 
 function Dashboard() {
+  const x = useNavigate();
+  const handleonclick = (id, name) => {
+    localStorage.setItem("quizName", name); 
+    x(`/user/Exam/${id}`);
+  }
   return (
     <div className="homeDiv">
       <div className='childDiv'>
@@ -13,24 +18,25 @@ function Dashboard() {
       <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg1.png)`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Arithmetic Aptitude</span><br/>
         <ul>
-          <li><NavLink to='/user/Exam/12'><button className='btn text-primary'>Calander</button></NavLink></li>
-          <li><NavLink to='/user/Exam/14'><button className='btn text-primary'>Time and Distance </button></NavLink></li>
-          <li><NavLink to='/user/Exam/15'><button className='btn text-primary'>Area</button></NavLink></li>
-          <li><NavLink to='/user/Exam/13'><button className='btn text-primary'>Clock</button></NavLink></li>
-          <NavLink to="/user/ArithmeticAptitude"><button className='btn'><span className='h4'>See more....</span></button></NavLink>
-          </ul>
+          <li><button className='btn text-primary' onClick={() => handleonclick(12, "Calander")}>Calander</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(14, "Time and Distance")}>Time and Distance</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(15, "Area")}>Area</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(13, "Clock")}>Clock</button></li>
+          <li><button className='btn' onClick={() => handleonclick("ArithmeticAptitude", "Arithmetic Aptitude")}><span className='h4'>See more....</span></button></li>
+        </ul>
+
           <br/><br/>
       </div>
 
       <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg3.png)`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Logical Reasoning</span><br/>
         <ul>
-          <li><NavLink to='/user/Exam/0'><button className='btn text-primary'>Number Series - I </button></NavLink></li>
-          <li><NavLink to='/user/Exam/11'><button className='btn text-primary'>Letter and Symbol Series </button></NavLink></li>
-          <li><NavLink to='/user/Exam/25'><button className='btn text-primary'>Artificial Language</button></NavLink></li>
-          <li><NavLink to='/user/Exam/28'><button className='btn text-primary'>Analogies </button></NavLink></li>
-          <NavLink to="/user/Logical_reasoning"><button className='btn'><span className='h4'>See more....</span></button></NavLink>
-          </ul>
+          <li><button className='btn text-primary' onClick={() => handleonclick(0, "Number Series - I")}>Number Series - I</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(11, "Letter and Symbol Series")}>Letter and Symbol Series</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(25, "Artificial Language")}>Artificial Language</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(28, "Analogies")}>Analogies</button></li>
+          <li><button className='btn' onClick={() => handleonclick("Logical_reasoning", "Logical Reasoning")}><span className='h4'>See more....</span></button></li>
+        </ul>
           <br/><br/>
       </div>
 
@@ -38,12 +44,12 @@ function Dashboard() {
       <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg2.png)`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Verbal Ability</span><br/>
         <ul>
-          <li><NavLink to='/user/Exam/3'><button className='btn text-primary'>Selecting Words</button></NavLink></li>
-          <li><NavLink to='/user/Exam/4'><button className='btn text-primary'>One Word Substitutes </button></NavLink></li>
-          <li><NavLink to='/user/Exam/5'><button className='btn text-primary'>Spellings</button></NavLink></li>
-          <li><NavLink to='/user/Exam/6'><button className='btn text-primary'>Sentence Formation </button></NavLink></li>
-          <NavLink to="/user/VerbalAbility"><button className='btn'><span className='h4'>See more....</span></button></NavLink>
-          </ul>
+          <li><button className='btn text-primary' onClick={() => handleonclick(3, "Selecting Words")}>Selecting Words</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(4, "One Word Substitutes")}>One Word Substitutes</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(5, "Spellings")}>Spellings</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(6, "Sentence Formation")}>Sentence Formation</button></li>
+          <li><button className='btn' onClick={() => handleonclick("VerbalAbility", "Verbal Ability")}><span className='h4'>See more....</span></button></li>
+        </ul>
           <br/><br/>
       </div>
 
@@ -51,12 +57,12 @@ function Dashboard() {
       <div className='childDiv' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bg4.png)`, backgroundRepeat: 'no-repeat',backgroundSize: '100% 100%' }}>
         <span className='h2 h'>Non Verbal Reasoning</span><br/>
         <ul>
-          <li><NavLink to='/user/Exam/7'><button className='btn text-primary'>Blood Relation - I</button></NavLink></li>
-          <li><NavLink to='/user/Exam/8'><button className='btn text-primary'>Direction and Sences </button></NavLink></li>
-          <li><NavLink to='/user/Exam/9'><button className='btn text-primary'>Find the Odd</button></NavLink></li>
-          <li><NavLink to='/user/Exam/10'><button className='btn text-primary'>Classification</button></NavLink></li>
-          <NavLink to="/user/NonVerbalReasoning"><button className='btn'><span className='h4'>See more....</span></button></NavLink>
-          </ul>
+          <li><button className='btn text-primary' onClick={() => handleonclick(7, "Blood Relation - I")}>Blood Relation - I</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(8, "Direction and Sences")}>Direction and Sences</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(9, "Find the Odd")}>Find the Odd</button></li>
+          <li><button className='btn text-primary' onClick={() => handleonclick(10, "Classification")}>Classification</button></li>
+          <li><button className='btn' onClick={() => handleonclick("NonVerbalReasoning", "Non Verbal Reasoning")}><span className='h4'>See more....</span></button></li>
+        </ul>
           <br/><br/>
       </div>
 
