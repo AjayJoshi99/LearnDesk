@@ -92,7 +92,6 @@ const Login = () => {
       if (res.ok) {
         localStorage.setItem('role', data.user.userType);
         localStorage.setItem('user', JSON.stringify(data.user));
-        // alert(`Welcome ${data.user.name}`);
         setLoginData({ email: '', password: '' });
         if (data.user.userType === 'teacher') {
           navigate('/teacher/dashboard');
