@@ -10,6 +10,7 @@ router.get("/class/:classCode", resultController.getClassResults);
 router.get("/userperfomrance/:userEmail/:classCode", resultController.getUserPerformance);
 router.get("/classperfomance/:classCode", resultController.getClassResults);
 router.get("/teacherperformance/:teacherEmail", resultController.getTeacherPerformance);
+router.get("/studentperformance/:studentEmail/:classCode", resultController.getStudentPerformance);
 router.get("/check/:examId/:email", async (req, res) => {
   try {
     const { examId, email } = req.params;

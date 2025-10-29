@@ -10,13 +10,11 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import { Trophy, Target } from "lucide-react";
+import { Trophy, Target, ClipboardCheck, Clock } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const PerformanceStats = () => {
-  const [data, setData] = useState([]);
   const [summary, setSummary] = useState(null);
-  const [classComparison, setClassComparison] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -32,43 +30,12 @@ const PerformanceStats = () => {
           return;
         }
 
-        // 1️⃣ Fetch user performance
+        // ✅ Fetch only student performance
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/results/userperfomrance/${userEmail}/${classCode}`
+          `${process.env.REACT_APP_API_URL}/api/results/studentperformance/${userEmail}/${classCode}`
         );
 
-        setData(res.data.performanceData);
         setSummary(res.data.summary);
-
-        // 2️⃣ Fetch all class results for comparison
-        const classRes = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/results/classperfomance/${classCode}`
-        );
-
-        const classResults = classRes.data;
-        if (classResults && classResults.length > 0) {
-          const classAverages = classResults.map(
-            (r) => (r.score / r.totalQuestions) * 100
-          );
-
-          const classAvg =
-            classAverages.reduce((a, b) => a + b, 0) / classAverages.length;
-
-          const topper = Math.max(...classAverages);
-
-          const myScore = summary?.overallScore || 0;
-
-          const betterThan =
-            (classAverages.filter((s) => s < myScore).length /
-              classAverages.length) *
-            100;
-
-          setClassComparison({
-            classAvg: classAvg.toFixed(1),
-            topper: topper.toFixed(1),
-            betterThan: betterThan.toFixed(1),
-          });
-        }
       } catch (err) {
         console.error("Error fetching performance:", err);
       } finally {
@@ -77,7 +44,7 @@ const PerformanceStats = () => {
     };
 
     fetchPerformance();
-     // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   if (loading) {
@@ -96,9 +63,15 @@ const PerformanceStats = () => {
     );
   }
 
+  const chartData = summary.performanceList.map((exam, idx) => ({
+    quiz: exam.examTitle || `Quiz ${idx + 1}`,
+    score: exam.score,
+    accuracy: parseFloat(exam.accuracy),
+  }));
+
   return (
     <div className="container py-4">
-      {/* Overall Performance */}
+      {/* Overall Performance Card */}
       <div className="card shadow-sm mb-4 border-0">
         <div className="card-body d-flex flex-column flex-md-row justify-content-between align-items-center">
           <div>
@@ -120,49 +93,49 @@ const PerformanceStats = () => {
           </div>
 
           <div className="text-end mt-3 mt-md-0">
-            <p className="text-muted mb-0">Accuracy</p>
-            <h5>{summary?.avgAccuracy}%</h5>
-            <p className="text-muted mb-0 mt-2">Avg Time / Q</p>
-            <h5>{summary?.avgTime}s</h5>
+            <p className="text-muted mb-0">Total Quizzes</p>
+            <h5>{summary?.totalQuizzes}</h5>
+            <p className="text-muted mb-0 mt-2">Attempted</p>
+            <h5>{summary?.attemptedQuizzes}</h5>
           </div>
         </div>
       </div>
 
-      {/* Comparison Summary */}
-      {classComparison && (
-        <div className="card shadow-sm mb-4 border-0">
-          <div className="card-body row text-center">
-            <div className="col-12 col-md-4 mb-3 mb-md-0">
-              <h6 className="text-secondary">Class Average</h6>
-              <h5 className="fw-bold text-primary">
-                {classComparison.classAvg}%
-              </h5>
-            </div>
-            <div className="col-12 col-md-4 mb-3 mb-md-0">
-              <h6 className="text-secondary">Topper’s Score</h6>
-              <h5 className="fw-bold text-success">
-                {classComparison.topper}%
-              </h5>
-            </div>
-            <div className="col-12 col-md-4">
-              <h6 className="text-secondary">You performed better than</h6>
-              <h5 className="fw-bold text-warning">
-                {classComparison.betterThan}% of class
-              </h5>
-            </div>
+      {/* Attempted vs Missed Summary */}
+      <div className="card shadow-sm mb-4 border-0">
+        <div className="card-body row text-center">
+          <div className="col-12 col-md-4 mb-3 mb-md-0">
+            <h6 className="text-secondary d-flex justify-content-center align-items-center gap-2">
+              <ClipboardCheck className="text-success" /> Attempted
+            </h6>
+            <h5 className="fw-bold text-success">
+              {summary.attemptedQuizzes}
+            </h5>
+          </div>
+          <div className="col-12 col-md-4 mb-3 mb-md-0">
+            <h6 className="text-secondary d-flex justify-content-center align-items-center gap-2">
+              <Clock className="text-danger" /> Not Attempted
+            </h6>
+            <h5 className="fw-bold text-danger">{summary.missedQuizzes}</h5>
+          </div>
+          <div className="col-12 col-md-4">
+            <h6 className="text-secondary d-flex justify-content-center align-items-center gap-2">
+              <Target className="text-primary" /> Overall Accuracy
+            </h6>
+            <h5 className="fw-bold text-primary">{summary.overallScore}%</h5>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Charts Row */}
       <div className="row g-4">
-        {/* Score Trend */}
+        {/* Score Trend Chart */}
         <div className="col-12 col-md-6">
           <div className="card shadow-sm border-0">
             <div className="card-body">
               <h5 className="fw-semibold mb-3">📈 Score Trend</h5>
               <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={data}>
+                <LineChart data={chartData}>
                   <XAxis dataKey="quiz" />
                   <YAxis />
                   <Tooltip />
@@ -186,7 +159,7 @@ const PerformanceStats = () => {
                 <Target className="text-success" /> Accuracy (%)
               </h5>
               <ResponsiveContainer width="100%" height={250}>
-                <BarChart data={data}>
+                <BarChart data={chartData}>
                   <XAxis dataKey="quiz" />
                   <YAxis />
                   <Tooltip />
@@ -199,6 +172,47 @@ const PerformanceStats = () => {
               </ResponsiveContainer>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Detailed Performance List */}
+      <div className="card shadow-sm mt-4 border-0">
+        <div className="card-body">
+          <h5 className="fw-semibold mb-3">📋 Detailed Quiz Performance</h5>
+          {summary.performanceList.length > 0 ? (
+            <div className="table-responsive">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Quiz Title</th>
+                    <th>Score</th>
+                    <th>Total Questions</th>
+                    <th>Accuracy (%)</th>
+                    <th>Submitted On</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {summary.performanceList.map((exam, idx) => (
+                    <tr key={idx}>
+                      <td>{exam.examTitle}</td>
+                      <td>{exam.score}</td>
+                      <td>{exam.totalQuestions}</td>
+                      <td>{exam.accuracy}</td>
+                      <td>
+                        {exam.submittedAt
+                          ? new Date(exam.submittedAt).toLocaleString()
+                          : "-"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="text-muted text-center">
+              No quiz attempts recorded yet.
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 const Class = require("../models/Class");
 const User = require('../models/User');
+const Result = require("../models/Result");
 const { sendMail } = require('../utils/mailers');
 
 exports.createClass = async (req, res) => {
@@ -165,7 +166,7 @@ exports.removeStudentFromClass = async (req, res) => {
 
     cls.students = cls.students.filter((e) => e !== email);
     cls.pendingStudents = cls.pendingStudents.filter((e) => e !== email);
-
+    await Result.deleteMany({ classCode: code, userEmail: email });
     await sendMail({
            to: email, 
             subject: `Removed from class ${cls.name}`,
