@@ -1,6 +1,7 @@
 const Class = require("../models/Class");
 const User = require('../models/User');
 const Result = require("../models/Result");
+const ScheduledExam = require("../models/scheduledExamModel");
 const { sendMail } = require('../utils/mailers');
 
 exports.createClass = async (req, res) => {
@@ -250,5 +251,91 @@ exports.getClassesByStudent = async (req, res) => {
   } catch (err) {
     console.error("Error fetching student classes:", err);
     res.status(500).json({ message: "Error fetching classes", error: err });
+  }
+};
+
+
+exports.updateClassDetails = async (req, res) => {
+  try {
+    const { className, subject } = req.body;
+     const { code } = req.params;
+
+    const cls = await Class.findOne({ code });
+    if (!cls) return res.status(404).json({ message: "Class not found" });
+
+    const oldName = cls.className;
+    const oldSubject = cls.subject;
+
+    cls.className = className;
+    cls.subject = subject;
+    await cls.save();
+
+    // Notify all enrolled students about the update
+    const emailPromises = cls.students.map((studentEmail) =>
+      sendMail({
+        to: studentEmail,
+        subject: `Class Details Updated: ${className}`,
+        html: `
+          <h3>Hello,</h3>
+          <p>Your class <b>${oldName}</b> has been updated.</p>
+          <p><b>New Name:</b> ${className}<br/>
+          <b>New Subject:</b> ${subject}</p>
+          <p>Please check your dashboard for updated details.</p>
+          <br/>
+          <p>Best regards,<br/>Class Management System</p>
+        `,
+      })
+    );
+    await Promise.all(emailPromises);
+
+    res.json({
+      message: "Class updated successfully and students notified",
+      updated: cls,
+    });
+  } catch (err) {
+    console.error("Error updating class:", err);
+    res.status(500).json({ message: "Error updating class", error: err.message });
+  }
+};
+
+
+exports.deleteClass = async (req, res) => {
+  try {
+    const { code } = req.params; // ✅ Get class code from URL
+
+    // 🔹 Find class by code, not by _id
+    const cls = await Class.findOne({ code });
+    if (!cls) return res.status(404).json({ message: "Class not found" });
+
+    const { className, students } = cls;
+
+    // 🔹 Delete all related data
+    await Promise.all([
+      ScheduledExam.deleteMany({ classCode: code }),
+      Result.deleteMany({ classCode: code }),
+      Class.deleteOne({ code }), // ✅ delete by code instead of findByIdAndDelete
+    ]);
+
+    // 🔹 Notify students about class deletion
+    const emailPromises = students.map((email) =>
+      sendMail({
+        to: email,
+        subject: `Class ${className} Deleted`,
+        html: `
+          <h3>Hello,</h3>
+          <p>We wanted to inform you that your class <b>${className}</b> has been deleted.</p>
+          <p>You will no longer have access to any exams or results associated with it.</p>
+          <br/>
+          <p>Best regards,<br/>Class Management System</p>
+        `,
+      })
+    );
+
+    await Promise.all(emailPromises);
+
+    res.json({ message: "Class and all related data deleted, students notified" });
+  } catch (err) {
+    console.error("Error deleting class:", err);
+    res.status(500).json({ message: "Error deleting class", error: err.message });
   }
 };

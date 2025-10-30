@@ -21,6 +21,7 @@ const ClassDetails = () => {
         const data = await res.json();
         if (res.ok) {
           setClassData(data);
+          localStorage.setItem("classData", JSON.stringify(data));
         } else {
           console.error("Failed to fetch class details:", data.message);
         }
