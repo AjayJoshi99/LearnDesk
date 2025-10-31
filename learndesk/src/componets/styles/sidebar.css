@@ -110,11 +110,12 @@
 }
 
 .sidebar.closed{
-    left : -70px;
+    display: none;
     width: 0px;
 }
 .sidebar.open{
-    width: 260px;
+   dispay: block;
+   width: 260px;
 }
 .sidebar-logo {
   color: white;

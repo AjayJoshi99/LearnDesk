@@ -121,11 +121,14 @@ exports.getClassResults = async (req, res) => {
 exports.getTeacherPerformance = async (req, res) => {
   try {
     const { teacherEmail } = req.params;
-    if (!teacherEmail) return res.status(400).json({ message: "teacherEmail required" });
+    if (!teacherEmail)
+      return res.status(400).json({ message: "teacherEmail required" });
 
     const classes = await Class.find({ teacherEmail });
     if (!classes || classes.length === 0) {
-      return res.status(404).json({ message: "No classes found for this teacher" });
+      return res
+        .status(404)
+        .json({ message: "No classes found for this teacher" });
     }
 
     const classPerformance = [];
@@ -133,40 +136,53 @@ exports.getTeacherPerformance = async (req, res) => {
     for (const cls of classes) {
       const classCode = cls.code;
 
-      // Find exams that include this classCode
-      const exams = await Exam.find({ classCodes: classCode });
+      // 1️⃣ Get students of this class (assuming stored in cls.students as array of emails)
+      const allStudents = cls.students || [];
 
-      // collect all exam ids for this class
+      // 2️⃣ Get all exams of this class
+      const exams = await Exam.find({ classCodes: classCode });
       const examIds = exams.map((e) => e._id);
 
-      // Find all result documents for these exams & this class
-      const results = await Result.find({ examId: { $in: examIds }, classCode });
+      // 3️⃣ Get all result documents for these exams & this class
+      const results = await Result.find({
+        examId: { $in: examIds },
+        classCode,
+      });
 
-      // Build per-student aggregation
+      // 4️⃣ Build student-level performance map (including zero-attempt students)
       const studentMap = {}; // email -> { scoreSum, possibleSum, attempts }
-      let totalAttempts = 0;
 
+      // Initialize all class students with 0s
+      for (const email of allStudents) {
+        studentMap[email] = { scoreSum: 0, possibleSum: 0, attempts: 0 };
+      }
+
+      // Fill actual results
+      let totalAttempts = 0;
       for (const r of results) {
         const email = r.userEmail;
         const score = Number(r.score) || 0;
-        const possible = Number(r.totalQuestions) || 0; // guard zero
+        const possible = Number(r.totalQuestions) || 0;
 
-        if (!studentMap[email]) studentMap[email] = { scoreSum: 0, possibleSum: 0, attempts: 0 };
+        if (!studentMap[email])
+          studentMap[email] = { scoreSum: 0, possibleSum: 0, attempts: 0 };
 
         studentMap[email].scoreSum += score;
         studentMap[email].possibleSum += possible;
         studentMap[email].attempts += 1;
-
         totalAttempts += 1;
       }
 
+      // 5️⃣ Compute per-student averages (0% if no attempts)
       const studentEmails = Object.keys(studentMap);
       const totalStudents = studentEmails.length;
 
-      // compute each student's percentage average across their attempts
       const studentAverages = studentEmails.map((email) => {
         const s = studentMap[email];
-        return s.possibleSum > 0 ? (s.scoreSum / s.possibleSum) * 100 : 0;
+        if (s.possibleSum > 0)
+          return (s.scoreSum / s.possibleSum) * 100;
+        else
+          return 0; // student missed all exams
       });
 
       const classAvg =
@@ -174,21 +190,25 @@ exports.getTeacherPerformance = async (req, res) => {
           ? studentAverages.reduce((a, b) => a + b, 0) / studentAverages.length
           : 0;
 
-      const topScore = studentAverages.length > 0 ? Math.max(...studentAverages) : 0;
+      const topScore =
+        studentAverages.length > 0 ? Math.max(...studentAverages) : 0;
 
-      // per-exam stats (attempts, avg%, top%)
+      // 6️⃣ Per-exam performance (attempts, avg%, top%)
       const examPerformance = [];
       for (const exam of exams) {
-        const examRes = results.filter((r) => String(r.examId) === String(exam._id));
-        if (!examRes.length) continue;
-
+        const examRes = results.filter(
+          (r) => String(r.examId) === String(exam._id)
+        );
         const examScores = examRes.map((r) => {
-          const p = Number(r.totalQuestions) || 0;
-          return p > 0 ? (Number(r.score) || 0) / p * 100 : 0;
+          const totalQ = Number(r.totalQuestions) || 0;
+          return totalQ > 0 ? (r.score / totalQ) * 100 : 0;
         });
 
-        const examAvg = examScores.reduce((a, b) => a + b, 0) / examScores.length;
-        const examTop = Math.max(...examScores);
+        const examAvg =
+          examScores.length > 0
+            ? examScores.reduce((a, b) => a + b, 0) / examScores.length
+            : 0;
+        const examTop = examScores.length > 0 ? Math.max(...examScores) : 0;
 
         examPerformance.push({
           examId: exam._id,
@@ -199,14 +219,15 @@ exports.getTeacherPerformance = async (req, res) => {
         });
       }
 
+      // 7️⃣ Push summary for this class
       classPerformance.push({
         className: cls.className,
         subject: cls.subject,
         classCode,
-        avgScore: Number(classAvg.toFixed(1)),   // percent
-        topScore: Number(topScore.toFixed(1)),   // percent
-        totalStudents,                           // unique students count
-        totalAttempts,                           // number of result docs (attempts)
+        avgScore: Number(classAvg.toFixed(1)),
+        topScore: Number(topScore.toFixed(1)),
+        totalStudents, // includes those who missed all exams
+        totalAttempts,
         exams: examPerformance,
       });
     }
@@ -214,9 +235,12 @@ exports.getTeacherPerformance = async (req, res) => {
     return res.json({ teacherEmail, classPerformance });
   } catch (err) {
     console.error("Error in getTeacherPerformance:", err);
-    return res.status(500).json({ message: "Server error", error: err.message });
+    return res
+      .status(500)
+      .json({ message: "Server error", error: err.message });
   }
 };
+
 
 exports.getStudentPerformance = async (req, res) => {
   try {

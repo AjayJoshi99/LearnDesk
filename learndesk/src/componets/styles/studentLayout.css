@@ -16,7 +16,6 @@
   width: 70px;
 }
 
-
 .main-content {
   flex: 1;
   padding: 20px;
@@ -26,4 +25,28 @@
 .vertical-line {
   width: 1px;
   background-color: #e0e0e0;
+}
+/* Floating Sidebar Toggle Button */
+.floating-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0d6efd; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Stay on top of everything */
+  transition: all 0.3s ease;
+}
+
+.floating-toggle-btn:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
 }

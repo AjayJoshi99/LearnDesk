@@ -22,9 +22,8 @@ function Dashboard() {
           <li><button className='btn text-primary' onClick={() => handleonclick(14, "Time and Distance")}>Time and Distance</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(15, "Area")}>Area</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(13, "Clock")}>Clock</button></li>
-          <li><button className='btn' onClick={() => handleonclick("ArithmeticAptitude", "Arithmetic Aptitude")}><span className='h4'>See more....</span></button></li>
+          <li><button className='btn' onClick={() => {x("/user/ArithmeticAptitude");}}><span className='h4'>See more....</span></button></li>
         </ul>
-
           <br/><br/>
       </div>
 
@@ -35,7 +34,7 @@ function Dashboard() {
           <li><button className='btn text-primary' onClick={() => handleonclick(11, "Letter and Symbol Series")}>Letter and Symbol Series</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(25, "Artificial Language")}>Artificial Language</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(28, "Analogies")}>Analogies</button></li>
-          <li><button className='btn' onClick={() => handleonclick("Logical_reasoning", "Logical Reasoning")}><span className='h4'>See more....</span></button></li>
+          <li><button className='btn' onClick={() => {x("/user/LogicalReasoning");}}><span className='h4'>See more....</span></button></li>
         </ul>
           <br/><br/>
       </div>
@@ -48,7 +47,7 @@ function Dashboard() {
           <li><button className='btn text-primary' onClick={() => handleonclick(4, "One Word Substitutes")}>One Word Substitutes</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(5, "Spellings")}>Spellings</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(6, "Sentence Formation")}>Sentence Formation</button></li>
-          <li><button className='btn' onClick={() => handleonclick("VerbalAbility", "Verbal Ability")}><span className='h4'>See more....</span></button></li>
+          <li><button className='btn' onClick={() => {x("/user/VerbalAbility");}}><span className='h4'>See more....</span></button></li>
         </ul>
           <br/><br/>
       </div>
@@ -61,7 +60,7 @@ function Dashboard() {
           <li><button className='btn text-primary' onClick={() => handleonclick(8, "Direction and Sences")}>Direction and Sences</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(9, "Find the Odd")}>Find the Odd</button></li>
           <li><button className='btn text-primary' onClick={() => handleonclick(10, "Classification")}>Classification</button></li>
-          <li><button className='btn' onClick={() => handleonclick("NonVerbalReasoning", "Non Verbal Reasoning")}><span className='h4'>See more....</span></button></li>
+          <li><button className='btn' onClick={() => {x("/user/NonVerbalReasoning");}}><span className='h4'>See more....</span></button></li>
         </ul>
           <br/><br/>
       </div>
