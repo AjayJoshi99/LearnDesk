@@ -1,38 +1,63 @@
-import {useNavigate} from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import "./styles/QuizzezDashboard.css";
 
 function LogicalReasoning() {
-  const x = useNavigate();
-  const handleonclick = (id, name) => {
-    localStorage.setItem("quizName", name); 
-    x(`/user/Exam/${id}`);
-  }
+  const navigate = useNavigate();
+
+  const handleOnClick = (id, name) => {
+    localStorage.setItem("quizName", name);
+    navigate(`/user/Exam/${id}`);
+  };
+
+  const quizzes = [
+    { id: 0, name: "Number Series - I" },
+    { id: 1, name: "Number Series - II" },
+    { id: 31, name: "Number Series - III" },
+    { id: 11, name: "Letter and Symbol Series" },
+    { id: 24, name: "Theme Detection" },
+    { id: 25, name: "Artificial Language" },
+    { id: 26, name: "Essential Part" },
+    { id: 27, name: "Verbal Classification" },
+    { id: 28, name: "Analogies" },
+  ];
 
   return (
-    <div className='text-center'>
-          <div className='text-start mb-3'>
-                <button
-                    className='btn btn-primary'
-                    onClick={() => x(-1)} 
-                >
-                     <ArrowLeft size={20} className="me-2" /> Back
-                </button>
+    <div className="container py-2">
+      <div className="mb-2">
+        <button
+          className="btn back-btn d-flex align-items-center gap-2 shadow-sm"
+          onClick={() => navigate(-1)}
+        >
+          <ArrowLeft size={18} /> Back
+        </button>
+      </div>
+
+      <div className="text-center mb-5">
+        <h2 className="fw-bold mb-2 heading-text">Logical Reasoning</h2>
+        <p className="text-muted">
+          Sharpen your reasoning and pattern recognition skills with these logical quizzes
+        </p>
+      </div>
+
+      <div className="row justify-content-center g-4">
+        {quizzes.map((quiz, index) => (
+          <div key={index} className="col-md-4 col-sm-6 col-10">
+            <div className="card quiz-card h-100 text-center p-4">
+              <h5 className="fw-semibold mb-3">{quiz.name}</h5>
+              <button
+                className="btn btn-theme w-100 fw-semibold"
+                onClick={() => handleOnClick(quiz.id, quiz.name)}
+              >
+                Start Quiz
+              </button>
             </div>
-         <div className='h3 border rounded p-3 mb-5 shadow-lg'>Logical Reasoning<br/><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(0, "Number Series - I")}>Number Series - I</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(1, "Number Series - II")}>Number Series - II</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(31, "Number Series - III")}>Number Series - III</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(11, "Letter and Symbol Series")}>Letter and Symbol Series</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(24, "Theme Detection")}>Theme Detection</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(25, "Artificial Language")}>Artificial Language</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(26, "Essential Part")}>Essential Part</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(27, "Verbal Classification")}>Verbal Classification</button><br/>
-          <button className="btn btn-warning m-2 exam_button grad e" type="button" onClick={() => handleonclick(28, "Analogies")}>Analogies</button><br/>
-        </div>
-      
+          </div>
+        ))}
+      </div>
+
     </div>
-    
-  )
+  );
 }
 
-export default LogicalReasoning
+export default LogicalReasoning;

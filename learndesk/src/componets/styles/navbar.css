@@ -1,7 +1,5 @@
-/* -------------------- base navbar (your original style) -------------------- */
-
 .navbar {
-  position: relative; /* important so dropdown is positioned relative to navbar */
+  position: relative; 
   height: 70px;
   background: linear-gradient(90deg, #1f2f98, #0078ff, #00b8d9);
   border-bottom: 1px solid #e5e7eb;
