@@ -18,7 +18,6 @@ const StudentTab = () => {
   const [loadingPerf, setLoadingPerf] = useState(false);
   const [summary, setSummary] = useState(null);
 
-  // ✅ View student performance
   const handleViewPerformance = async (studentEmail) => {
     try {
       setShowPerfModal(true);

@@ -21,13 +21,11 @@ function Exam() {
   const quizName = localStorage.getItem("quizName") || `Quiz-${num}`;
   const totalQuestions = obj?.Question?.length || 0;
   const attemptedCount = Object.keys(userAnswer).length;
-  // ✅ Option select
   const handleOptionChange = (index, input, correct) => {
     setUserAnswer((prev) => ({ ...prev, [index]: input }));
     if (input === correct) setTotalMarks((prev) => prev + 1);
   };
 
-  // ✅ Safe exit
   const handleForceExit = useCallback(() => {
     setSubmitted(true);
     setShowModal(false);
@@ -35,7 +33,6 @@ function Exam() {
     navigate("/user/dashboard");
   }, [navigate]);
 
-  // ✅ Start Exam
   const startExam = async () => {
     try {
       const elem = document.documentElement;
@@ -80,16 +77,14 @@ function Exam() {
       navigate("/user/dashboard");
     }
   }, [showResults, navigate, num, quizName, totalMarks, userAnswer]);
-// ...existing code...
 
-  // ✅ Timer
   useEffect(() => {
     if (!examStarted || submitted) return;
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          alert("⏰ Time’s up! Auto-submitting...");
+          alert("⏰ Time's up! Auto-submitting...");
           handleTimeUp();
           return 0;
         }
@@ -99,7 +94,6 @@ function Exam() {
     return () => clearInterval(timer);
   }, [examStarted, submitted, handleTimeUp]);
 
-  // ✅ Restriction Logic
   const handleVisibilityChange = useCallback(() => {
     if (document.hidden && examStarted && !submitted) {
       alert("⚠️ Tab switching not allowed!");
@@ -115,7 +109,7 @@ function Exam() {
   }, [examStarted, submitted, handleForceExit]);
 
   useEffect(() => {
-    if (submitted) return; // 🧠 stop enforcing after submission
+    if (submitted) return;
     document.addEventListener("visibilitychange", handleVisibilityChange);
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => {
@@ -124,7 +118,6 @@ function Exam() {
     };
   }, [handleVisibilityChange, handleFullscreenChange, submitted]);
 
-  // ✅ Disable Copy/Paste/Right-click
   useEffect(() => {
     const disable = (e) => e.preventDefault();
     const events = ["copy", "cut", "paste", "contextmenu", "selectstart"];

@@ -30,7 +30,7 @@ function NonVerbalReasoning() {
       </div>
 
       <div className="text-center mb-5">
-        <h2 className="fw-bold mb-2 heading-text">Non Verbal Reasoning</h2>
+        <h2 className="fw-bold text-dark mb-2 heading-text">Non Verbal Reasoning</h2>
         <p className="text-muted">
           Test your logical thinking and visualization skills with these non-verbal reasoning quizzes
         </p>

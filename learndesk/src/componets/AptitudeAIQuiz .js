@@ -25,7 +25,7 @@ export default function RandomQuiz() {
   const [history, setHistory] = useState([]);
   const [examStarted, setExamStarted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes
+  const [timeLeft, setTimeLeft] = useState(1200); 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const fetchQuestions = async (categoryId) => {
@@ -36,7 +36,7 @@ export default function RandomQuiz() {
 
     try {
       const res = await fetch(
-        `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
+        `https://opentdb.com/api.php?amount=15&category=${categoryId}&type=multiple`
       );
       const data = await res.json();
       const formatted = (data.results || []).map((q) => ({

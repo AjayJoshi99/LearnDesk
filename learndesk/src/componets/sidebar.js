@@ -18,8 +18,8 @@ const Sidebar = ({ isOpen }) => {
     { icon: Home, label: "Dashboard", path: "/user/dashboard" },
     { icon: BarChart3, label: "History", path: "/user/history" },
     { icon: Users, label: "Articles", path: "/user/articles" },
-    { icon: FileText, label: "Classes", path: "/user/classes" },
-    { icon: Calendar, label: "Random Quizzes", path: "/user/randomquizzes" },
+    { icon: FileText, label: "Classes", path: "/user/classes" }, 
+    { icon: Calendar, label: "Random Quizzes", path: "/user/randomquizzes" }, 
     { icon: Settings, label: "Quote Of The Day", path: "/user/quote" },
   ];
 

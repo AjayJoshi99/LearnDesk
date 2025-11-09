@@ -49,7 +49,6 @@ const Login = () => {
 
   const validateForm = () => {
     const newErrors = {};
-
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const mobilePattern = /^[0-9]{10}$/;
     const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
@@ -238,7 +237,10 @@ const Login = () => {
 
   return (
     <div className="auth-container">
+      {/* <img src = "./loginGIF.gif" /> */}
+        <br/>
       {loading && <Loading message="Please wait..." />}
+      
       <div className="auth-card">
         <div className="auth-header">
           <h1 className="auth-title">

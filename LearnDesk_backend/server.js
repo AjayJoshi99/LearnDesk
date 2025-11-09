@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require("path");
 const connectDB = require('./config/db');
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
 }));
 app.use(cors());
 app.use(express.json());
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/userRoutes'));
@@ -23,6 +25,7 @@ app.use("/api/scheduled-exams", require("./routes/scheduledExamRoutes"));
 app.use("/api/results", require("./routes/resultRoutes"));
 app.use('/api/quotes', require('./routes/quoteRoutes'));
 app.use('/api/random-quiz', require('./routes/randomQuizRoutes'));
+app.use('/api/files', require('./routes/fileRoutes'));
 
 app.get('/', (req, res) => res.send('API is running'));
 

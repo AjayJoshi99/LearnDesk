@@ -8,6 +8,7 @@ import ExamsTab from "./ExamsTab";
 import ResultsTab from "./ResultsTab";
 import AnnouncementsTab from "./AnnouncementsTab";
 import SettingsTab from "./SettingsTab";
+import FileUpload from "./FileUpload";
 
 const ClassDetails = () => {
   const { id } = useParams(); 
@@ -111,6 +112,14 @@ const ClassDetails = () => {
         </li>
         <li className="nav-item">
           <button
+            className={`nav-link ${activeTab === "fileupload" ? "active" : ""}`}
+            onClick={() => setActiveTab("fileupload")}
+          >
+            <i className="bi bi-upload me-1"></i>File Upload
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
             className={`nav-link ${activeTab === "announcements" ? "active" : ""}`}
             onClick={() => setActiveTab("announcements")}
           >
@@ -132,6 +141,7 @@ const ClassDetails = () => {
         {activeTab === "students" && <StudentsTab classId={id} />}
         {activeTab === "exams" && <ExamsTab classId={id} />}
         {activeTab === "results" && <ResultsTab classId={id} />}
+        {activeTab === "fileupload" && <FileUpload classId={id} />}
         {activeTab === "announcements" && <AnnouncementsTab classCode={id} />}
         {activeTab === "settings" && <SettingsTab classId={id} />}
       </div>

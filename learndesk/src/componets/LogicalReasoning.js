@@ -26,7 +26,7 @@ function LogicalReasoning() {
     <div className="container py-2">
       <div className="mb-2">
         <button
-          className="btn back-btn d-flex align-items-center gap-2 shadow-sm"
+          className="btn back-btn text-dark d-flex align-items-center gap-2 shadow-sm"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft size={18} /> Back

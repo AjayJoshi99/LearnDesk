@@ -9,7 +9,6 @@ const TeacherHome = () => {
   const [newClassName, setNewClassName] = useState("");
   const [subject, setSubject] = useState("");
 
-  // ✅ Fetch classes from backend
   useEffect(() => {
     const fetchClasses = async () => {
       try {
@@ -25,7 +24,6 @@ const TeacherHome = () => {
     fetchClasses();
   }, [user.email]);
 
-  // ✅ Create new class
   const handleCreateClass = async () => {
     if (!newClassName.trim() || !subject.trim()) return;
     try {
@@ -33,15 +31,15 @@ const TeacherHome = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          className: newClassName, // ✅ renamed
-          subject, // ✅ new field
+          className: newClassName, 
+          subject, 
           teacherEmail: user.email,
         }),
       });
 
       const data = await res.json();
       if (res.ok && data.success) {
-        setClasses((prev) => [data.class, ...prev]); // ✅ updated
+        setClasses((prev) => [data.class, ...prev]);
         setNewClassName("");
         setSubject("");
       } else {
@@ -54,13 +52,11 @@ const TeacherHome = () => {
 
   return (
     <div className="container mt-4 home-page">
-      {/* Header */}
       <div className="text-center mb-4">
         <h3 className="fw-bold">Welcome back, {user.name}! 👋</h3>
         <p className="text-muted">Manage your classes and students with ease.</p>
       </div>
 
-      {/* Create Class */}
       <div className="create-class-card shadow-sm rounded-4 p-4 mb-4">
         <h5 className="fw-semibold mb-3">
           <i className="bi bi-plus-circle me-2 text-primary"></i>
@@ -91,7 +87,6 @@ const TeacherHome = () => {
         </div>
       </div>
 
-      {/* Classes Section */}
       <h5 className="fw-semibold mb-3">Your Classes</h5>
       <div className="row g-4">
         {classes.map((cls) => (
