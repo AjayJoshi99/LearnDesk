@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import {
-  Search,
-  Bell,
-  AlignJustify,
   LogOut,
   Menu,
   X,
@@ -42,7 +39,6 @@ const Navbar = ({ toggleSidebar }) => {
     setMobileOpen((s) => !s);
   };
 
-  // Close mobile dropdown if click outside
   useEffect(() => {
     const handleClickOutside = (ev) => {
       if (
@@ -62,12 +58,8 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <button className="menu-toggle" onClick={toggleSidebar}>
-          <AlignJustify size={24} />
-        </button>
-
         <span className="navbar-brand fw-bold fs-3 d-flex align-items-center text-white">
-          <i className="bi bi-mortarboard-fill me-2 text-white"></i> LearnDesk
+          <i className="bi bi-mortarboard-fill me-2 mx-3 text-white"></i> LearnDesk
         </span>
       </div>
 
@@ -91,16 +83,10 @@ const Navbar = ({ toggleSidebar }) => {
           <span className="btn-text">LogOut</span>
         </button>
 
-        <button className="icon-button desktop-only">
-          <Bell size={20} />
-          <span className="notification-badge">5</span>
-        </button>
-
         <div className="navbar-avatar desktop-only">
           {user?.name ? user.name.charAt(0).toUpperCase() : "U"}
         </div>
 
-        {/* Mobile menu button (shown only on small screens) */}
         <button
           className="mobile-menu-button"
           onClick={toggleMobileMenu}
@@ -110,20 +96,8 @@ const Navbar = ({ toggleSidebar }) => {
         </button>
       </div>
 
-      {/* Mobile dropdown menu */}
       {mobileOpen && (
         <div className="mobile-dropdown" ref={mobileMenuRef}>
-          {/* Search inside mobile menu */}
-          <div className="mobile-search">
-            <Search className="search-icon" size={18} />
-            <input
-              className="search-input-mobile"
-              placeholder="Search..."
-              type="text"
-            />
-          </div>
-
-          {/* Practice select */}
           <select
             className="form-select form-select-sm mobile-select"
             onChange={handleChange}
@@ -138,17 +112,10 @@ const Navbar = ({ toggleSidebar }) => {
             <option value="/user/NonVerbalReasoning">Non-Verbal Reasoning</option>
           </select>
 
-          {/* Actions */}
           <div className="mobile-actions">
             <button className="mobile-action" onClick={handleLoginClick}>
               <LogOut size={16} />
               <span>Logout</span>
-            </button>
-
-            <button className="mobile-action">
-              <Bell size={16} />
-              <span>Notifications</span>
-              <span className="mobile-noti-badge">5</span>
             </button>
           </div>
 

@@ -1,4 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/Articles.css";
 
 const Articles = () => {
@@ -22,27 +23,41 @@ const Articles = () => {
 
   return (
     <div className="articles-container">
-      <button className="back-btn" onClick={() => navigate("/user/dashboard")}>
-        ← Back to Topics
-      </button>
+      <div className="container py-5">
+        <div className="d-flex justify-content-start mb-4">
+          <button
+            className="back-btn"
+            onClick={() => navigate("/user/dashboard")}
+          >
+            ← Back to Topics
+          </button>
+        </div>
 
-      <h1 className="articles-title">Aptitude Articles</h1>
+        <h1 className="articles-title text-center mb-5">
+          Aptitude Articles
+        </h1>
 
-      <div className="articles-grid">
-        {articlesData.map((article) => (
-          <Link key={article.id} to={article.path} className="article-card">
-            <span className="article-left">
-              <span className="article-id">{article.id}</span>
-              {article.name}
-            </span>
-            <span className="arrow">→</span>
-          </Link>
-        ))}
+        {/* Bootstrap responsive grid: 3 per row on lg, 2 on md, 1 on sm */}
+        <div className="row g-4 justify-content-center">
+          {articlesData.map((article) => (
+            <div key={article.id} className="col-12 col-sm-6 col-lg-4">
+              <Link to={article.path} className="article-card text-decoration-none">
+                <div className="article-left">
+                  <span className="article-id">{article.id}</span>
+                  <span className="article-name">{article.name}</span>
+                </div>
+                <span className="arrow">→</span>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {articlesData.length === 0 && (
+          <p className="no-articles mt-5 text-center">
+            No articles available yet.
+          </p>
+        )}
       </div>
-
-      {articlesData.length === 0 && (
-        <p className="no-articles">No articles available yet.</p>
-      )}
     </div>
   );
 };
