@@ -5,7 +5,6 @@ const ProfitLossArticle = () => {
 
   return (
     <div className="container my-4">
-      {/* Back Button */}
       <button
         className="btn btn-outline-primary mb-3"
         onClick={() => navigate("/user/articles")}

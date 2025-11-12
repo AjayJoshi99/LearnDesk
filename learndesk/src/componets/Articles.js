@@ -19,12 +19,14 @@ const Articles = () => {
     { id: 11, name: "Coding - Decoding", path: "/user/articles/coding-decoding" },
     { id: 12, name: "Simple and Compound Interest", path: "/user/articles/simple-compound-interest" },
     { id: 13, name: "Permutations and Combinations", path: "/user/articles/permutations-combinations" },
+    { id: 14, name: "Calendar Tricks", path: "/user/articles/calendar-tricks" },
+    { id: 15, name: "Problems on Trains", path: "/user/articles/problems-on-trains" },
   ];
 
   return (
     <div className="articles-container">
-      <div className="container py-5">
-        <div className="d-flex justify-content-start mb-4">
+      <div className="container py-2">
+        <div className="d-flex justify-content-start mb-2">
           <button
             className="back-btn"
             onClick={() => navigate("/user/dashboard")}

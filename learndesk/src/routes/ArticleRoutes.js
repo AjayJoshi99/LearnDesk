@@ -13,6 +13,8 @@ import ClockConcept from "../componets/Articless/ClockConcept";
 import CodingDecoding from "../componets/Articless/CodingDecoding";
 import SimpleCompoundInterest from "../componets/Articless/SimpleCompoundInterest";
 import PermutationsCombinations from "../componets/Articless/PermutationsCombinations";
+import CalendarTricks from "../componets/Articless/CalendarTricks";
+import ProblemsOnTrains from "../componets/Articless/ProblemsOnTrains";
 
 export const ArticleRoutes = () => {
   return (
@@ -31,6 +33,8 @@ export const ArticleRoutes = () => {
       <Route path="articles/coding-decoding" element={<CodingDecoding />} />
       <Route path="articles/simple-compound-interest" element={<SimpleCompoundInterest />} />
       <Route path="articles/permutations-combinations" element={<PermutationsCombinations />} />
+      <Route path="articles/calendar-tricks" element={<CalendarTricks />} />
+      <Route path="articles/problems-on-trains" element={<ProblemsOnTrains />} />
     </>
   );
 };
