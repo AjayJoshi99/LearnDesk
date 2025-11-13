@@ -15,6 +15,7 @@ import SimpleCompoundInterest from "../componets/Articless/SimpleCompoundInteres
 import PermutationsCombinations from "../componets/Articless/PermutationsCombinations";
 import CalendarTricks from "../componets/Articless/CalendarTricks";
 import ProblemsOnTrains from "../componets/Articless/ProblemsOnTrains";
+import SeatingArrangements from "../componets/Articless/SeatingArrangements"; 
 
 export const ArticleRoutes = () => {
   return (
@@ -35,6 +36,7 @@ export const ArticleRoutes = () => {
       <Route path="articles/permutations-combinations" element={<PermutationsCombinations />} />
       <Route path="articles/calendar-tricks" element={<CalendarTricks />} />
       <Route path="articles/problems-on-trains" element={<ProblemsOnTrains />} />
+      <Route path="articles/seating-arrangements" element={<SeatingArrangements />} />
     </>
   );
 };

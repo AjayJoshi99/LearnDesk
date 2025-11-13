@@ -237,10 +237,14 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      {/* <img src = "./loginGIF.gif" /> */}
-        <br/>
+      <img src = "./loginGIF.gif" className="auth-gif" alt="login animation"  />
+       <div className="vertical-line d-none d-md-block"></div>
       {loading && <Loading message="Please wait..." />}
-      
+      <div className="fixed-top d-none d-md-block  text-white text-center py-2 shadow-sm">
+        <span className="navbar-brand fw-bold fs-3 d-flex align-items-center text-white">
+          <i className="bi bi-mortarboard-fill me-2 mx-3 text-white"></i> LearnDesk
+        </span>
+      </div>
       <div className="auth-card">
         <div className="auth-header">
           <h1 className="auth-title">
