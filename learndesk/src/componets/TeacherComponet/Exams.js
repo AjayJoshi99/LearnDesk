@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PlusCircle, Pencil, Save, XCircle } from "lucide-react";
+import { PlusCircle, Pencil, Save, XCircle, FileDown } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ExamTab = () => {
@@ -14,23 +14,53 @@ const ExamTab = () => {
     correctAnswer: "",
   });
   const [teacherEmail, setTeacherEmail] = useState("");
+ const handleDownload = (exam) => {
+  // Text content you want inside the PDF
+  const content = `Exam: ${exam.title}
+Description: ${exam.description}
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    setTeacherEmail(user?.email || "");
-    fetchExams(user?.email);
-  }, []);
+${exam.questions
+    .map(
+      (q, i) =>
+        `${i + 1}. ${q.questionText}
+A) ${q.options[0]}
+B) ${q.options[1]}
+C) ${q.options[2]}
+D) ${q.options[3]}
+Correct: ${q.correctAnswer}
+`
+    )
+    .join("\n")}
+  `;
 
-  const fetchExams = async (email) => {
-    if (!email) return;
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/exam/teacher/${email}`);
-      const data = await res.json();
-      if (res.ok) setExams(data.exams || []);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // Convert text → PDF buffer using browser print MIME
+  const blob = new Blob([content], { type: "plain/text" });
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${exam.title}.txt`;
+  a.click();
+
+  URL.revokeObjectURL(url);
+};
+    useEffect(() => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      setTeacherEmail(user?.email || "");
+      fetchExams(user?.email);
+    }, []);
+
+    const fetchExams = async (email) => {
+      if (!email) return;
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/exam/teacher/${email}`);
+        const data = await res.json();
+        if (res.ok) setExams(data.exams || []);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
   const handleCreateExam = async () => {
     if (!title.trim() || questions.length === 0)
@@ -110,15 +140,14 @@ const ExamTab = () => {
     setNewQuestion({ questionText: "", options: ["", "", "", ""], correctAnswer: "" });
   };
 
+
   return (
     <div className="container mt-4">
       <div className="card shadow-lg border-0 p-4">
         <h4 className="mb-3 text-primary d-flex align-items-center">
-          <PlusCircle size={22} className="me-2" />{" "}
-          {editingExam ? "Edit Exam" : "Create New Exam"}
+          <PlusCircle size={22} className="me-2" /> {editingExam ? "Edit Exam" : "Create New Exam"}
         </h4>
 
-        {/* Exam Info */}
         <div className="mb-3">
           <input
             type="text"
@@ -135,7 +164,6 @@ const ExamTab = () => {
           />
         </div>
 
-        {/* Editable Questions */}
         {questions.length > 0 && (
           <div className="mt-3">
             <h5 className="text-secondary mb-3">Edit Questions</h5>
@@ -143,13 +171,8 @@ const ExamTab = () => {
               <div key={qIndex} className="card border-0 shadow-sm mb-3 bg-light">
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h6 className="text-primary fw-bold mb-0">
-                      Question {qIndex + 1}
-                    </h6>
-                    <button
-                      className="btn btn-sm btn-outline-danger"
-                      onClick={() => handleDeleteQuestion(qIndex)}
-                    >
+                    <h6 className="text-primary fw-bold mb-0">Question {qIndex + 1}</h6>
+                    <button className="btn btn-sm btn-outline-danger" onClick={() => handleDeleteQuestion(qIndex)}>
                       <XCircle size={14} /> Remove
                     </button>
                   </div>
@@ -158,42 +181,30 @@ const ExamTab = () => {
                     type="text"
                     className="form-control mb-3"
                     value={q.questionText}
-                    onChange={(e) =>
-                      handleQuestionChange(qIndex, "questionText", e.target.value)
-                    }
+                    onChange={(e) => handleQuestionChange(qIndex, "questionText", e.target.value)}
                   />
 
-                  {/* Inline Options (A-D) */}
                   {["A", "B", "C", "D"].map((label, idx) => (
                     <div key={idx} className="row align-items-center mb-2">
-                      <div className="col-md-3 col-4 text-muted small fw-bold">
-                        Option {label}:
-                      </div>
+                      <div className="col-md-3 col-4 text-muted small fw-bold">Option {label}:</div>
                       <div className="col-md-9 col-8">
                         <input
                           type="text"
                           className="form-control"
                           value={q.options[idx]}
-                          onChange={(e) =>
-                            handleOptionChange(qIndex, idx, e.target.value)
-                          }
+                          onChange={(e) => handleOptionChange(qIndex, idx, e.target.value)}
                         />
                       </div>
                     </div>
                   ))}
 
-                  {/* Correct Answer */}
                   <div className="row align-items-center mt-3">
-                    <div className="col-md-3 col-4 text-muted small fw-bold">
-                      Correct Answer:
-                    </div>
+                    <div className="col-md-3 col-4 text-muted small fw-bold">Correct Answer:</div>
                     <div className="col-md-9 col-8">
                       <select
                         className="form-select"
                         value={q.correctAnswer}
-                        onChange={(e) =>
-                          handleQuestionChange(qIndex, "correctAnswer", e.target.value)
-                        }
+                        onChange={(e) => handleQuestionChange(qIndex, "correctAnswer", e.target.value)}
                       >
                         <option value="">Select</option>
                         {q.options.map((opt, idx) => (
@@ -209,8 +220,6 @@ const ExamTab = () => {
             ))}
           </div>
         )}
-
-        {/* Add Question Section */}
         <div className="mt-4">
           <h5 className="text-success mb-3">Add New Question</h5>
           <input
@@ -222,11 +231,9 @@ const ExamTab = () => {
               setNewQuestion({ ...newQuestion, questionText: e.target.value })
             }
           />
-          {["A", "B", "C", "D"].map((label, idx) => (
+          {['A', 'B', 'C', 'D'].map((label, idx) => (
             <div key={idx} className="row align-items-center mb-2">
-              <div className="col-md-3 col-4 text-muted small fw-bold">
-                Option {label}:
-              </div>
+              <div className="col-md-3 col-4 text-muted small fw-bold">Option {label}:</div>
               <div className="col-md-9 col-8">
                 <input
                   type="text"
@@ -243,9 +250,7 @@ const ExamTab = () => {
             </div>
           ))}
           <div className="row align-items-center mt-3">
-            <div className="col-md-3 col-4 text-muted small fw-bold">
-              Correct Answer:
-            </div>
+            <div className="col-md-3 col-4 text-muted small fw-bold">Correct Answer:</div>
             <div className="col-md-9 col-8">
               <select
                 className="form-select"
@@ -300,16 +305,32 @@ const ExamTab = () => {
           exams.map((exam) => (
             <div key={exam._id} className="col-md-6 mb-3">
               <div className="card shadow-sm border-0 h-100">
-                <div className="card-body">
-                  <h5 className="card-title">{exam.title}</h5>
-                  <p className="card-text text-muted">{exam.description}</p>
-                  <p className="text-muted">Questions: {exam.questions.length}</p>
-                  <button
-                    className="btn btn-outline-primary btn-sm"
-                    onClick={() => handleEditClick(exam)}
-                  >
-                    <Pencil size={14} /> Edit
-                  </button>
+                <div className="card-body d-flex flex-column">
+                  <div className="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                      <h5 className="card-title mb-1">{exam.title}</h5>
+                      <p className="card-text text-muted mb-1">{exam.description}</p>
+                      <p className="text-muted small mb-0">Questions: {exam.questions.length}</p>
+                    </div>
+                    <div className="d-flex flex-column ms-2">
+                      <button
+                        className="btn btn-outline-primary btn-sm mb-2"
+                        onClick={() => handleEditClick(exam)}
+                      >
+                        <Pencil size={14} /> Edit
+                      </button>
+
+                      <button
+                        className="btn btn-outline-success btn-sm"
+                        onClick={() => handleDownload(exam)}
+                        title="Download as PDF"
+                      >
+                        <FileDown size={14} /> Download
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* keep card height consistent on mobile by pushing buttons to top with mb-auto */}
                 </div>
               </div>
             </div>
@@ -320,4 +341,6 @@ const ExamTab = () => {
   );
 };
 
+
 export default ExamTab;
+
