@@ -12,7 +12,7 @@ const {
 router.post("/schedule", scheduleExam);
 router.get("/teacher/:email", getExamsByTeacher);
 router.delete("/:id", deleteScheduledExam);
-router.get("/base/teacher/:email", getBaseExamsByTeacher);
+router.post("/base/teacher/:email", getBaseExamsByTeacher);
 router.get("/class/:classCode", getExamsByClass);
 router.get("/teacher/:email/class/:classCode", getExamsByTeacherAndClass);
 

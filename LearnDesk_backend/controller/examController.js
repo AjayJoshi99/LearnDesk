@@ -26,6 +26,7 @@ exports.createExam = async (req, res) => {
 //     res.status(500).json({ message: "Server error" });
 //   }
 // };
+
 exports.getExams = async (req, res) => {
   try {
     const { teacherEmail } = req.params;

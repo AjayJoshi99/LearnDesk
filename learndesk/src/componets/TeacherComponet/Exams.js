@@ -15,36 +15,35 @@ const ExamTab = () => {
   });
   const [teacherEmail, setTeacherEmail] = useState("");
  const handleDownload = (exam) => {
-  // Text content you want inside the PDF
   const content = `Exam: ${exam.title}
-Description: ${exam.description}
+      Description: ${exam.description}
 
-${exam.questions
-    .map(
-      (q, i) =>
-        `${i + 1}. ${q.questionText}
-A) ${q.options[0]}
-B) ${q.options[1]}
-C) ${q.options[2]}
-D) ${q.options[3]}
-Correct: ${q.correctAnswer}
-`
-    )
-    .join("\n")}
-  `;
+      ${exam.questions
+          .map(
+            (q, i) =>
+              `${i + 1}. ${q.questionText}
+      A) ${q.options[0]}
+      B) ${q.options[1]}
+      C) ${q.options[2]}
+      D) ${q.options[3]}
+      Correct: ${q.correctAnswer}
+      `
+          )
+          .join("\n")}
+        `;
 
-  // Convert text → PDF buffer using browser print MIME
-  const blob = new Blob([content], { type: "plain/text" });
+        const blob = new Blob([content], { type: "plain/text" });
 
-  const url = URL.createObjectURL(blob);
+        const url = URL.createObjectURL(blob);
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `${exam.title}.txt`;
-  a.click();
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${exam.title}.txt`;
+        a.click();
 
-  URL.revokeObjectURL(url);
-};
+        URL.revokeObjectURL(url);
+      };
+      
     useEffect(() => {
       const user = JSON.parse(localStorage.getItem("user"));
       setTeacherEmail(user?.email || "");

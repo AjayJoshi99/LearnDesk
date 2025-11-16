@@ -2,6 +2,7 @@ const Result = require("../models/Result");
 const Class = require("../models/Class");
 const Exam = require("../models/Exam");
 const Quiz = require("../models/Exam");
+const ScheduledExam = require("../models/scheduledExamModel");
 
 // 🧾 Save student result
 exports.saveResult = async (req, res) => {
@@ -245,25 +246,18 @@ exports.getTeacherPerformance = async (req, res) => {
 exports.getStudentPerformance = async (req, res) => {
   try {
     const { studentEmail, classCode } = req.params;
-    const email = studentEmail;
-    // 1️⃣ Get all exams for the class
-    const exams = await Exam.find({ classCodes: classCode });
-    const examIds = exams.map((e) => e._id.toString());
 
-    // 2️⃣ Get all results of this student for that class
-    const results = await Result.find({ userEmail: email, classCode });
+    const scheduled = await ScheduledExam.find({ classCode }).select("examId");
+    const examIds = scheduled.map(s => s.examId.toString());
+    const exams = await Exam.find({ _id: { $in: examIds } });
+    const results = await Result.find({ userEmail: studentEmail, classCode });
+    const attemptedExamIds = results.map(r => r.examId.toString());
+    const missedExams = exams.filter(e => !attemptedExamIds.includes(e._id.toString()));
 
-    // 3️⃣ Determine attempted and missed exams
-    const attemptedExamIds = results.map((r) => r.examId.toString());
-    const missedExams = exams.filter(
-      (e) => !attemptedExamIds.includes(e._id.toString())
-    );
-
-    // 4️⃣ Calculate total score and accuracy
     let totalScore = 0;
     let totalQuestions = 0;
 
-    results.forEach((r) => {
+    results.forEach(r => {
       totalScore += r.score;
       totalQuestions += r.totalQuestions;
     });
@@ -271,9 +265,8 @@ exports.getStudentPerformance = async (req, res) => {
     const overallScore =
       totalQuestions > 0 ? ((totalScore / totalQuestions) * 100).toFixed(1) : 0;
 
-    // 5️⃣ Prepare per-exam details
-    const examDetails = results.map((r) => {
-      const exam = exams.find((e) => e._id.toString() === r.examId.toString());
+    const examDetails = results.map(r => {
+      const exam = exams.find(e => e._id.toString() === r.examId.toString());
       return {
         examTitle: exam ? exam.title : "Unknown Exam",
         score: r.score,
@@ -283,16 +276,16 @@ exports.getStudentPerformance = async (req, res) => {
       };
     });
 
-    // 6️⃣ Build summary response
     const summary = {
-      totalQuizzes: exams.length,
-      attemptedQuizzes: results.length,
+      totalQuizzes: exams.length,       
+      attemptedQuizzes: results.length, 
       missedQuizzes: missedExams.length,
       overallScore,
       performanceList: examDetails,
     };
 
     res.status(200).json({ summary });
+
   } catch (err) {
     console.error("Error calculating student performance:", err);
     res.status(500).json({ message: "Server error calculating performance" });

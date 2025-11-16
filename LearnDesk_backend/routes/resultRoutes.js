@@ -14,8 +14,20 @@ router.get("/studentperformance/:studentEmail/:classCode", resultController.getS
 router.get("/check/:examId/:email", async (req, res) => {
   try {
     const { examId, email } = req.params;
-    const existingResult = await Result.findOne({ examId, userEmail: email });
+    const { classCode } = req.query;
+
+    if (!classCode) {
+      return res.status(400).json({ message: "classCode is required" });
+    }
+
+    const existingResult = await Result.findOne({ 
+      examId, 
+      userEmail: email,
+      classCode 
+    });
+
     res.json({ exists: !!existingResult });
+
   } catch (error) {
     console.error("Error checking result:", error);
     res.status(500).json({ message: "Server error", error });

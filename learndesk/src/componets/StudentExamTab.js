@@ -62,7 +62,7 @@ const StudentExamTab = () => {
         if (!examId) continue;
         try {
           const res = await fetch(
-            `${process.env.REACT_APP_API_URL}/api/results/check/${examId}/${userEmail}`
+            `${process.env.REACT_APP_API_URL}/api/results/check/${examId}/${userEmail}?classCode=${classCode}`
           );
           const data = await res.json();
           results[examId] = data.exists;
@@ -73,22 +73,22 @@ const StudentExamTab = () => {
       setAttemptedExams(results);
     };
     if (exams.length > 0) fetchAttemptedStatus();
+     // eslint-disable-next-line
   }, [exams, userEmail]);
 
-  // ✅ Handle exam start / view
   const handleAttemptExam = async (exam) => {
     const examId = exam.examId?._id;
     const startTime = new Date(exam.date);
     const now = new Date();
     const diffMinutes = (now - startTime) / (1000 * 60);
-
-    // Already attempted
+    console.log("Exam object received for attempt:", exam);
+    localStorage.setItem("duration", exam.duration || 10);
+    console.log("Exam duration set to:", exam.duration || 10);
     if (attemptedExams[examId]) {
       navigate(`/user/result/${examId}`);
       return;
     }
 
-    // Not started yet
     if (now < startTime) {
       alert(
         `Exam "${exam.examId?.title}" has not started yet.\nStarts at: ${startTime.toLocaleString()}`
@@ -96,7 +96,6 @@ const StudentExamTab = () => {
       return;
     }
 
-    // Exam window closed
     if (diffMinutes > 15) {
       alert("You missed the exam. It will be marked as 0.");
       await saveMissedExamResult(exam);
@@ -104,12 +103,11 @@ const StudentExamTab = () => {
       return;
     }
 
-    // Start exam
     localStorage.setItem("currentExam", JSON.stringify(exam.examId));
+    console.log("examId to attempt in studentExamTab:", exam.examId);
     navigate(`/user/attempt-exam/${examId}`);
   };
 
-  // ✅ Auto-submit missed exams every minute
 useEffect(() => {
   const timer = setInterval(async () => {
     setAttemptedExams(prevAttempted => {
@@ -127,14 +125,13 @@ useEffect(() => {
           prevAttempted[examId] = true;
         }
       });
-      return { ...prevAttempted }; // return new state to trigger re-render
+      return { ...prevAttempted }; 
     });
-  }, 60000); // check every 1 min
+  }, 60000);
 
   return () => clearInterval(timer);
 }, [exams, saveMissedExamResult]);
 
-  // ✅ Loading state
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100 flex-column">

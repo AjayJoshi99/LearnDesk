@@ -30,7 +30,6 @@ const PerformanceStats = () => {
           return;
         }
 
-        // ✅ Fetch only student performance
         const res = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/results/studentperformance/${userEmail}/${classCode}`
         );

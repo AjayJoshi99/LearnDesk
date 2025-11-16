@@ -46,19 +46,31 @@ exports.getExamsByTeacher = async (req, res) => {
 
 exports.getBaseExamsByTeacher = async (req, res) => {
   try {
-    const { email } = req.params;
-    const exams = await Exam.find({ teacherEmail: email }).select("title description");
+    const { email } = req.params;            
+    const { classCode } = req.body;        
 
-    if (!exams.length) {
-      return res.status(200).json({ exams: [] });
+    if (!classCode) {
+      return res.status(400).json({ message: "classCode is required" });
     }
 
+    const scheduled = await ScheduledExam.find({
+      teacherEmail: email,
+      classCode: classCode
+    }).select("examId");
+    
+    const scheduledExamIds = scheduled.map(s => s.examId);
+    const exams = await Exam.find({
+      teacherEmail: email,
+      _id: { $nin: scheduledExamIds }
+    }).select("title description");
     res.status(200).json({ exams });
+
   } catch (err) {
     console.error("Error fetching base exams:", err);
     res.status(500).json({ message: "Failed to fetch exams", error: err });
   }
 };
+
 
 exports.deleteScheduledExam = async (req, res) => {
   try {

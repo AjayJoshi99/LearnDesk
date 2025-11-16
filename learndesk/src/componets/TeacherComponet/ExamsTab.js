@@ -15,16 +15,23 @@ const ExamTab = ({ teacherEmail }) => {
   const classCode = localStorage.getItem("currentClassCode");
   const teacherEmailStored = JSON.parse(localStorage.getItem("user"))?.email;
   teacherEmail = teacherEmail || teacherEmailStored;
-
+  console.log("Classcode is : ", classCode);
   const fetchBaseExams = useCallback(async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/scheduled-exams/base/teacher/${teacherEmailStored}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/scheduled-exams/base/teacher/${teacherEmailStored}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ classCode })
+        }
+      );
       const data = await res.json();
       if (res.ok && Array.isArray(data.exams)) setBaseExams(data.exams);
       else setBaseExams([]);
     } catch (err) {
       console.error("Error fetching base exams:", err);
     }
+    // eslint-disable-next-line
   }, [teacherEmailStored]);
 
   const fetchScheduledExams = useCallback(async () => {

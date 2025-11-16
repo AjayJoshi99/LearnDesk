@@ -24,8 +24,7 @@ router.get("/:examId", async (req, res) => {
 router.get("/exams/:examId", async (req, res) => {  
   try {
     const { examId } = req.params;
-    const { classCode } = req.query; // ✅ Get classCode from query params
-
+    const { classCode } = req.query; 
     if (!examId) {
       return res.status(400).json({ message: "Exam ID is required" });
     }
@@ -34,7 +33,6 @@ router.get("/exams/:examId", async (req, res) => {
       return res.status(400).json({ message: "Class code is required" });
     }
 
-    // ✅ Find results matching both examId and classCode
     const results = await Result.find({ examId, classCode }).sort({ submittedAt: -1 });
 
     if (!results || results.length === 0) {

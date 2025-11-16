@@ -12,15 +12,14 @@ const AttemptExam = () => {
   const [examStarted, setExamStarted] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(exam?.duration ? exam.duration * 60 : 600);
-
+  const duration = parseInt(localStorage.getItem("duration"), 10) || 10;
+  const [timeLeft, setTimeLeft] = useState(duration * 60);
   const totalQuestions = exam?.questions?.length || 0;
   const attemptedCount = Object.keys(answers).length;
 
   const userEmail = JSON.parse(localStorage.getItem("user"))?.email || "CONFIDENTIAL";
   const classCode = localStorage.getItem("currentClassCode") || "unknown";
 
-  // ✅ Format Time
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
