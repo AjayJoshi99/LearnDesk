@@ -34,10 +34,15 @@ router.get("/check/:examId/:email", async (req, res) => {
   }
 });
 
-router.get("/get/:examId/:email", async (req, res) => {
+router.get("/get/:examId/:email/:classCode", async (req, res) => {
   try {
-    const { examId, email } = req.params;
-    const result = await Result.findOne({ examId, userEmail: email }).populate("examId");
+    const { examId, email, classCode } = req.params;
+
+    const result = await Result.findOne({
+      examId,
+      userEmail: email,
+      classCode
+    }).populate("examId");
 
     if (!result) {
       return res.status(404).json({ message: "Result not found" });

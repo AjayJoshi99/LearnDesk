@@ -65,18 +65,16 @@ const Navbar = ({ toggleSidebar }) => {
 
       <div className="navbar-right">
         <select
-          className="form-select form-select-sm me-2 desktop-only"
+          className="form-select block w-full rounded-2xl border border-gray-300 bg-white py-2 px-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer"
           onChange={handleChange}
           defaultValue=""
-        >
-          <option value="" disabled>
-            Practice
-          </option>
+          >
+          <option value="" disabled>Practice</option>
           <option value="/user/ArithmeticAptitude">Arithmetic Aptitude</option>
           <option value="/user/LogicalReasoning">Logical Reasoning</option>
           <option value="/user/VerbalAbility">Verbal Ability</option>
           <option value="/user/NonVerbalReasoning">Non-Verbal Reasoning</option>
-        </select>
+          </select>
 
         <button className="icon-button desktop-only" onClick={handleLoginClick}>
           <LogOut size={20} />

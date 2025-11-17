@@ -8,7 +8,7 @@ const ViewResult = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const classCode = localStorage.getItem("currentClassCode") || "";
   const user = JSON.parse(localStorage.getItem("user"));
   const userEmail = user?.email || "";
 
@@ -16,7 +16,7 @@ const ViewResult = () => {
     const fetchResult = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/results/get/${examId}/${userEmail}`
+          `${process.env.REACT_APP_API_URL}/api/results/get/${examId}/${userEmail}/${classCode}`
         );
         const data = await res.json();
         if (res.ok) setResult(data);
@@ -27,7 +27,7 @@ const ViewResult = () => {
       }
     };
     fetchResult();
-  }, [examId, userEmail]);
+  }, [examId, userEmail, classCode]);
 
   if (loading) {
     return (
@@ -89,7 +89,7 @@ const ViewResult = () => {
           <div className="col-md-3">
             <h5 className="fw-bold">
               <Clock size={18} className="me-1" />
-              {result.duration || "—"} min
+              {result.duration || "1"} min
             </h5>
             <p className="text-muted small">Duration</p>
           </div>
