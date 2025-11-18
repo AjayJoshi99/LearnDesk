@@ -113,34 +113,34 @@ export default function FileUpload() {
               <div key={f._id} className="col-md-6 col-lg-4 mb-3">
                 <div className="card shadow-lg border-0 p-3 h-100">
                  <div className="d-flex flex-wrap align-items-center justify-content-between gap-2">
-  <div className="d-flex align-items-center flex-grow-1">
-    <i className="bi bi-file-earmark-text text-primary fs-3 me-2"></i>
-    <div className="text-truncate" style={{ maxWidth: "160px" }}>
-      <h6 className="mb-0 text-truncate">{f.filename}</h6>
-      <small className="text-muted">{f.classCode}</small>
-    </div>
-  </div>
+                      <div className="d-flex align-items-center flex-grow-1">
+                        <i className="bi bi-file-earmark-text text-primary fs-3 me-2"></i>
+                        <div className="text-truncate" style={{ maxWidth: "160px" }}>
+                          <h6 className="mb-0 text-truncate">{f.filename}</h6>
+                          <small className="text-muted">{f.classCode}</small>
+                        </div>
+                      </div>
 
-  <div className="d-flex align-items-center gap-2">
-    <a
-      href={f.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center"
-      style={{ minWidth: "32px" }}
-    >
-      <i className="bi bi-box-arrow-up-right"></i>
-    </a>
-    <button
-      className="btn btn-sm btn-outline-danger d-flex align-items-center justify-content-center"
-      onClick={() => handleDelete(f._id)}
-      title="Delete file"
-      style={{ minWidth: "32px" }}
-    >
-      <i className="bi bi-trash"></i>
-    </button>
-  </div>
-</div>
+                      <div className="d-flex align-items-center gap-2">
+                        <a
+                          href={f.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center"
+                          style={{ minWidth: "32px" }}
+                        >
+                          <i className="bi bi-box-arrow-up-right"></i>
+                        </a>
+                        <button
+                          className="btn btn-sm btn-outline-danger d-flex align-items-center justify-content-center"
+                          onClick={() => handleDelete(f._id)}
+                          title="Delete file"
+                          style={{ minWidth: "32px" }}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
                 </div>
               </div>
             ))}
