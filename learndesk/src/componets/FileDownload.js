@@ -24,7 +24,6 @@ export default function FileDownload() {
 
   return (
     <div className="container py-4">
-      {/* Header */}
       <div className="text-center mb-4">
         <h3 className="fw-bold text-primary animate-fade-in">
           <i className="bi bi-folder2-open me-2"></i>Class Files
@@ -32,7 +31,6 @@ export default function FileDownload() {
         <p className="text-muted">All files uploaded for your class</p>
       </div>
 
-      {/* No Files */}
       {files.length === 0 ? (
         <div className="text-center mt-5 animate-fade-in">
           <i className="bi bi-inbox fs-1 text-secondary"></i>
@@ -53,27 +51,29 @@ export default function FileDownload() {
                 onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
             >
                 <div className="card-body d-flex flex-column justify-content-between">
-                {/* File Header */}
                 <div className="d-flex align-items-start mb-3">
                     <i className="bi bi-file-earmark-text text-primary fs-2 me-3 flex-shrink-0"></i>
+
                     <div className="flex-grow-1">
-                    <h6
-                        className="fw-semibold mb-1 text-truncate"
+                      <h6
+                        className="fw-semibold mb-1 text-break"
+                        style={{ wordBreak: "break-word", whiteSpace: "normal" }}
                         title={file.filename}
-                    >
+                      >
                         {file.filename}
-                    </h6>
-                    <small className="text-secondary d-block">
+                      </h6>
+
+                      <small className="text-secondary d-block">
                         <i className="bi bi-clock-history me-1"></i>
                         {new Date(file.createdAt).toLocaleString("en-IN", {
-                        dateStyle: "medium",
-                        timeStyle: "short",
+                          dateStyle: "medium",
+                          timeStyle: "short",
                         })}
-                    </small>
+                      </small>
                     </div>
-                </div>
+                  </div>
 
-                {/* Footer Section */}
+
                 <div className="d-flex justify-content-between align-items-center mt-auto border-top pt-2">
                     <span className="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
                     {file.classCode}
@@ -95,7 +95,6 @@ export default function FileDownload() {
 
       )}
 
-      {/* Inline animations & hover styles */}
       <style>{`
         .hover-effect {
           transition: all 0.3s ease-in-out;

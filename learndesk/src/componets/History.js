@@ -12,13 +12,12 @@ function History() {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/history/${user.email}`);
         const data = await res.json();
         
-        // Ensure data is an array before setting state
         if (Array.isArray(data)) {
           setHistory(data);
         } else if (data.quizHistory && Array.isArray(data.quizHistory)) {
           setHistory(data.quizHistory);
         } else {
-          setHistory([]); // fallback if API returns error object
+          setHistory([]); 
           console.warn("History data is not an array:", data);
         }
       } catch (err) {

@@ -100,7 +100,6 @@ const PerformanceStats = () => {
         </div>
       </div>
 
-      {/* Attempted vs Missed Summary */}
       <div className="card shadow-sm mb-4 border-0">
         <div className="card-body row text-center">
           <div className="col-12 col-md-4 mb-3 mb-md-0">
@@ -126,9 +125,7 @@ const PerformanceStats = () => {
         </div>
       </div>
 
-      {/* Charts Row */}
       <div className="row g-4">
-        {/* Score Trend Chart */}
         <div className="col-12 col-md-6">
           <div className="card shadow-sm border-0">
             <div className="card-body">
@@ -150,7 +147,7 @@ const PerformanceStats = () => {
           </div>
         </div>
 
-        {/* Accuracy Chart */}
+
         <div className="col-12 col-md-6">
           <div className="card shadow-sm border-0">
             <div className="card-body">
