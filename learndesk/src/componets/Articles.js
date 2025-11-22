@@ -22,6 +22,7 @@ const Articles = () => {
     { id: 14, name: "Calendar Tricks", path: "/user/articles/calendar-tricks" },
     { id: 15, name: "Problems on Trains", path: "/user/articles/problems-on-trains" },
     { id: 16, name: "Seating Arrangements", path: "/user/articles/seating-arrangements" },
+    { id: 17, name: "Arithmetic, Geometric & Harmonic Progressions", path: "/user/articles/math-progressions" },
   ];
 
   return (
