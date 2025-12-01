@@ -121,7 +121,7 @@ const TeacherHome = () => {
                   </p>
                 </div>
                 <button
-                  className="btn btn-outline-primary rounded-pill mt-3"
+                  className="btn btn-primary rounded-pill mt-3"
                   onClick={() => {
                     localStorage.setItem("currentClassCode", cls.code);
                     window.location.href = `/teacher/class/${cls.code}`;

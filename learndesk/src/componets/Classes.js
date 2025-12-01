@@ -84,13 +84,22 @@ const StudentDashboard = () => {
           classes.map((cls, idx) => (
             <div key={idx} className="col-md-6 col-lg-4">
               <div className="card shadow-sm p-3 rounded-4">
-                <h5 className="fw-semibold text-primary">{cls.className}</h5>
-                <p className="text-muted mb-1">Subject: {cls.subject}</p>
-                <p className="text-muted mb-2">Teacher: {cls.teacherName}</p>
-                <p className="text-muted mb-2">Email : {cls.teacherEmail}</p>
+                <h5 className="fw-semibold text-primary mb-2">{cls.className}</h5>
 
-                <button
-                    className="btn btn-outline-primary mt-3 w-100 rounded-pill"
+                    <p className="mb-1">
+                      <span className="fw-bold text-dark">Subject:</span> {cls.subject}
+                    </p>
+
+                    <p className="mb-1">
+                      <span className="fw-bold text-dark">Teacher:</span> {cls.teacherName}
+                    </p>
+
+                    <p className="mb-2">
+                      <span className="fw-bold text-dark">Email:</span> {cls.teacherEmail}
+                    </p>
+
+                  <button
+                    className="btn btn-primary mt-3 w-100 rounded-pill"
                     onClick={() => handleViewClass(cls)}
                     >
                     View Class
