@@ -17,6 +17,7 @@ import CalendarTricks from "../componets/Articless/CalendarTricks";
 import ProblemsOnTrains from "../componets/Articless/ProblemsOnTrains";
 import SeatingArrangements from "../componets/Articless/SeatingArrangements"; 
 import MathProgressionsArticle from "../componets/Articless/MathProgressionsArticle";
+import BoatsAndStreamsArticle from "../componets/Articless/BoatsAndStreamsArticle ";
 
 export const ArticleRoutes = () => {
   return (
@@ -39,6 +40,7 @@ export const ArticleRoutes = () => {
       <Route path="articles/problems-on-trains" element={<ProblemsOnTrains />} />
       <Route path="articles/seating-arrangements" element={<SeatingArrangements />} />
       <Route path="articles/math-progressions" element={<MathProgressionsArticle />} />
+      <Route path="articles/boats-and-streams" element={<BoatsAndStreamsArticle />} />
     </>
   );
 };
