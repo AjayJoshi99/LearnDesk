@@ -54,22 +54,30 @@ const StudentDashboard = () => {
 
   return (
     <div className="container mt-4">
-      <h4 className="fw-bold text-primary mb-3">My Classes</h4>
-
       {/* Join class section */}
-      <div className="d-flex gap-2 mb-4">
+      <div className="create-class-card shadow-sm rounded-4 p-4 mb-4">
+    <h5 className="fw-semibold mb-3">
+      <i className="bi bi-box-arrow-in-right me-2 text-primary"></i>
+      Join a Class
+    </h5>
+
+    <div className="d-flex flex-column flex-md-row gap-3">
         <input
           type="text"
-          className="form-control rounded-pill"
+          className="form-control rounded-pill px-3"
           placeholder="Enter Class Code"
           value={classCode}
           onChange={(e) => setClassCode(e.target.value)}
         />
-        <button className="btn btn-primary rounded-pill px-4" onClick={handleJoinClass}>
+        <button
+          className="btn btn-primary rounded-pill px-4"
+          onClick={handleJoinClass}
+        >
           Join
         </button>
       </div>
-
+      </div>
+      <h4 className="fw-bold text-primary mb-3">My Classes</h4>
       {/* Alerts */}
       {message && (
         <div className={`alert ${message.type === "success" ? "alert-success" : "alert-danger"} fade show`}>
