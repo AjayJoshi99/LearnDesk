@@ -70,10 +70,10 @@ const Navbar = ({ toggleSidebar }) => {
           defaultValue=""
           >
           <option value="" disabled>Practice</option>
-          <option value="/user/ArithmeticAptitude">Arithmetic Aptitude</option>
-          <option value="/user/LogicalReasoning">Logical Reasoning</option>
-          <option value="/user/VerbalAbility">Verbal Ability</option>
-          <option value="/user/NonVerbalReasoning">Non-Verbal Reasoning</option>
+          <option value="/user/ArithmeticAptitude" className="btn-primary">Arithmetic Aptitude</option>
+          <option value="/user/LogicalReasoning" className="btn-primary">Logical Reasoning</option>
+          <option value="/user/VerbalAbility" className="btn-primary">Verbal Ability</option>
+          <option value="/user/NonVerbalReasoning" className="btn-primary">Non-Verbal Reasoning</option>
           </select>
 
         <button className="icon-button desktop-only" onClick={handleLoginClick}>
@@ -117,14 +117,18 @@ const Navbar = ({ toggleSidebar }) => {
             </button>
           </div>
 
-          <div className="mobile-avatar-row">
-            <div className="mobile-avatar">
-              {user?.name ? user.name.charAt(0).toUpperCase() : "U"}
-            </div>
-            <div className="mobile-username">
-              {user?.name ? user.name : "User"}
-            </div>
+         <div
+          className="mobile-avatar-row"
+          title={user?.email || user?.name || "User"}
+        >
+          <div className="mobile-avatar">
+            {user?.name ? user.name.charAt(0).toUpperCase() : "U"}
           </div>
+          <div className="mobile-username">
+            {user?.name ? user.name : "User"}
+          </div>
+        </div>
+
         </div>
       )}
     </div>
