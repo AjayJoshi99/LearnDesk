@@ -49,7 +49,7 @@ exports.addAnnouncement = async (req, res) => {
         <h2>${title}</h2>
         <p>${content}</p>
         <p><strong>Class Code:</strong> ${classCode}</p>
-        <p>– From ${teacherEmail}</p>
+        <p>- From ${teacherEmail}</p>
       `,
     };
 
