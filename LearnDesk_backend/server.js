@@ -10,7 +10,7 @@ connectDB();
 app.set("trust proxy", 1);
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://learndeskindia.netlify.app/' 
+  origin: process.env.FRONTEND_URL  
 }));
 // app.use(cors());
 app.use(express.json());
