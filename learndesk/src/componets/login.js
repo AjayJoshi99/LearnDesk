@@ -112,6 +112,7 @@ const Login = () => {
     e.preventDefault();
     if (!validateForm()) return;
     console.log('Register:', { ...registerData, userType });
+    setLoading(true); 
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/request-otp`, {
         method: 'POST',
@@ -148,6 +149,8 @@ const Login = () => {
     } catch (err) {
       console.error(err);
       alert('Server error. Try again later.');
+    }finally{
+      setLoading(false); 
     }
   };
 
@@ -156,7 +159,7 @@ const Login = () => {
       alert('Please enter OTP');
       return;
     }
-
+    setLoading(true); 
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/verify-otp`, {
         method: 'POST',
@@ -195,9 +198,13 @@ const Login = () => {
       console.error(err);
       alert('Error verifying OTP');
     }
+    finally{
+      setLoading(false); 
+    }
   };
 
   const handleResendOtp = async () => {
+    setLoading(true); 
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/request-otp`, {
         method: 'POST',
@@ -226,6 +233,9 @@ const Login = () => {
     } catch (err) {
       console.error(err);
       alert('Error resending OTP');
+    }
+    finally{
+      setLoading(false); 
     }
   };
 
@@ -464,9 +474,9 @@ const Login = () => {
                     )}
                 </div>
 
-                <button type="submit" className="submit-btn">
-                  Create Account
-                </button>
+                <button type="submit" className="submit-btn" disabled={loading}>
+                    {loading ? "Creating Account..." : "Create Account"}
+                  </button>
               </form>
             )
           )}
@@ -487,16 +497,18 @@ const Login = () => {
                 type="button"
                 className="submit-btn"
                 onClick={handleVerifyOtp}
+                disabled={loading}
               >
-                Verify OTP
+                {loading ? "Verifying..." : "Verify OTP"}
               </button>
 
               <button
                 type="button"
                 className="submit-btn"
                 onClick={handleResendOtp}
+                disabled={loading}
               >
-                Resend OTP
+                {loading ? "Sending..." : "Resend OTP"}
               </button>
 
               <button
