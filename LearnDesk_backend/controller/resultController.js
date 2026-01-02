@@ -136,29 +136,21 @@ exports.getTeacherPerformance = async (req, res) => {
 
     for (const cls of classes) {
       const classCode = cls.code;
-
-      // 1️⃣ Get students of this class (assuming stored in cls.students as array of emails)
       const allStudents = cls.students || [];
-
-      // 2️⃣ Get all exams of this class
       const exams = await Exam.find({ classCodes: classCode });
       const examIds = exams.map((e) => e._id);
 
-      // 3️⃣ Get all result documents for these exams & this class
       const results = await Result.find({
         examId: { $in: examIds },
         classCode,
       });
 
-      // 4️⃣ Build student-level performance map (including zero-attempt students)
-      const studentMap = {}; // email -> { scoreSum, possibleSum, attempts }
+      const studentMap = {}; 
 
-      // Initialize all class students with 0s
       for (const email of allStudents) {
         studentMap[email] = { scoreSum: 0, possibleSum: 0, attempts: 0 };
       }
 
-      // Fill actual results
       let totalAttempts = 0;
       for (const r of results) {
         const email = r.userEmail;

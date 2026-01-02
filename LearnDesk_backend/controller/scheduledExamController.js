@@ -1,9 +1,22 @@
 const ScheduledExam = require("../models/scheduledExamModel");
 const Exam = require("../models/Exam");
+const nodemailer = require("nodemailer");
+const Class = require("../models/Class");
+
 
 exports.scheduleExam = async (req, res) => {
   try {
     const { examId, classCode, teacherEmail, date, duration } = req.body;
+
+    if (!examId || !classCode || !teacherEmail || !date || !duration) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const classData = await Class.findOne({ code: classCode });
+    if (!classData) {
+      return res.status(404).json({ message: "Class not found" });
+    }
+
     const scheduledExam = new ScheduledExam({
       examId,
       classCode,
@@ -11,6 +24,7 @@ exports.scheduleExam = async (req, res) => {
       date,
       duration,
     });
+
     await Exam.findByIdAndUpdate(
       examId,
       { $addToSet: { classCodes: classCode } },
@@ -18,12 +32,61 @@ exports.scheduleExam = async (req, res) => {
     );
 
     await scheduledExam.save();
-    res.status(201).json({ message: "Exam scheduled successfully", scheduledExam });
+
+    const studentEmails = classData.students || [];
+
+    if (studentEmails.length === 0) {
+      return res.status(201).json({
+        message: "Exam scheduled successfully, but no students to notify",
+        scheduledExam,
+      });
+    }
+
+    const exam = await Exam.findById(examId);
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
+    const formattedDate = new Date(date).toLocaleString();
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: studentEmails,
+      subject: `Exam Scheduled: ${exam?.title || "Upcoming Exam"}`,
+      html: `
+        <h2>Exam Scheduled</h2>
+        <p>Your exam has been scheduled. Please note the details below:</p>
+
+        <p><strong>Exam Title:</strong> ${exam?.title || "N/A"}</p>
+        <p><strong>Class:</strong> ${classData.className}</p>
+        <p><strong>Date & Time:</strong> ${formattedDate}</p>
+        <p><strong>Duration:</strong> ${duration} minutes</p>
+
+        <br />
+        <p>Please be on time and ensure a stable internet connection.</p>
+
+        <p>Scheduled by: ${teacherEmail}</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(201).json({
+      message: "Exam scheduled and email sent to students successfully",
+      scheduledExam,
+    });
+
   } catch (err) {
     console.error("Error scheduling exam:", err);
     res.status(500).json({ message: "Failed to schedule exam", error: err });
   }
 };
+
 
 exports.getExamsByTeacher = async (req, res) => {
   try {

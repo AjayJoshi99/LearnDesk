@@ -1,6 +1,8 @@
 const File = require("../models/File");
 const path = require("path");
 const fs = require("fs");    
+const nodemailer = require("nodemailer");
+const Class = require("../models/Class");
 
 exports.uploadFile = async (req, res) => {
   try {
@@ -9,8 +11,20 @@ exports.uploadFile = async (req, res) => {
     }
 
     const { classCode, teacherEmail } = req.body;
+
+    if (!classCode || !teacherEmail) {
+      return res.status(400).json({ message: "classCode and teacherEmail are required" });
+    }
+
+    // Find class
+    const classData = await Class.findOne({ code: classCode });
+    if (!classData) {
+      return res.status(404).json({ message: "Class not found" });
+    }
+
     const fileUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
 
+    // Save file metadata
     const newFile = new File({
       filename: req.file.originalname,
       url: fileUrl,
@@ -22,12 +36,59 @@ exports.uploadFile = async (req, res) => {
 
     await newFile.save();
 
-    res.status(200).json({ message: "File uploaded successfully", file: newFile });
+    const studentEmails = classData.students || [];
+
+    // If no students, just return success
+    if (studentEmails.length === 0) {
+      return res.status(200).json({
+        message: "File uploaded successfully, but no students found to notify",
+        file: newFile,
+      });
+    }
+
+    // Mail transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: studentEmails,
+      subject: `📂 New Study Material Uploaded - ${classData.className}`,
+      html: `
+        <h2>New File Uploaded</h2>
+        <p>A new file has been uploaded for your class.</p>
+        <p><strong>File Name:</strong> ${req.file.originalname}</p>
+        <p><strong>Class:</strong> ${classData.className}</p>
+        <p><strong>Class Code:</strong> ${classCode}</p>
+        <p>
+          <a href="${fileUrl}" target="_blank">
+            📥 Click here to download the file
+          </a>
+        </p>
+        <br />
+        <p>Uploaded by: ${teacherEmail}</p>
+      `,
+    };
+
+    // Send mail
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({
+      message: "File uploaded and email sent to students successfully",
+      file: newFile,
+    });
+
   } catch (err) {
-    console.error(err);
+    console.error("File upload error:", err);
     res.status(500).json({ error: "File upload failed" });
   }
 };
+
 
 exports.getFiles = async (req, res) => {
   try {
