@@ -16,6 +16,15 @@ const AttemptExam = () => {
   const [timeLeft, setTimeLeft] = useState(duration * 60);
   const totalQuestions = exam?.questions?.length || 0;
   const attemptedCount = Object.keys(answers).length;
+  const [markedForReview, setMarkedForReview] = useState({});
+
+  const toggleMarkForReview = (index) => {
+    setMarkedForReview((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
 
   const userEmail = JSON.parse(localStorage.getItem("user"))?.email || "CONFIDENTIAL";
   const classCode = localStorage.getItem("currentClassCode") || "unknown";
@@ -203,60 +212,60 @@ const AttemptExam = () => {
                       {/* Left Panel */}
                       <div className="col-md-8">
                         <div className="card mb-3 shadow rounded-4 p-3 position-relative overflow-hidden">
-  {/* Background pattern */}
-  <div
-    className="position-absolute top-0 start-0 w-100 h-100"
-    style={{
-      backgroundImage: `
-        repeating-linear-gradient(
-          45deg,
-          rgba(0, 0, 0, 0.05) 0,
-          rgba(0, 0, 0, 0.05) 1px,
-          transparent 1px,
-          transparent 80px
-        ),
-        repeating-linear-gradient(
-          -45deg,
-          rgba(0, 0, 0, 0.05) 0,
-          rgba(0, 0, 0, 0.05) 1px,
-          transparent 1px,
-          transparent 80px
-        )
-      `,
-      backgroundSize: "200px 200px",
-      zIndex: 0,
-      opacity: 0.1,
-      pointerEvents: "none",
-    }}
-  ></div>
+                          {/* Background pattern */}
+                          <div
+                            className="position-absolute top-0 start-0 w-100 h-100"
+                            style={{
+                              backgroundImage: `
+                                repeating-linear-gradient(
+                                  45deg,
+                                  rgba(0, 0, 0, 0.05) 0,
+                                  rgba(0, 0, 0, 0.05) 1px,
+                                  transparent 1px,
+                                  transparent 80px
+                                ),
+                                repeating-linear-gradient(
+                                  -45deg,
+                                  rgba(0, 0, 0, 0.05) 0,
+                                  rgba(0, 0, 0, 0.05) 1px,
+                                  transparent 1px,
+                                  transparent 80px
+                                )
+                              `,
+                              backgroundSize: "200px 200px",
+                              zIndex: 0,
+                              opacity: 0.1,
+                              pointerEvents: "none",
+                            }}
+                          ></div>
 
-  {/* Watermark text overlay */}
-  <div
-    className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-wrap justify-content-center align-content-center text-muted opacity-25 fw-bold"
-    style={{
-      fontSize: "1.5rem",
-      color: "rgba(0,0,0,0.1)",
-      pointerEvents: "none",
-      userSelect: "none",
-      overflow: "hidden",
-      zIndex: 0,
-    }}
-  >
-    {[...Array(20)].map((_, i) => (
-      <span
-        key={i}
-        style={{
-          flex: "0 0 33%",
-          textAlign: "center",
-          transform: "rotate(-30deg)",
-          margin: "30px 0",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {JSON.parse(localStorage.getItem("user"))?.email || "CONFIDENTIAL"}
-      </span>
-    ))}
-  </div>
+                          {/* Watermark text overlay */}
+                          <div
+                            className="position-absolute top-0 start-0 w-100 h-100 d-flex flex-wrap justify-content-center align-content-center text-muted opacity-25 fw-bold"
+                            style={{
+                              fontSize: "1.5rem",
+                              color: "rgba(0,0,0,0.1)",
+                              pointerEvents: "none",
+                              userSelect: "none",
+                              overflow: "hidden",
+                              zIndex: 0,
+                            }}
+                          >
+                          {[...Array(20)].map((_, i) => (
+                            <span
+                              key={i}
+                              style={{
+                                flex: "0 0 33%",
+                                textAlign: "center",
+                                transform: "rotate(-30deg)",
+                                margin: "30px 0",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {JSON.parse(localStorage.getItem("user"))?.email || "CONFIDENTIAL"}
+                            </span>
+                          ))}
+                        </div>
                           <h5>
                             {currentQuestion + 1}. {exam.questions[currentQuestion].questionText}
                           </h5>
@@ -288,6 +297,19 @@ const AttemptExam = () => {
                             >
                               Previous
                             </button>
+                            <button
+                              className={`btn ${
+                                markedForReview[currentQuestion]
+                                  ? "btn-primary"
+                                  : "btn-outline-secondary"
+                              }`}
+                              onClick={() => toggleMarkForReview(currentQuestion)}
+                            >
+                              {markedForReview[currentQuestion]
+                                ? "Unmark Review"
+                                : "Mark for Review"}
+                            </button>
+
                             <button
                               className="btn btn-outline-warning"
                               onClick={() =>
@@ -331,8 +353,18 @@ const AttemptExam = () => {
                             {exam.questions.map((_, index) => (
                               <button
                                 key={index}
-                                className={`btn ${answers[index] !== undefined ? "btn-success" : "btn-secondary"
-                                  } ${index === currentQuestion ? "border border-primary border-3" : ""}`}
+                                className={`btn ${
+                                  markedForReview[index]
+                                    ? "btn-primary"
+                                    : answers[index] !== undefined
+                                    ? "btn-success"
+                                    : "btn-secondary"
+                                } ${
+                                  index === currentQuestion
+                                    ? "border border-primary border-3"
+                                    : ""
+                                }`}
+
                                 onClick={() => setCurrentQuestion(index)}
                                 style={{
                                   width: "48px",

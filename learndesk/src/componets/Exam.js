@@ -16,6 +16,8 @@ function Exam() {
   const [userAnswer, setUserAnswer] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeLeft, setTimeLeft] = useState(600);
+  const [markedForReview, setMarkedForReview] = useState({});
+
 
   const obj = data.find((exam) => exam.e === num);
   const quizName = localStorage.getItem("quizName") || `Quiz-${num}`;
@@ -24,6 +26,13 @@ function Exam() {
   const handleOptionChange = (index, input, correct) => {
     setUserAnswer((prev) => ({ ...prev, [index]: input }));
     if (input === correct) setTotalMarks((prev) => prev + 1);
+  };
+
+    const toggleMarkForReview = (index) => {
+    setMarkedForReview((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
   const handleForceExit = useCallback(() => {
@@ -276,6 +285,20 @@ function Exam() {
                             >
                               Previous
                             </button>
+                            
+                              <button
+                                  className={`btn ${
+                                    markedForReview[currentQuestion]
+                                      ? "btn-primary"
+                                      : "btn-outline-secondary"
+                                  }`}
+                                  onClick={() => toggleMarkForReview(currentQuestion)}
+                                >
+                                  {markedForReview[currentQuestion]
+                                    ? "Unmark Review"
+                                    : "Mark for Review"}
+                                </button>
+
                             <button
                               className="btn btn-outline-warning"
                               onClick={() =>
@@ -321,14 +344,17 @@ function Exam() {
                               <button
                                 key={index}
                                 className={`btn ${
-                                  userAnswer[index]
-                                    ? "btn-success"
-                                    : "btn-secondary"
-                                } ${
-                                  index === currentQuestion
-                                    ? "border border-primary border-3"
-                                    : ""
-                                }`}
+                                    markedForReview[index]
+                                      ? "btn-primary"
+                                      : userAnswer[index]
+                                      ? "btn-success"
+                                      : "btn-secondary"
+                                  } ${
+                                    index === currentQuestion
+                                      ? "border border-primary border-3"
+                                      : ""
+                                  }`}
+
                                 onClick={() => setCurrentQuestion(index)}
                                 style={{
                                   width: "48px",

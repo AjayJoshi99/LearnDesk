@@ -27,6 +27,15 @@ export default function RandomQuiz() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(1200); 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const [markedForReview, setMarkedForReview] = useState({});
+
+  const toggleMarkForReview = (index) => {
+    setMarkedForReview((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
 
   const fetchQuestions = async (categoryId) => {
     setLoading(true);
@@ -327,6 +336,17 @@ export default function RandomQuiz() {
                               Previous
                             </button>
                             <button
+                              className={`btn ${
+                                markedForReview[currentIndex]
+                                  ? "btn-primary"
+                                  : "btn-outline-secondary"
+                              }`}
+                              onClick={() => toggleMarkForReview(currentIndex)}
+                            >
+                              {markedForReview[currentIndex] ? "Unmark Review" : "Mark for Review"}
+                            </button>
+
+                            <button
                               className="btn btn-outline-primary"
                               onClick={() =>
                                 setCurrentIndex((p) => Math.min(p + 1, questions.length - 1))
@@ -356,7 +376,9 @@ export default function RandomQuiz() {
                               <button
                                 key={index}
                                 className={`btn ${
-                                  userAnswers[index]
+                                  markedForReview[index]
+                                    ? "btn-primary"
+                                    : userAnswers[index]
                                     ? "btn-success"
                                     : "btn-secondary"
                                 } ${
