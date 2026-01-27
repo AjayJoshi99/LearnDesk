@@ -262,7 +262,7 @@ const AttemptExam = () => {
                                 whiteSpace: "nowrap",
                               }}
                             >
-                              {JSON.parse(localStorage.getItem("user"))?.email || "CONFIDENTIAL"}
+                              {JSON.parse(localStorage.getItem("user"))?.email || "CONFIDENTIAL"} {`• ${Date.now() % 100000}`}
                             </span>
                           ))}
                         </div>

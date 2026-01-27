@@ -230,8 +230,8 @@ export default function RandomQuiz() {
                 style={{
                   pointerEvents: "none",
                   fontSize: "1.3rem",
-                  fontWeight: 600,
-                  color: "rgba(0, 0, 0, 0.12)",
+                  fontWeight: 700,
+                  color: "rgba(0, 0, 0, 0.3)",
                   userSelect: "none",
                   overflow: "hidden",
                 }}
@@ -247,7 +247,8 @@ export default function RandomQuiz() {
                       whiteSpace: "nowrap",
                     }}
                   >
-                    {user.email || "CONFIDENTIAL"}
+                    {user.email || "CONFIDENTIAL"} {`• ${Date.now() % 100000}`}
+
                   </span>
                 ))}
               </div>
