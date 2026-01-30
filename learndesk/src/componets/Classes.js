@@ -21,6 +21,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
+        setLoading(true);
         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/class/student/${studentEmail}`);
         const data = await res.json();
         if (res.ok) setClasses(data.classes || []);

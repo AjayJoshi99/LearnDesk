@@ -10,6 +10,7 @@ function History() {
   useEffect(() => {
     async function fetchHistory() {
       try {
+        setLoading(true);
         const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/history/${user.email}`);
         const data = await res.json();
         
