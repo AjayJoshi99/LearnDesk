@@ -9,6 +9,8 @@ const StudentDashboard = () => {
   const userData = localStorage.getItem("user");
   const studentEmail = userData ? JSON.parse(userData).email : "";
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
 
   const handleViewClass = (cls) => {
     localStorage.setItem("currentClass", JSON.stringify(cls));
@@ -25,6 +27,9 @@ const StudentDashboard = () => {
       } catch (err) {
         console.error(err);
       }
+       finally {
+      setLoading(false);
+    }
     };
     fetchClasses();
   }, [studentEmail]);
@@ -88,7 +93,13 @@ const StudentDashboard = () => {
 
       {/* Class cards */}
       <div className="row g-3">
-        {classes.length > 0 ? (
+        {loading ? (
+  <div className="text-center mt-4">
+    <div className="spinner-border text-primary" role="status"></div>
+    <p className="mt-2 text-muted">Loading your classes...</p>
+  </div>
+) : classes.length > 0 ? (
+
           classes.map((cls, idx) => (
             <div key={idx} className="col-md-6 col-lg-4">
               <div className="card shadow-sm p-3 rounded-4">

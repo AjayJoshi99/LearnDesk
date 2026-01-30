@@ -8,6 +8,8 @@ const ResultsTab = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [examsLoading, setExamsLoading] = useState(true);
+
 
   const teacherEmail = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user")).email
@@ -24,6 +26,8 @@ const ResultsTab = () => {
     setExams(data.exams || []);
   } catch (error) {
     console.error("Error fetching exams:", error);
+  }finally {
+    setExamsLoading(false);
   }
 }, [teacherEmail]);
 
@@ -62,9 +66,14 @@ useEffect(() => {
       {/* Exam List */}
       <div className="card shadow-sm p-3 mb-4">
         <h5 className="card-title mb-3">Your Exams</h5>
-        {exams.length === 0 ? (
-          <p className="text-muted">No exams found.</p>
-        ) : (
+        {examsLoading ? (
+            <div className="text-center my-3">
+              <div className="spinner-border text-primary"></div>
+              <p className="text-muted mt-2">Loading exams...</p>
+            </div>
+          ) : exams.length === 0 ? (
+            <p className="text-muted">No exams found.</p>
+          ) : (
           <table className="table table-bordered align-middle">
             <thead className="table-primary">
               <tr>
@@ -100,8 +109,11 @@ useEffect(() => {
             Results for Selected Exam
           </h5>
           {loading ? (
-            <p>Loading...</p>
-          ) : results.length === 0 ? (
+              <div className="text-center my-3">
+                <div className="spinner-border text-success"></div>
+                <p className="text-muted mt-2">Loading results...</p>
+              </div>
+            ) : results.length === 0 ? (
             <p className="text-muted">No students have taken this exam yet.</p>
           ) : (
             <table className="table table-striped align-middle">

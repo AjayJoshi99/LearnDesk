@@ -5,6 +5,7 @@ function History() {
   const [history, setHistory] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchHistory() {
@@ -23,6 +24,8 @@ function History() {
       } catch (err) {
         console.error("Failed to fetch history:", err);
         setHistory([]);
+      }finally {
+        setLoading(false);
       }
     }
 
@@ -32,9 +35,14 @@ function History() {
   return (
     <div className="container mt-3">
       <h2 >Your Quiz History</h2>
-      {history.length === 0 ? (
-        <p>No quizzes attempted yet.</p>
-      ) : (
+      {loading ? (
+          <div className="text-center mt-4">
+            <div className="spinner-border text-primary" role="status"></div>
+            <p className="mt-2 text-muted">Loading quiz history...</p>
+          </div>
+        ) : history.length === 0 ? (
+          <p>No quizzes attempted yet.</p>
+        ) : (
         history.map((quiz, idx) => (
           <div key={idx} className="card m-3 p-3 shadow-sm">
             <h4 >{quiz.quizName}</h4>
